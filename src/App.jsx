@@ -8,10 +8,7 @@ function App() {
   return (
     <div className="d-flex flex-column min-vh-100">
       <NavBar />
-
-      <main className="bg-secondary flex-grow-1 d-flex">
-        <ProfilePage />
-      </main>
+      <ProfilePage />
     </div>
   );
 }
