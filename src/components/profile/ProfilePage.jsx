@@ -7,6 +7,9 @@ import { useDispatch, useSelector } from 'react-redux'
 // importiamo la funzione che recupera il profilo
 import { getMyProfile } from '../../redux/Actions'
 
+// hero 
+import ProfileHero from './ProfileHero'
+
 const ProfilePage = () => {
   // dispatch serve per inviare azioni a Redux
   const dispatch = useDispatch()
@@ -36,28 +39,18 @@ const ProfilePage = () => {
   if (!profile) return <p>Nessun profilo trovato</p>
 
   return (
-    <main>
-      {/* nome e cognome */}
-      <h1>
-        {profile.name} {profile.surname}
-      </h1>
-
-      {/* titolo lavorativo */}
-      <p>{profile.title}</p>
-
-      {/* città/zona */}
-      <p>{profile.area}</p>
-
-      {/* bio */}
-      <p>{profile.bio}</p>
-
-      {/* immagine profilo */}
-      <img
-        src={profile.image}
-        alt={`${profile.name} ${profile.surname}`}
-      />
-    </main>
-  )
+  <main className='bg-light min-vh-100 py-4'>
+    
+    {/* container bootstrap */}
+    <div className='container'>
+      
+      {/* hero del profilo */}
+      <ProfileHero profile={profile} />
+    
+    </div>
+  
+  </main>
+)
 }
 
 // esportiamo il componente

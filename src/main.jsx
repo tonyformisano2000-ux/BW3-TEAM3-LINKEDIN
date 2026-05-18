@@ -2,6 +2,8 @@
 import { createRoot } from "react-dom/client";
 // importo il CSS globale - Martina
 import "./index.css";
+// bootstrap 
+import 'bootstrap/dist/css/bootstrap.min.css'
 // importo il componente principale - Martina
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
