@@ -42,11 +42,11 @@ function NavBar() {
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto align-items-center">
+        <Navbar.Collapse id="basic-navbar-nav" className="mt-3 mt-lg-0">
+          <Nav className="ms-auto align-items-start align-items-lg-center">
             <Link
               to="/"
-              className="text-center text-decoration-none d-flex flex-column align-items-center text-secondary mx-3 small"
+              className="text-decoration-none text-secondary mx-3 py-2 d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small"
             >
               <i className="bi bi-house-door-fill fs-5"></i>
               <span>Home</span>
@@ -54,7 +54,7 @@ function NavBar() {
 
             <Link
               to="/network"
-              className="text-center text-decoration-none d-flex flex-column align-items-center text-secondary mx-3 small"
+              className="text-decoration-none text-secondary mx-3 py-2 d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small"
             >
               <i className="bi bi-people-fill fs-5"></i>
               <span>My Network</span>
@@ -62,7 +62,7 @@ function NavBar() {
 
             <Link
               to="/jobs"
-              className="text-center text-decoration-none d-flex flex-column align-items-center text-secondary mx-3 small"
+              className="text-decoration-none text-secondary mx-3 py-2 d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small"
             >
               <i className="bi bi-briefcase-fill fs-5"></i>
               <span>Jobs</span>
@@ -70,7 +70,7 @@ function NavBar() {
 
             <Link
               to="/messages"
-              className="text-center text-decoration-none d-flex flex-column align-items-center text-secondary mx-3 small"
+              className="text-decoration-none text-secondary mx-3 py-2 d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small"
             >
               <i className="bi bi-chat-dots-fill fs-5"></i>
               <span>Messages</span>
@@ -78,21 +78,27 @@ function NavBar() {
 
             <Link
               to="/notifications"
-              className="text-center text-decoration-none d-flex flex-column align-items-center text-secondary mx-3 small"
+              className="text-decoration-none text-secondary mx-3 py-2 d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small"
             >
               <i className="bi bi-bell-fill fs-5"></i>
               <span>Notifications</span>
             </Link>
 
             <NavDropdown
+              align="end"
+              id="basic-nav-dropdown"
+              className="mx-3 profile-dropdown"
               title={
-                <div className="d-flex flex-column align-items-center small">
+                <div className="d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small text-secondary">
                   <i className="bi bi-person-circle fs-5"></i>
-                  <span>You</span>
+
+                  <div className="d-flex align-items-center">
+                    <span>You</span>
+
+                    <i className="bi bi-caret-down-fill ms-1 small"></i>
+                  </div>
                 </div>
               }
-              id="basic-nav-dropdown"
-              align="end"
             >
               <div className="px-3 py-2" style={{ width: "250px" }}>
                 <Button
@@ -123,6 +129,7 @@ function NavBar() {
                 </NavDropdown.Item>
               </div>
             </NavDropdown>
+            <vr className="border-secondary" />
           </Nav>
         </Navbar.Collapse>
       </Container>
