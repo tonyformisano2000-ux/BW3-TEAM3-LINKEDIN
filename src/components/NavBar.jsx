@@ -64,7 +64,11 @@ function NavBar({ collapsed, setCollapsed }) {
               <span>Jobs</span>
             </Link>
             <div
-              onClick={() => setCollapsed(!collapsed)}
+              onClick={() => {
+                if (collapsed) {
+                  setCollapsed(false);
+                }
+              }}
               className="text-secondary mx-3 py-2 d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small"
               role="button"
             >
