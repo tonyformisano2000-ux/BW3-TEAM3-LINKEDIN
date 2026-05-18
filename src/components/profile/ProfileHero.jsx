@@ -9,10 +9,14 @@ const ProfileHero = ({ profile }) => {
   // stato per aprire/chiudere la modale della copertina
   const [showCoverModal, setShowCoverModal] = useState(false)
 
+  // stato per aprire/chiudere la modale modifica profilo
+  const [showEditModal, setShowEditModal] = useState(false)
+
   // stato della copertina selezionata
   const [coverImage, setCoverImage] = useState(null)
+
   // stato foto profilo
-  const [profileImage, setProfileImage]=useState(profile.image)
+  const [profileImage, setProfileImage] = useState(profile.image)
 
   // immagini predefinite tra cui scegliere
   const coverImages = [
@@ -24,31 +28,23 @@ const ProfileHero = ({ profile }) => {
 
   // funzione per caricare una copertina dal PC
   const handleCoverUpload = (e) => {
-    // prendiamo il primo file scelto
     const file = e.target.files[0]
 
-    // se non c'è nessun file, fermiamo la funzione
     if (!file) return
 
-    // creiamo un URL temporaneo per mostrare subito l'immagine
     const imageUrl = URL.createObjectURL(file)
 
-    // salviamo l'immagine nello stato
     setCoverImage(imageUrl)
   }
 
-  // funzione per cambiare foto profilo 
+  // funzione per cambiare foto profilo
   const handleProfileUpload = (e) => {
-    // prendiao file selezionato
     const file = e.target.files[0]
 
-    // se non esiste, fermiamo tutto
     if (!file) return
-    
-    // URL temporaneo
-    const imageUrl= URL.createObjectURL(file)
 
-    // aggiorno foto profilo
+    const imageUrl = URL.createObjectURL(file)
+
     setProfileImage(imageUrl)
   }
 
@@ -61,17 +57,14 @@ const ProfileHero = ({ profile }) => {
           className="position-relative"
           style={{
             height: '180px',
-
-            // se coverImage esiste, mostriamo quella; altrimenti gradient grigio
             backgroundImage: coverImage
               ? `url(${coverImage})`
               : 'linear-gradient(135deg, #78909c, #455a64)',
-
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         >
-          {/* bottone fotocamera */}
+          {/* bottone fotocamera copertina */}
           <Button
             variant="light"
             size="sm"
@@ -84,6 +77,15 @@ const ProfileHero = ({ profile }) => {
 
         {/* corpo della card */}
         <Card.Body className="position-relative pt-5">
+          {/* bottone modifica profilo */}
+          <Button
+            variant="light"
+            className="rounded-circle position-absolute top-0 end-0 m-3 border-0"
+            onClick={() => setShowEditModal(true)}
+          >
+            <i className="bi bi-pencil"></i>
+          </Button>
+
           {/* immagine profilo */}
           <img
             src={profileImage}
@@ -100,27 +102,25 @@ const ProfileHero = ({ profile }) => {
 
           {/* bottone modifica foto profilo */}
           <label
-          className='btn btn-light rounded-circle position-absolute d-flex justify-content-center align-items-center p-0'
-          style={{
-            width:'38px',
-            height: '38px',
-            left: '120px',
-            top: '15px',
-            border: '1px solid #ddd',
-            cursor: 'pointer',
-           }}
-           >
-            <i className='bi bi-camera-fill"'></i>
+            className="btn btn-light rounded-circle position-absolute d-flex justify-content-center align-items-center p-0"
+            style={{
+              width: '38px',
+              height: '38px',
+              left: '120px',
+              top: '15px',
+              border: '1px solid #ddd',
+              cursor: 'pointer',
+            }}
+          >
+            <i className="bi bi-camera-fill"></i>
 
             <input
-             type="file"
-             accept="image/*"
-             className="d-none"
-             onChange={handleProfileUpload}/>
-          
+              type="file"
+              accept="image/*"
+              className="d-none"
+              onChange={handleProfileUpload}
+            />
           </label>
-
-
 
           {/* nome e cognome */}
           <h2 className="mb-0">
@@ -133,7 +133,7 @@ const ProfileHero = ({ profile }) => {
           {/* località */}
           <p className="text-muted mb-3">{profile.area}</p>
 
-          {/* bottoni */}
+          {/* bottoni principali */}
           <div className="d-flex gap-2 flex-wrap">
             <Button variant="primary" className="rounded-pill">
               Disponibile per
@@ -157,12 +157,10 @@ const ProfileHero = ({ profile }) => {
         centered
         size="lg"
       >
-        {/* header modale */}
         <Modal.Header closeButton>
           <Modal.Title>Aggiungi un’immagine di copertina</Modal.Title>
         </Modal.Header>
 
-        {/* corpo modale */}
         <Modal.Body>
           <p className="fw-bold mb-1">Carica la tua immagine</p>
 
@@ -171,7 +169,7 @@ const ProfileHero = ({ profile }) => {
             istantanee del tuo team
           </p>
 
-          {/* bottone upload dal PC */}
+          {/* upload copertina dal PC */}
           <label className="btn btn-outline-secondary mb-4">
             Carica una sola foto
             <input
@@ -197,8 +195,6 @@ const ProfileHero = ({ profile }) => {
                     width: '100%',
                     objectFit: 'cover',
                     cursor: 'pointer',
-
-                    // bordo blu se è selezionata
                     border:
                       coverImage === image
                         ? '3px solid #0d6efd'
@@ -211,7 +207,6 @@ const ProfileHero = ({ profile }) => {
           </div>
         </Modal.Body>
 
-        {/* footer modale */}
         <Modal.Footer>
           <Button
             variant="secondary"
@@ -223,6 +218,41 @@ const ProfileHero = ({ profile }) => {
           <Button
             variant="primary"
             onClick={() => setShowCoverModal(false)}
+          >
+            Salva
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* modale modifica profilo */}
+      <Modal
+        show={showEditModal}
+        onHide={() => setShowEditModal(false)}
+        centered
+        size="lg"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Modifica presentazione</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <p className="text-muted">
+            Qui inseriremo il form per modificare nome, cognome, titolo, area e
+            bio.
+          </p>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button
+            variant="secondary"
+            onClick={() => setShowEditModal(false)}
+          >
+            Annulla
+          </Button>
+
+          <Button
+            variant="primary"
+            onClick={() => setShowEditModal(false)}
           >
             Salva
           </Button>
