@@ -156,7 +156,7 @@ function NavBar({ collapsed, setCollapsed }) {
                   <p className="text-secondary">Talent</p>
                   <NavDropdown.Item className="d-flex align-content-center p-0 my-2">
                     <i class="bi bi-person-check-fill text-primary fs-5 mx-1"></i>
-                    <p className="fw-bold small pt-1">Services Marketplace</p>
+                    <p className="fw-bold small pt-1">Marketplace Services</p>
                   </NavDropdown.Item>
                 </div>
                 <div className="d-flex align-content-center">
