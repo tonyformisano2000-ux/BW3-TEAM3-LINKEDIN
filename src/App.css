@@ -1,0 +1,5 @@
+/* bordo tratteggiato profilo aggiungi badge */
+
+.border-dashed {
+  border-style: dashed !important;
+}
