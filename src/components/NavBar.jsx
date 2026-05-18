@@ -162,27 +162,50 @@ function NavBar() {
                     <i class="bi bi-people-fill text-primary fs-5 mx-1"></i>
                     <p className="fw-bold small pt-1">Groups</p>
                   </NavDropdown.Item>
+                  <p className="text-secondary">Talent</p>
+                  <NavDropdown.Item className="d-flex align-content-center p-0">
+                    <i class="bi bi-people-fill text-primary fs-5 mx-1"></i>
+                    <p className="fw-bold small pt-1">Hire with AI</p>
+                  </NavDropdown.Item>
                 </div>
                 <div className="d-flex align-content-center">
                   <div className="vr text-secondary mx-2"></div>
                 </div>
                 <div>
                   <h5>Find more for the business</h5>
-                  <NavDropdown.Item>
+                  <NavDropdown.Item className="p-0">
                     <h6>Hire on LinkedIn</h6>
                     <p className="p-0 m-0">Find, attract and hire</p>
                   </NavDropdown.Item>
-                  <NavDropdown.Item>
+                  <NavDropdown.Item className="p-0">
                     <h6>Sell on LinkedIn</h6>
                     <p className="p-0 m-0">Unlock new selling opportunities</p>
                   </NavDropdown.Item>
-                  <NavDropdown.Item>
+                  <NavDropdown.Item className="p-0">
                     <h6>Publish a free work offer</h6>
                     <p className="p-0 m-0">Find quality candidates</p>
                   </NavDropdown.Item>
-                  <NavDropdown.Item>
+                  <NavDropdown.Item className="p-0">
                     <h6>Promote on LinkedIn</h6>
                     <p className="p-0 m-0">Get clients and grow your company</p>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item className="p-0">
+                    <h6>Start with Premium</h6>
+                    <p className="p-0 m-0">Grow and leverage your network</p>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item className="p-0">
+                    <h6>Learn with LinkedIn</h6>
+                    <p className="p-0 m-0">Courses to form your employees</p>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item className="p-0">
+                    <h6>Admin Center</h6>
+                    <p className="p-0 m-0">
+                      Manage billing and account details
+                    </p>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item className="d-flex align-content-center my-5 p-0">
+                    <h6 className="m-0 pt-1 me-1">Create a company page</h6>
+                    <i class="bi bi-plus-lg fs-5"></i>
                   </NavDropdown.Item>
                 </div>
               </div>
