@@ -4,7 +4,7 @@ import CreaUnPost from "./CreaUnPost";
 const PorzioneCentrale = () => {
   return (
     <Container>
-      <CreaUnPost />
+      <CreaUnPost className="p-1" />
     </Container>
   );
 };
