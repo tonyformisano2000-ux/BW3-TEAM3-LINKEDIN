@@ -109,7 +109,16 @@ const ProfileHero = ({ profile }) => {
             border: '1px solid #ddd',
             cursor: 'pointer',
            }}
-           ></label>
+           >
+            <i className='bi bi-camera-fill"'></i>
+
+            <input
+             type="file"
+             accept="image/*"
+             className="d-none"
+             onChange={handleProfileUpload}/>
+          
+          </label>
 
 
 
