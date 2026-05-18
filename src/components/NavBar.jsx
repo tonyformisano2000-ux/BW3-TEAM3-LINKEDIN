@@ -51,7 +51,6 @@ function NavBar() {
               <i className="bi bi-house-door-fill fs-5"></i>
               <span>Home</span>
             </Link>
-
             <Link
               to="/network"
               className="text-decoration-none text-secondary mx-3 py-2 d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small"
@@ -59,7 +58,6 @@ function NavBar() {
               <i className="bi bi-people-fill fs-5"></i>
               <span>My Network</span>
             </Link>
-
             <Link
               to="/jobs"
               className="text-decoration-none text-secondary mx-3 py-2 d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small"
@@ -67,7 +65,6 @@ function NavBar() {
               <i className="bi bi-briefcase-fill fs-5"></i>
               <span>Jobs</span>
             </Link>
-
             <Link
               to="/messages"
               className="text-decoration-none text-secondary mx-3 py-2 d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small"
@@ -75,7 +72,6 @@ function NavBar() {
               <i className="bi bi-chat-dots-fill fs-5"></i>
               <span>Messages</span>
             </Link>
-
             <Link
               to="/notifications"
               className="text-decoration-none text-secondary mx-3 py-2 d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small"
@@ -83,7 +79,6 @@ function NavBar() {
               <i className="bi bi-bell-fill fs-5"></i>
               <span>Notifications</span>
             </Link>
-
             <NavDropdown
               align="end"
               id="basic-nav-dropdown"
@@ -129,7 +124,69 @@ function NavBar() {
                 </NavDropdown.Item>
               </div>
             </NavDropdown>
-            <vr className="border-secondary" />
+            <div className="d-flex align-content-center">
+              <div
+                className="vr text-secondary mx-2"
+                style={{ height: "40px" }}
+              ></div>
+            </div>
+            <NavDropdown
+              align="end"
+              id="basic-nav-dropdown"
+              className="mx-3 profile-dropdown"
+              title={
+                <div className="d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small text-secondary">
+                  <i className="bi bi-grid-3x3-gap-fill fs-5"></i>
+
+                  <div className="d-flex align-items-center">
+                    <span>For the Companies</span>
+
+                    <i className="bi bi-caret-down-fill ms-1 small"></i>
+                  </div>
+                </div>
+              }
+            >
+              <div
+                className="px-3 py-2 d-flex justify-content-between"
+                style={{ width: "500px" }}
+              >
+                <div className="ms-4">
+                  <h5>My apps</h5>
+
+                  <NavDropdown.Item className="d-flex align-content-center p-0">
+                    <i className="bi bi-compass-fill text-primary fs-5 mx-1"></i>
+                    <p className="fw-bold small pt-1">Sell</p>
+                  </NavDropdown.Item>
+
+                  <NavDropdown.Item className="d-flex align-content-center p-0">
+                    <i class="bi bi-people-fill text-primary fs-5 mx-1"></i>
+                    <p className="fw-bold small pt-1">Groups</p>
+                  </NavDropdown.Item>
+                </div>
+                <div className="d-flex align-content-center">
+                  <div className="vr text-secondary mx-2"></div>
+                </div>
+                <div>
+                  <h5>Find more for the business</h5>
+                  <NavDropdown.Item>
+                    <h6>Hire on LinkedIn</h6>
+                    <p className="p-0 m-0">Find, attract and hire</p>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item>
+                    <h6>Sell on LinkedIn</h6>
+                    <p className="p-0 m-0">Unlock new selling opportunities</p>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item>
+                    <h6>Publish a free work offer</h6>
+                    <p className="p-0 m-0">Find quality candidates</p>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item>
+                    <h6>Promote on LinkedIn</h6>
+                    <p className="p-0 m-0">Get clients and grow your company</p>
+                  </NavDropdown.Item>
+                </div>
+              </div>
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Container>
