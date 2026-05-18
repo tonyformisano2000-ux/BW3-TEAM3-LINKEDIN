@@ -1,4 +1,4 @@
-import { Form, InputGroup } from "react-bootstrap";
+import { Button, Form, InputGroup } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 function NavBar() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
-      <Container className="mx-1">
+      <Container className="mx-1 d-flex justify-content-between">
         <Navbar.Brand href="./home">
           <img
             src="./src/assets/LinkedIn_icon.svg.png"
@@ -35,8 +35,12 @@ function NavBar() {
             className="border-0 shadow-none"
           />
         </InputGroup>
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse
+          id="basic-navbar-nav"
+          className="d-flex justify-content-start"
+        >
           <Nav className="me-auto">
             <Link
               href="#home"
@@ -97,7 +101,7 @@ function NavBar() {
                 width="20"
                 height="20"
                 fill="currentColor"
-                class="bi bi-chat-dots-fill"
+                className="bi bi-chat-dots-fill"
                 viewBox="0 0 16 16"
               >
                 <path d="M16 8c0 3.866-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
@@ -120,33 +124,49 @@ function NavBar() {
               </svg>
               <span className="fw-normal">Notifications</span>
             </Link>
-            <div className="d-flex flex-column align-content-center justify-content-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                className="bi bi-person-circle"
-                viewBox="0 0 16 16"
-              >
-                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                <path
-                  fill-rule="evenodd"
-                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
-                />
-              </svg>
+            <div className="d-flex flex-column align-content-center text-center">
+              <div className="text-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  className="bi bi-person-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                  <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                </svg>
+              </div>
               <NavDropdown title="You" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
+                <div className="px-2">
+                  <Button
+                    variant="light"
+                    className="text-primary fw-bold w-100 border-primary rounded-4 py-0 px-0"
+                  >
+                    View Profile
+                  </Button>
+                  <NavDropdown.Divider />
+                  <h5>Account</h5>
+                  <NavDropdown.Item href="#action/3.1">
+                    Settings and privacy
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">Guide</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">
+                    Language
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <h5>Gestici</h5>
+                  <NavDropdown.Item href="#action/3.4">
+                    Post and Activity
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    href="#action/3.5"
+                    className="text-truncate"
+                  >
+                    Account for posting job offers
+                  </NavDropdown.Item>
+                </div>
               </NavDropdown>
             </div>
           </Nav>
