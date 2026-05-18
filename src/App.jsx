@@ -6,7 +6,7 @@ import ProfilePage from "./components/profile/ProfilePage";
 
 function App() {
   return (
-    <div className="d-flex flex-column min-vh-100">
+    <div className="d-flex flex-column vh-100">
       <NavBar />
       <ProfilePage />
     </div>
