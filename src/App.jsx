@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./App.css";
@@ -12,12 +13,13 @@ function App() {
   const [collapsed, setCollapsed] = useState(true);
 
   return (
-    <div className="d-flex flex-column vh-100">
+    <div className="d-flex flex-column min-vh-100">
       <NavBar collapsed={collapsed} setCollapsed={setCollapsed} />
 
-      <ProfilePage />
-
-      <PorzioneCentrale />
+      <Routes>
+        <Route path="/" element={<PorzioneCentrale />} />
+        <Route path="/profile" element={<ProfilePage />} />
+      </Routes>
 
       <Texting collapsed={collapsed} setCollapsed={setCollapsed} />
     </div>

@@ -97,12 +97,14 @@ function NavBar({ collapsed, setCollapsed }) {
               }
             >
               <div className="px-3 py-2" style={{ width: "250px" }}>
-                <Button
-                  variant="outline-primary"
-                  className="fw-bold w-100 rounded-pill"
-                >
-                  View Profile
-                </Button>
+                <Link to="/profile" className="text-decoration-none">
+                  <Button
+                    variant="outline-primary"
+                    className="fw-bold w-100 rounded-pill"
+                  >
+                    View Profile
+                  </Button>
+                </Link>
                 <NavDropdown.Divider /> <h6>Account</h6>
                 <NavDropdown.Item>Settings & Privacy</NavDropdown.Item>
                 <NavDropdown.Item>Help</NavDropdown.Item>

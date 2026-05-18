@@ -1,88 +1,84 @@
 // importiamo useState per gestire stati locali del componente
-import { useState } from 'react'
+import { useState } from "react";
 
 // importiamo componenti di React Bootstrap
-import { Button, Card, Modal } from 'react-bootstrap'
+import { Button, Card, Modal } from "react-bootstrap";
 
 // componente hero principale del profilo
 const ProfileHero = ({ profile }) => {
   // stato per aprire/chiudere la modale della copertina
-  const [showCoverModal, setShowCoverModal] = useState(false)
+  const [showCoverModal, setShowCoverModal] = useState(false);
 
   // stato per aprire/chiudere la modale modifica profilo
-  const [showEditModal, setShowEditModal] = useState(false)
+  const [showEditModal, setShowEditModal] = useState(false);
 
   // stato della copertina selezionata
-  const [coverImage, setCoverImage] = useState(null)
+  const [coverImage, setCoverImage] = useState(null);
 
   // stato della foto profilo
-  const [profileImage, setProfileImage] = useState(profile.image)
+  const [profileImage, setProfileImage] = useState(profile.image);
 
   // stato per aprire/chiudere la modale aggiungi sezione
-  const [showAddSectionModal, setShowAddSectionModal] = useState(false)
+  const [showAddSectionModal, setShowAddSectionModal] = useState(false);
 
-  // stato apertura sezioni modale aggiungi profilo
-  const [showMainSections, setShowMainSections] = useState(true)
+  const [showSuggestedSections, setShowSuggestedSections] = useState(false);
 
-  const [showSuggestedSections, setShowSuggestedSections] = useState(false)
-
-  const [showOtherSections, setShowOtherSections] = useState(false)
+  const [showOtherSections, setShowOtherSections] = useState(false);
 
   // immagini predefinite tra cui scegliere
   const coverImages = [
-    'https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1600&auto=format&fit=crop',
+    "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1600&auto=format&fit=crop",
 
-    'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop',
+    "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop",
 
-    'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop',
+    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop",
 
-    'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1600&auto=format&fit=crop',
-  ]
+    "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1600&auto=format&fit=crop",
+  ];
 
   // funzione upload copertina
   const handleCoverUpload = (e) => {
     // prendiamo il file selezionato
-    const file = e.target.files[0]
+    const file = e.target.files[0];
 
     // se non esiste blocchiamo tutto
-    if (!file) return
+    if (!file) return;
 
     // creiamo URL temporaneo
-    const imageUrl = URL.createObjectURL(file)
+    const imageUrl = URL.createObjectURL(file);
 
     // aggiorniamo la copertina
-    setCoverImage(imageUrl)
-  }
+    setCoverImage(imageUrl);
+  };
 
   // funzione upload foto profilo
   const handleProfileUpload = (e) => {
-    const file = e.target.files[0]
+    const file = e.target.files[0];
 
-    if (!file) return
+    if (!file) return;
 
-    const imageUrl = URL.createObjectURL(file)
+    const imageUrl = URL.createObjectURL(file);
 
-    setProfileImage(imageUrl)
-  }
+    setProfileImage(imageUrl);
+  };
 
   return (
     <>
       {/* card principale */}
       <Card className="overflow-hidden rounded-4 shadow-sm border-0">
-        
         {/* banner/copertina */}
         <div
           className="position-relative"
           style={{
-            height: '220px',
+            height: "220px",
 
             // se esiste una cover selezionata la mostriamo
             backgroundImage: coverImage
               ? `url(${coverImage})`
-              : 'linear-gradient(135deg, #78909c, #455a64)',
+              : "linear-gradient(135deg, #78909c, #455a64)",
 
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         >
           {/* bottone modifica copertina */}
@@ -98,7 +94,6 @@ const ProfileHero = ({ profile }) => {
 
         {/* corpo card */}
         <Card.Body className="position-relative pt-5 px-4 pb-4">
-
           {/* bottone modifica profilo */}
           <Button
             variant="light"
@@ -114,13 +109,13 @@ const ProfileHero = ({ profile }) => {
             alt={`${profile.name} ${profile.surname}`}
             className="rounded-circle border border-4 border-white position-absolute"
             style={{
-              width: '160px',
-              height: '160px',
-              objectFit: 'cover',
+              width: "160px",
+              height: "160px",
+              objectFit: "cover",
 
               // sovrapposta alla copertina
-              top: '-100px',
-              left: '32px',
+              top: "-100px",
+              left: "32px",
             }}
           />
 
@@ -128,15 +123,15 @@ const ProfileHero = ({ profile }) => {
           <label
             className="btn btn-light rounded-circle position-absolute d-flex justify-content-center align-items-center p-0"
             style={{
-              width: '42px',
-              height: '42px',
+              width: "42px",
+              height: "42px",
 
               // posizione sopra la foto
-              left: '150px',
-              top: '25px',
+              left: "150px",
+              top: "25px",
 
-              border: '1px solid #ddd',
-              cursor: 'pointer',
+              border: "1px solid #ddd",
+              cursor: "pointer",
             }}
           >
             {/* icona fotocamera */}
@@ -152,11 +147,10 @@ const ProfileHero = ({ profile }) => {
           </label>
 
           {/* spazio sopra per la foto */}
-          <div style={{ height: '70px' }}></div>
+          <div style={{ height: "70px" }}></div>
 
           {/* nome + badge */}
           <div className="d-flex align-items-center gap-2 flex-wrap">
-
             {/* nome */}
             <h2 className="mb-0 fw-bold">
               {profile.name} {profile.surname}
@@ -169,44 +163,34 @@ const ProfileHero = ({ profile }) => {
               className="rounded-pill border-dashed fw-semibold"
             >
               <i className="bi bi-shield-check me-1"></i>
-
               Aggiungi badge di verifica
             </Button>
           </div>
 
           {/* titolo */}
-          <p className="mb-2">
-            {profile.title || '--'}
-          </p>
+          <p className="mb-2">{profile.title || "--"}</p>
 
           {/* area + contatti */}
           <p className="text-muted mb-4">
-            {profile.area || 'Lamezia Terme, Calabria, Italia'}
+            {profile.area || "Lamezia Terme, Calabria, Italia"}
 
             <span className="mx-1">·</span>
 
-            <a
-              href="#"
-              className="fw-semibold text-decoration-none"
-            >
+            <a href="#" className="fw-semibold text-decoration-none">
               Informazioni di contatto
             </a>
           </p>
 
           {/* bottoni principali */}
           <div className="d-flex gap-2 flex-wrap">
-
-            <Button
-              variant="primary"
-              className="rounded-pill fw-semibold"
-            >
+            <Button variant="primary" className="rounded-pill fw-semibold">
               Disponibile per
             </Button>
 
             <Button
               variant="outline-primary"
               className="rounded-pill fw-semibold"
-              onClick={()=>setShowAddSectionModal(true)}
+              onClick={() => setShowAddSectionModal(true)}
             >
               Aggiungi sezione
             </Button>
@@ -240,28 +224,21 @@ const ProfileHero = ({ profile }) => {
       >
         {/* header */}
         <Modal.Header closeButton>
-          <Modal.Title>
-            Aggiungi un’immagine di copertina
-          </Modal.Title>
+          <Modal.Title>Aggiungi un’immagine di copertina</Modal.Title>
         </Modal.Header>
 
         {/* contenuto */}
         <Modal.Body>
-
-          <p className="fw-bold mb-1">
-            Carica la tua immagine
-          </p>
+          <p className="fw-bold mb-1">Carica la tua immagine</p>
 
           <p className="text-muted">
-            Mostra la tua personalità,
-            i tuoi interessi,
-            il tuo lavoro o istantanee del tuo team
+            Mostra la tua personalità, i tuoi interessi, il tuo lavoro o
+            istantanee del tuo team
           </p>
 
           {/* upload dal pc */}
           <label className="btn btn-outline-secondary mb-4">
             Carica una sola foto
-
             <input
               type="file"
               accept="image/*"
@@ -270,35 +247,28 @@ const ProfileHero = ({ profile }) => {
             />
           </label>
 
-          <p className="fw-bold">
-            Oppure scegli una copertina predefinita
-          </p>
+          <p className="fw-bold">Oppure scegli una copertina predefinita</p>
 
           {/* gallery immagini */}
           <div className="row g-3">
-
             {coverImages.map((image, index) => (
-              <div
-                className="col-6 col-md-3"
-                key={index}
-              >
+              <div className="col-6 col-md-3" key={index}>
                 <img
                   src={image}
                   alt={`Copertina ${index + 1}`}
                   className="img-fluid rounded-3"
                   style={{
-                    height: '90px',
-                    width: '100%',
-                    objectFit: 'cover',
-                    cursor: 'pointer',
+                    height: "90px",
+                    width: "100%",
+                    objectFit: "cover",
+                    cursor: "pointer",
 
                     // bordo blu se selezionata
                     border:
                       coverImage === image
-                        ? '3px solid #0d6efd'
-                        : '1px solid #ddd',
+                        ? "3px solid #0d6efd"
+                        : "1px solid #ddd",
                   }}
-
                   // selezione immagine
                   onClick={() => setCoverImage(image)}
                 />
@@ -309,21 +279,13 @@ const ProfileHero = ({ profile }) => {
 
         {/* footer */}
         <Modal.Footer>
-
-          <Button
-            variant="secondary"
-            onClick={() => setShowCoverModal(false)}
-          >
+          <Button variant="secondary" onClick={() => setShowCoverModal(false)}>
             Annulla
           </Button>
 
-          <Button
-            variant="primary"
-            onClick={() => setShowCoverModal(false)}
-          >
+          <Button variant="primary" onClick={() => setShowCoverModal(false)}>
             Salva
           </Button>
-
         </Modal.Footer>
       </Modal>
 
@@ -339,149 +301,133 @@ const ProfileHero = ({ profile }) => {
       >
         {/* header */}
         <Modal.Header closeButton>
-
-          <Modal.Title>
-            Modifica presentazione
-          </Modal.Title>
-
+          <Modal.Title>Modifica presentazione</Modal.Title>
         </Modal.Header>
 
         {/* contenuto */}
         <Modal.Body>
-        
-        {/* box premium finto */}
-       <div className="border rounded-3 p-3 mb-4">
-        <div className="d-flex justify-content-between align-items-start">
-         <div>
-          <p className="fw-bold mb-2">
-            <span className="text-warning me-1">◆</span>
-           Migliora il tuo profilo con Premium
-          </p>
+          {/* box premium finto */}
+          <div className="border rounded-3 p-3 mb-4">
+            <div className="d-flex justify-content-between align-items-start">
+              <div>
+                <p className="fw-bold mb-2">
+                  <span className="text-warning me-1">◆</span>
+                  Migliora il tuo profilo con Premium
+                </p>
 
-          <p className="small mb-2">
-          Sposta in alto le sezioni del profilo che vuoi mettere in evidenza,
-          aggiungi un pulsante personalizzato, sfrutta l’assistente di scrittura
-          con IA e tanto altro.
-          </p>
+                <p className="small mb-2">
+                  Sposta in alto le sezioni del profilo che vuoi mettere in
+                  evidenza, aggiungi un pulsante personalizzato, sfrutta
+                  l’assistente di scrittura con IA e tanto altro.
+                </p>
 
-         <Button
-          variant="warning"
-          size="sm"
-          className="rounded-pill fw-semibold"
-         >
-          Prova Premium per 0 €
-         </Button>
-        </div>
+                <Button
+                  variant="warning"
+                  size="sm"
+                  className="rounded-pill fw-semibold"
+                >
+                  Prova Premium per 0 €
+                </Button>
+              </div>
 
-         <i className="bi bi-chevron-down"></i>
-        </div>
-       </div>
+              <i className="bi bi-chevron-down"></i>
+            </div>
+          </div>
 
-         <p className="small text-muted">
-         * Indica che è obbligatorio
-        </p>
+          <p className="small text-muted">* Indica che è obbligatorio</p>
 
-        {/* informazioni base */}
+          {/* informazioni base */}
           <h5 className="fw-bold mt-4">Informazioni di base</h5>
 
-         <div className="mb-3">
-         <label className="form-label">Nome*</label>
-         <input
-          type="text"
-          className="form-control"
-          defaultValue={profile.name}
-         />
-         </div>
+          <div className="mb-3">
+            <label className="form-label">Nome*</label>
+            <input
+              type="text"
+              className="form-control"
+              defaultValue={profile.name}
+            />
+          </div>
 
-         <div className="mb-3">
-          <label className="form-label">Cognome*</label>
-          <input
-           type="text"
-           className="form-control"
-           defaultValue={profile.surname}
-         />
-         </div>
+          <div className="mb-3">
+            <label className="form-label">Cognome*</label>
+            <input
+              type="text"
+              className="form-control"
+              defaultValue={profile.surname}
+            />
+          </div>
 
-        <div className="mb-3">
-         <label className="form-label">Sommario*</label>
-         <textarea
-         className="form-control"
-         rows="3"
-         defaultValue={profile.bio}
-         ></textarea>
-        </div>
+          <div className="mb-3">
+            <label className="form-label">Sommario*</label>
+            <textarea
+              className="form-control"
+              rows="3"
+              defaultValue={profile.bio}
+            ></textarea>
+          </div>
 
           {/* posizione */}
           <h5 className="fw-bold mt-4">Posizione attuale</h5>
 
-        <div className="mb-3">
-         <label className="form-label">Titolo*</label>
-         <input
-         type="text"
-         className="form-control"
-         defaultValue={profile.title}
-         />
-        </div>
+          <div className="mb-3">
+            <label className="form-label">Titolo*</label>
+            <input
+              type="text"
+              className="form-control"
+              defaultValue={profile.title}
+            />
+          </div>
 
-        <div className="mb-3">
-         <label className="form-label">Settore*</label>
-         <input
-          type="text"
-          className="form-control"
-          placeholder="Es. Informatica, Marketing, Design..."
-        />
-       </div>
+          <div className="mb-3">
+            <label className="form-label">Settore*</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Es. Informatica, Marketing, Design..."
+            />
+          </div>
 
           {/* località */}
-           <h5 className="fw-bold mt-4">Località</h5>
+          <h5 className="fw-bold mt-4">Località</h5>
 
-        <div className="mb-3">
-         <label className="form-label">Paese/Area geografica*</label>
-         <input
-          type="text"
-          className="form-control"
-          defaultValue="Italia"
-        />
-        </div>
+          <div className="mb-3">
+            <label className="form-label">Paese/Area geografica*</label>
+            <input type="text" className="form-control" defaultValue="Italia" />
+          </div>
 
-        <div className="mb-3">
-         <label className="form-label">Città*</label>
-         <input
-          type="text"
-          className="form-control"
-          defaultValue={profile.area}
-        />
-       </div>
+          <div className="mb-3">
+            <label className="form-label">Città*</label>
+            <input
+              type="text"
+              className="form-control"
+              defaultValue={profile.area}
+            />
+          </div>
 
           {/* contatti */}
-           <h5 className="fw-bold mt-4">Informazioni di contatto</h5>
+          <h5 className="fw-bold mt-4">Informazioni di contatto</h5>
 
-           <p className="small">
-             Aggiungi o modifica il tuo profilo URL, indirizzo email e altro.
-           </p>
+          <p className="small">
+            Aggiungi o modifica il tuo profilo URL, indirizzo email e altro.
+          </p>
 
-        <Button variant="link" className="p-0 fw-semibold text-decoration-none">
-          Modifica le informazioni di contatto
-        </Button>
-       </Modal.Body>
+          <Button
+            variant="link"
+            className="p-0 fw-semibold text-decoration-none"
+          >
+            Modifica le informazioni di contatto
+          </Button>
+        </Modal.Body>
 
         {/* footer */}
         <Modal.Footer>
-
-          <Button
-            variant="secondary"
-            onClick={() => setShowEditModal(false)}
-          >
+          <Button variant="secondary" onClick={() => setShowEditModal(false)}>
             Annulla
           </Button>
 
-          <Button
-            variant="primary"
-            onClick={() => setShowEditModal(false)}
-          >
+          <Button variant="primary" onClick={() => setShowEditModal(false)}>
             Salva
           </Button>
-
         </Modal.Footer>
       </Modal>
 
@@ -489,213 +435,180 @@ const ProfileHero = ({ profile }) => {
       {/* MODALE AGGIUNGI SEZIONE */}
       {/* ========================= */}
 
-         <Modal
-          show={showAddSectionModal}
-          onHide={() => setShowAddSectionModal(false)}
-          centered
-          size="lg"
-        >
-      {/* header */}
+      <Modal
+        show={showAddSectionModal}
+        onHide={() => setShowAddSectionModal(false)}
+        centered
+        size="lg"
+      >
+        {/* header */}
         <Modal.Header closeButton>
+          <Modal.Title className="fw-bold">Aggiungi al profilo</Modal.Title>
+        </Modal.Header>
 
-       <Modal.Title className="fw-bold">
-         Aggiungi al profilo
-       </Modal.Title>
-     </Modal.Header>
+        {/* contenuto */}
+        <Modal.Body className="p-0">
+          {/* SEZIONI PRINCIPALI */}
+          <div className="p-4 border-bottom">
+            {/* titolo */}
+            <div className="d-flex justify-content-between align-items-center mb-3">
+              <h4 className="fw-bold mb-0">Sezioni principali</h4>
 
-      {/* contenuto */}
-     <Modal.Body className="p-0">
+              <i className="bi bi-chevron-up fs-4"></i>
+            </div>
 
-     {/* SEZIONI PRINCIPALI */}
-      <div className="p-4 border-bottom">
+            {/* descrizione */}
+            <p className="text-muted fs-4">
+              Completa queste sezioni principali per migliorare la visibilità
+              del tuo profilo fra recruiter e collegamenti.
+            </p>
 
-      {/* titolo */}
-      <div className="d-flex justify-content-between align-items-center mb-3">
+            {/* lista */}
+            <div className="d-flex flex-column">
+              <button className="btn text-start py-3 border-top">
+                Aggiungi informazioni
+              </button>
 
-        <h4 className="fw-bold mb-0">
-          Sezioni principali
-        </h4>
+              <button className="btn text-start py-3 border-top">
+                Aggiungi formazione
+              </button>
 
-        <i className="bi bi-chevron-up fs-4"></i>
-      </div>
+              <button className="btn text-start py-3 border-top">
+                Aggiungi posizione lavorativa
+              </button>
 
-      {/* descrizione */}
-      <p className="text-muted fs-4">
-        Completa queste sezioni principali per migliorare
-        la visibilità del tuo profilo fra recruiter e collegamenti.
-      </p>
+              <button className="btn text-start py-3 border-top">
+                Aggiungi servizi
+              </button>
 
-      {/* lista */}
-      <div className="d-flex flex-column">
+              <button className="btn text-start py-3 border-top">
+                Aggiungi pausa lavorativa
+              </button>
 
-        <button className="btn text-start py-3 border-top">
-          Aggiungi informazioni
-        </button>
+              <button className="btn text-start py-3 border-top border-bottom">
+                Aggiungi competenze
+              </button>
+            </div>
+          </div>
 
-        <button className="btn text-start py-3 border-top">
-          Aggiungi formazione
-        </button>
+          {/* SEZIONI CONSIGLIATE */}
+          <div className="p-4 border-bottom">
+            {/* header */}
+            <div
+              className="d-flex justify-content-between align-items-center mb-3"
+              style={{ cursor: "pointer" }}
+              onClick={() => setShowSuggestedSections(!showSuggestedSections)}
+            >
+              <h4 className="fw-bold mb-0">Sezioni consigliate</h4>
 
-        <button className="btn text-start py-3 border-top">
-          Aggiungi posizione lavorativa
-        </button>
+              <i
+                className={`bi ${
+                  showSuggestedSections ? "bi-chevron-up" : "bi-chevron-down"
+                } fs-4`}
+              ></i>
+            </div>
 
-        <button className="btn text-start py-3 border-top">
-          Aggiungi servizi
-        </button>
+            {/* contenuto dropdown */}
+            {showSuggestedSections && (
+              <>
+                <p className="text-muted fs-4">
+                  Completando queste sezioni aumenterai la tua credibilità e
+                  potrai accedere a più opportunità
+                </p>
 
-        <button className="btn text-start py-3 border-top">
-          Aggiungi pausa lavorativa
-        </button>
+                {/* lista */}
+                <div className="d-flex flex-column">
+                  <button className="btn text-start py-3 border-top">
+                    Aggiungi elementi in primo piano
+                  </button>
 
-        <button className="btn text-start py-3 border-top border-bottom">
-          Aggiungi competenze
-        </button>
-      </div>
-    </div>
+                  <button className="btn text-start py-3 border-top">
+                    Aggiungi licenze e certificazioni
+                  </button>
 
-    {/* SEZIONI CONSIGLIATE */}
-<div className="p-4 border-bottom">
+                  <button className="btn text-start py-3 border-top">
+                    Aggiungi progetti
+                  </button>
 
-  {/* header */}
-  <div
-    className="d-flex justify-content-between align-items-center mb-3"
-    style={{ cursor: 'pointer' }}
-    onClick={() =>
-      setShowSuggestedSections(!showSuggestedSections)
-    }
-  >
+                  <button className="btn text-start py-3 border-top">
+                    Aggiungi corsi
+                  </button>
 
-    <h4 className="fw-bold mb-0">
-      Sezioni consigliate
-    </h4>
+                  <button className="btn text-start py-3 border-top border-bottom">
+                    Aggiungi referenze
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
 
-    <i
-      className={`bi ${
-        showSuggestedSections
-          ? 'bi-chevron-up'
-          : 'bi-chevron-down'
-      } fs-4`}
-    ></i>
+          {/* ALTRO */}
+          <div className="p-4">
+            {/* header */}
+            <div
+              className="d-flex justify-content-between align-items-center mb-3"
+              style={{ cursor: "pointer" }}
+              onClick={() => setShowOtherSections(!showOtherSections)}
+            >
+              <h4 className="fw-bold mb-0">Altro</h4>
 
-  </div>
+              <i
+                className={`bi ${
+                  showOtherSections ? "bi-chevron-up" : "bi-chevron-down"
+                } fs-4`}
+              ></i>
+            </div>
 
-  {/* contenuto dropdown */}
-  {showSuggestedSections && (
-    <>
-      <p className="text-muted fs-4">
-        Completando queste sezioni aumenterai
-        la tua credibilità e potrai accedere
-        a più opportunità
-      </p>
+            {/* contenuto dropdown */}
+            {showOtherSections && (
+              <>
+                <p className="text-muted fs-4">
+                  Conferisci ancora più personalità al tuo profilo. Queste
+                  sezioni ti aiuteranno a espandere la tua rete e a instaurare
+                  più relazioni lavorative.
+                </p>
 
-      {/* lista */}
-      <div className="d-flex flex-column">
+                {/* lista */}
+                <div className="d-flex flex-column">
+                  <button className="btn text-start py-3 border-top">
+                    Aggiungi esperienze di volontariato
+                  </button>
 
-        <button className="btn text-start py-3 border-top">
-          Aggiungi elementi in primo piano
-        </button>
+                  <button className="btn text-start py-3 border-top">
+                    Aggiungi pubblicazioni
+                  </button>
 
-        <button className="btn text-start py-3 border-top">
-          Aggiungi licenze e certificazioni
-        </button>
+                  <button className="btn text-start py-3 border-top">
+                    Aggiungi brevetti
+                  </button>
 
-        <button className="btn text-start py-3 border-top">
-          Aggiungi progetti
-        </button>
+                  <button className="btn text-start py-3 border-top">
+                    Aggiungi riconoscimenti e premi
+                  </button>
 
-        <button className="btn text-start py-3 border-top">
-          Aggiungi corsi
-        </button>
+                  <button className="btn text-start py-3 border-top">
+                    Aggiungi votazioni esame
+                  </button>
 
-        <button className="btn text-start py-3 border-top border-bottom">
-          Aggiungi referenze
-        </button>
+                  <button className="btn text-start py-3 border-top">
+                    Aggiungi lingue
+                  </button>
 
-      </div>
+                  <button className="btn text-start py-3 border-top">
+                    Aggiungi organizzazioni
+                  </button>
+
+                  <button className="btn text-start py-3 border-top border-bottom">
+                    Aggiungi cause
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </Modal.Body>
+      </Modal>
     </>
-  )}
-</div>
+  );
+};
 
-{/* ALTRO */}
-<div className="p-4">
-
-  {/* header */}
-  <div
-    className="d-flex justify-content-between align-items-center mb-3"
-    style={{ cursor: 'pointer' }}
-    onClick={() =>
-      setShowOtherSections(!showOtherSections)
-    }
-  >
-
-    <h4 className="fw-bold mb-0">
-      Altro
-    </h4>
-
-    <i
-      className={`bi ${
-        showOtherSections
-          ? 'bi-chevron-up'
-          : 'bi-chevron-down'
-      } fs-4`}
-    ></i>
-
-  </div>
-
-  {/* contenuto dropdown */}
-  {showOtherSections && (
-    <>
-      <p className="text-muted fs-4">
-        Conferisci ancora più personalità al tuo profilo.
-        Queste sezioni ti aiuteranno a espandere la tua rete
-        e a instaurare più relazioni lavorative.
-      </p>
-
-      {/* lista */}
-      <div className="d-flex flex-column">
-
-        <button className="btn text-start py-3 border-top">
-          Aggiungi esperienze di volontariato
-        </button>
-
-        <button className="btn text-start py-3 border-top">
-          Aggiungi pubblicazioni
-        </button>
-
-        <button className="btn text-start py-3 border-top">
-          Aggiungi brevetti
-        </button>
-
-        <button className="btn text-start py-3 border-top">
-          Aggiungi riconoscimenti e premi
-        </button>
-
-        <button className="btn text-start py-3 border-top">
-          Aggiungi votazioni esame
-        </button>
-
-        <button className="btn text-start py-3 border-top">
-          Aggiungi lingue
-        </button>
-
-        <button className="btn text-start py-3 border-top">
-          Aggiungi organizzazioni
-        </button>
-
-        <button className="btn text-start py-3 border-top border-bottom">
-          Aggiungi cause
-        </button>
-
-      </div>
-    </>
-  )}
-</div>
-
-    </Modal.Body>
-  </Modal>
-</>
-)
-}
-
-export default ProfileHero
+export default ProfileHero;
