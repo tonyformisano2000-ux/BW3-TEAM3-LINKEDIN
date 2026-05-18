@@ -136,7 +136,7 @@ function NavBar() {
               className="mx-3 profile-dropdown"
               title={
                 <div className="d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small text-secondary">
-                  <i class="bi bi-grid-3x3-gap-fill fs-5"></i>
+                  <i className="bi bi-grid-3x3-gap-fill fs-5"></i>
 
                   <div className="d-flex align-items-center">
                     <span>For the Companies</span>
