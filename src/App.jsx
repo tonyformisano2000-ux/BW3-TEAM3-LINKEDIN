@@ -6,7 +6,6 @@ import "./App.css";
 
 import NavBar from "./components/NavBar";
 import ProfilePage from "./components/profile/ProfilePage";
-import PorzioneCentrale from "./components/homepage/HomePage";
 import { Texting } from "./components/Texting";
 import JobsPage from "./components/jobspage/JobsPage";
 import HomePage from "./components/homepage/HomePage";
@@ -44,7 +43,7 @@ function App() {
       />
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/profile" element={<ProfilePage />} />
 
         <Route path="/jobs" element={<JobsPage search={search} />} />
