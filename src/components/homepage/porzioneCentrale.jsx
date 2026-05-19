@@ -1,10 +1,12 @@
 import { Container } from "react-bootstrap";
 import CreaUnPost from "./CreaUnPost";
+import HomepagePosts from "./HomepagePosts";
 
 const PorzioneCentrale = () => {
   return (
     <Container>
-      <CreaUnPost className="p-1" />
+      <CreaUnPost />
+      <HomepagePosts />
     </Container>
   );
 };
