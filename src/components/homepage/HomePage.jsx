@@ -2,10 +2,13 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getMyProfile } from "../../redux/Actions/index";
 import { Col, Container, Row } from "react-bootstrap";
+
 import CreaUnPost from "./CreaUnPost";
 import SidebarDx from "./SidebarDx";
 import SidebarSx from "./SidebarSx";
+import HomepagePosts from "./HomepagePosts";
 
+import { getMyProfile } from "../../redux/Actions";
 const HomePage = () => {
   const dispatch = useDispatch();
 
@@ -21,7 +24,9 @@ const HomePage = () => {
         </Col>
         <Col xs={12} lg={6}>
           <CreaUnPost />
+          <HomepagePosts />
         </Col>
+
         <Col xs={12} lg={3}>
           <SidebarDx />
         </Col>

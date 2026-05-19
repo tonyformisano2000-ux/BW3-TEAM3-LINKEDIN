@@ -1,20 +1,30 @@
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 const SidebarSx = () => {
   const profile = useSelector((state) => state.profile);
-  if (!profile) return null;
-  const profileImage = profile?.image || "https://via.placeholder.com/160";
+
+  if (!profile) {
+    return (
+      <div className="d-flex justify-content-center py-5">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  }
+
+  const profileImage = profile.image || "https://via.placeholder.com/160";
 
   return (
-    <Container>
+    <Container fluid className="px-0">
       <Row>
         <Col xs={12} className="mb-2">
           {/* card principale */}
           <Card className="overflow-hidden rounded-2 shadow-sm border-0 p-2">
             {/* banner/copertina */}
             <div
-              className="position-relative"
+              className="position-relative bg-secondary-subtle"
               style={{
                 height: "100px",
                 backgroundSize: "cover",
@@ -40,7 +50,9 @@ const SidebarSx = () => {
                 }}
               />
 
-              {/* nome */}
+              {/* spazio sopra per la foto */}
+              <div style={{ height: "30px" }}></div>
+
               <div className="d-flex align-items-center gap-2 flex-wrap">
                 <h3
                   className="mb-2 fw-bold"
@@ -50,11 +62,9 @@ const SidebarSx = () => {
                 </h3>
               </div>
 
-              {/* titolo */}
-              <p className="mb-0">{profile.title || "--"}</p>
+              <p className="mb-2 small">{profile.title || "--"}</p>
 
-              {/* area + contatti */}
-              <p className="text-muted mb-0">
+              <p className="text-muted small mb-0">
                 {profile.area || "Lamezia Terme, Calabria, Italia"}
               </p>
             </Card.Body>
