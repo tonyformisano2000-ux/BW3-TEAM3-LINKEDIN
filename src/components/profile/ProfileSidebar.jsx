@@ -16,7 +16,7 @@ const Avatar = ({ initials, bg, size = 48 }) => (
   </div>
 );
 
-// profili recentemente consultati 
+// profili recentemente consultati
 const RECENT_PROFILES = [
   {
     id: 1,
@@ -146,7 +146,7 @@ const ProfileSidebar = ({ profile }) => {
       </Card>
 
       {/* FOOTER SIDEBAR */}
-      <div className="px-2">
+      <div className="px-2 d-none d-lg-block">
         <div className="d-flex flex-wrap gap-2" style={{ fontSize: "0.72rem" }}>
           {[
             "Informazioni",
@@ -161,7 +161,7 @@ const ProfileSidebar = ({ profile }) => {
           ))}
         </div>
         <p className="text-muted mt-1" style={{ fontSize: "0.70rem" }}>
-          LinkedIn © {new Date().getFullYear()}
+          LinkedIn &copy; {new Date().getFullYear()}
         </p>
       </div>
 

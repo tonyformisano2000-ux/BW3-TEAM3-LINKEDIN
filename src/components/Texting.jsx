@@ -1,4 +1,5 @@
 import { Col, Container, Form, InputGroup, Row } from "react-bootstrap";
+import { TextCard } from "./TextCard";
 
 export const Texting = ({ collapsed, setCollapsed }) => {
   return (
@@ -40,28 +41,39 @@ export const Texting = ({ collapsed, setCollapsed }) => {
 
             {!collapsed && (
               <div>
-                <InputGroup
-                  className="rounded-2 overflow-hidden"
-                  style={{
-                    width: "100%",
-                    border: "1px solid #ccc",
-                    backgroundColor: "#fff",
-                  }}
-                >
-                  <InputGroup.Text className="bg-white border-0">
-                    <i className="bi bi-search text-secondary"></i>
-                  </InputGroup.Text>
+                <div>
+                  <InputGroup
+                    className="rounded-2 overflow-hidden"
+                    style={{
+                      width: "100%",
+                      border: "1px solid #ccc",
+                      backgroundColor: "#fff",
+                    }}
+                  >
+                    <InputGroup.Text className="bg-white border-0">
+                      <i className="bi bi-search text-secondary"></i>
+                    </InputGroup.Text>
 
-                  <Form.Control
-                    type="text"
-                    placeholder="Search messages"
-                    className="border-0 shadow-none"
-                  />
+                    <Form.Control
+                      type="text"
+                      placeholder="Search messages"
+                      className="border-0 shadow-none"
+                    />
 
-                  <InputGroup.Text className="bg-white border-0">
-                    <i className="bi bi-sliders text-secondary"></i>
-                  </InputGroup.Text>
-                </InputGroup>
+                    <InputGroup.Text className="bg-white border-0">
+                      <i className="bi bi-sliders text-secondary"></i>
+                    </InputGroup.Text>
+                  </InputGroup>
+                </div>
+                <div>
+                  <TextCard />
+                  <TextCard />
+                  <TextCard />
+                  <TextCard />
+                  <TextCard />
+                  <TextCard />
+                  <TextCard />
+                </div>
               </div>
             )}
           </section>

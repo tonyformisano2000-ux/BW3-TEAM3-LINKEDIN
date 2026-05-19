@@ -11,7 +11,7 @@ import {
 import { Link } from "react-router-dom";
 import logo from "../assets/LinkedIn_icon.svg.png";
 
-function NavBar({ collapsed, setCollapsed }) {
+function NavBar({ collapsed, setCollapsed, search, setSearch, clearSearch }) {
   return (
     <Navbar bg="light" expand="lg" className="py-1 border-bottom">
       <Container fluid className="px-4">
@@ -34,8 +34,10 @@ function NavBar({ collapsed, setCollapsed }) {
 
             <Form.Control
               type="text"
-              placeholder="Search"
+              placeholder="Search jobs..."
               className="border-0 shadow-none"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
           </InputGroup>
         </div>
@@ -43,7 +45,7 @@ function NavBar({ collapsed, setCollapsed }) {
         <Navbar.Collapse id="basic-navbar-nav" className="mt-3 mt-lg-0">
           <Nav className="ms-auto align-items-start align-items-lg-center">
             <Link
-              to="/"
+              to="/home"
               className="text-decoration-none text-secondary mx-3 py-2 d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small"
             >
               <i className="bi bi-house-door-fill fs-5"></i>
@@ -59,6 +61,9 @@ function NavBar({ collapsed, setCollapsed }) {
             <Link
               to="/jobs"
               className="text-decoration-none text-secondary mx-3 py-2 d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small"
+              onClick={() => {
+                clearSearch();
+              }}
             >
               <i className="bi bi-briefcase-fill fs-5"></i>
               <span>Jobs</span>
@@ -127,7 +132,7 @@ function NavBar({ collapsed, setCollapsed }) {
               id="basic-nav-dropdown"
               className="mx-3 profile-dropdown"
               title={
-                <div className="d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small text-secondary">
+                <div className="d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small text-secondary d-none d-lg-flex">
                   <i className="bi bi-grid-3x3-gap-fill fs-5"></i>
                   <div className="d-flex align-items-center">
                     <span>For the Companies</span>
@@ -138,7 +143,7 @@ function NavBar({ collapsed, setCollapsed }) {
             >
               <div
                 className="px-3 py-2 d-flex justify-content-between"
-                style={{ width: "500px" }}
+                style={{ width: "600px" }}
               >
                 <div className="mx-4">
                   <h5 className="my-4">My apps</h5>
@@ -170,31 +175,31 @@ function NavBar({ collapsed, setCollapsed }) {
                 </div>
                 <div>
                   <h5 className="my-4">Find more for the business</h5>
-                  <NavDropdown.Item className="p-0 mb-4">
+                  <NavDropdown.Item className="p-0 mb-4 me-3">
                     <h6>Hire on LinkedIn</h6>
                     <p className="p-0 m-0">Find, attract and hire</p>
                   </NavDropdown.Item>
-                  <NavDropdown.Item className="p-0 mb-4">
+                  <NavDropdown.Item className="p-0 mb-4 me-3">
                     <h6>Sell on LinkedIn</h6>
                     <p className="p-0 m-0">Unlock new selling opportunities</p>
                   </NavDropdown.Item>
-                  <NavDropdown.Item className="p-0 mb-4">
+                  <NavDropdown.Item className="p-0 mb-4 me-3">
                     <h6>Publish a free work offer</h6>
                     <p className="p-0 m-0">Find quality candidates</p>
                   </NavDropdown.Item>
-                  <NavDropdown.Item className="p-0 mb-4">
+                  <NavDropdown.Item className="p-0 mb-4 me-3">
                     <h6>Promote on LinkedIn</h6>
                     <p className="p-0 m-0">Get clients and grow your company</p>
                   </NavDropdown.Item>
-                  <NavDropdown.Item className="p-0 mb-4">
+                  <NavDropdown.Item className="p-0 mb-4 me-3">
                     <h6>Start with Premium</h6>
                     <p className="p-0 m-0">Grow and leverage your network</p>
                   </NavDropdown.Item>
-                  <NavDropdown.Item className="p-0 mb-4">
+                  <NavDropdown.Item className="p-0 mb-4 me-3">
                     <h6>Learn with LinkedIn</h6>
                     <p className="p-0 m-0">Courses to form your employees</p>
                   </NavDropdown.Item>
-                  <NavDropdown.Item className="p-0 mb-4">
+                  <NavDropdown.Item className="p-0 mb-4 me-3">
                     <h6>Admin Center</h6>
                     <p className="p-0 m-0">
                       Manage billing and account details
