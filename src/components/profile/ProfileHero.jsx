@@ -4,14 +4,21 @@ import { Button, Card } from "react-bootstrap";
 import CoverModal from "./CoverModal";
 import EditProfileModal from "./EditProfileModal";
 import ProfileSections from "./ProfileSections";
+import AvailableMenu from './AvailableMenu';
+import ImproveProfileModal from './ImproveProfileModel';
+import ResourcesMenu from './ResourcesMenu'
+
 
 const ProfileHero = ({ profile }) => {
   const [showCoverModal, setShowCoverModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showAddSectionModal, setShowAddSectionModal] = useState(false);
+  const [showAvailableMenu, setShowAvailableMenu] = useState(false)
+  const [showResourcesMenu, setShowResourcesMenu] = useState(false)
 
   const [coverImage, setCoverImage] = useState(null);
   const [profileImage, setProfileImage] = useState(profile.image);
+  const [showImproveModal, setShowImproveModal] = useState(false);
 
   const handleProfileUpload = (e) => {
     const file = e.target.files[0];
@@ -23,7 +30,7 @@ const ProfileHero = ({ profile }) => {
 
   return (
     <>
-      <Card className="overflow-hidden rounded-4 shadow-sm border-0">
+      <Card className="rounded-4 shadow-sm border-0">
         <div
           className="position-relative"
           style={{
@@ -116,9 +123,24 @@ const ProfileHero = ({ profile }) => {
           </p>
 
           <div className="d-flex gap-2 flex-wrap">
-            <Button variant="primary" className="rounded-pill fw-semibold">
+            <div className="position-relative">
+
+            <Button
+             variant="primary"
+             className="rounded-pill fw-semibold"
+             onClick={() =>
+             setShowAvailableMenu(!showAvailableMenu)
+             }
+            >
               Disponibile per
             </Button>
+
+            {/* menu dropdown */}
+            {showAvailableMenu && (
+            <AvailableMenu />
+            )}
+
+           </div>
 
             <Button
               variant="outline-primary"
@@ -128,13 +150,33 @@ const ProfileHero = ({ profile }) => {
               Aggiungi sezione
             </Button>
 
-            <Button variant="outline-primary" className="rounded-pill fw-semibold">
+            <Button 
+            variant="outline-primary" 
+            className="rounded-pill fw-semibold"
+            onClick={()=>setShowImproveModal(true)}
+            >
+                
               Migliora profilo
             </Button>
 
-            <Button variant="outline-secondary" className="rounded-pill fw-semibold">
+            <div className="position-relative">
+
+            <Button
+              variant="outline-secondary"
+              className="rounded-pill fw-semibold"
+              onClick={() =>
+              setShowResourcesMenu(!showResourcesMenu)
+             }
+            >
               Risorse
             </Button>
+
+             {/* dropdown risorse */}
+              {showResourcesMenu && (
+              <ResourcesMenu />
+             )}
+
+            </div>
           </div>
         </Card.Body>
       </Card>
@@ -155,6 +197,10 @@ const ProfileHero = ({ profile }) => {
       <ProfileSections
         show={showAddSectionModal}
         onHide={() => setShowAddSectionModal(false)}
+      />
+      <ImproveProfileModal
+      show={showImproveModal}
+      onHide={()=>setShowImproveModal(false)}
       />
     </>
   );
