@@ -11,7 +11,7 @@ import {
 import { Link } from "react-router-dom";
 import logo from "../assets/LinkedIn_icon.svg.png";
 
-function NavBar({ collapsed, setCollapsed }) {
+function NavBar({ collapsed, setCollapsed, search, setSearch, clearSearch }) {
   return (
     <Navbar bg="light" expand="lg" className="py-1 border-bottom">
       <Container fluid className="px-4">
@@ -34,8 +34,10 @@ function NavBar({ collapsed, setCollapsed }) {
 
             <Form.Control
               type="text"
-              placeholder="Search"
+              placeholder="Search jobs..."
               className="border-0 shadow-none"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
           </InputGroup>
         </div>
@@ -59,6 +61,9 @@ function NavBar({ collapsed, setCollapsed }) {
             <Link
               to="/jobs"
               className="text-decoration-none text-secondary mx-3 py-2 d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small"
+              onClick={() => {
+                clearSearch();
+              }}
             >
               <i className="bi bi-briefcase-fill fs-5"></i>
               <span>Jobs</span>
@@ -147,21 +152,21 @@ function NavBar({ collapsed, setCollapsed }) {
                     <p className="fw-bold small pt-1">Sell</p>
                   </NavDropdown.Item>
                   <NavDropdown.Item className="d-flex align-content-center p-0 my-2">
-                    <i class="bi bi-people-fill text-primary fs-5 mx-1"></i>
+                    <i className="bi bi-people-fill text-primary fs-5 mx-1"></i>
                     <p className="fw-bold small pt-1">Groups</p>
                   </NavDropdown.Item>
                   <p className="text-secondary">Talent</p>
                   <NavDropdown.Item className="d-flex align-content-center p-0 my-2">
-                    <i class="bi bi-card-heading text-primary fs-5 mx-1"></i>
+                    <i className="bi bi-card-heading text-primary fs-5 mx-1"></i>
                     <p className="fw-bold small pt-1">Hire with AI</p>
                   </NavDropdown.Item>
                   <NavDropdown.Item className="d-flex align-content-center p-0 my-2">
-                    <i class="bi bi-file-earmark-bar-graph text-primary fs-5 mx-1"></i>
+                    <i className="bi bi-file-earmark-bar-graph text-primary fs-5 mx-1"></i>
                     <p className="fw-bold small pt-1">Talent Insights</p>
                   </NavDropdown.Item>
                   <p className="text-secondary">Talent</p>
                   <NavDropdown.Item className="d-flex align-content-center p-0 my-2">
-                    <i class="bi bi-person-check-fill text-primary fs-5 mx-1"></i>
+                    <i className="bi bi-person-check-fill text-primary fs-5 mx-1"></i>
                     <p className="fw-bold small pt-1">Marketplace Services</p>
                   </NavDropdown.Item>
                 </div>
@@ -202,7 +207,7 @@ function NavBar({ collapsed, setCollapsed }) {
                   </NavDropdown.Item>
                   <NavDropdown.Item className="d-flex align-content-center my-5 p-0">
                     <h6 className="m-0 pt-1 me-1">Create a company page</h6>
-                    <i class="bi bi-plus-lg fs-5"></i>
+                    <i className="bi bi-plus-lg fs-5"></i>
                   </NavDropdown.Item>
                 </div>
               </div>
