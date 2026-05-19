@@ -3,8 +3,8 @@ import { BlockquoteLeft, PlayBtnFill, Image } from "react-bootstrap-icons";
 
 const CreaUnPost = () => {
   return (
-    <Container className="bg-white rounded-2 shadow-sm p-4 mb-2">
-      <Row className="mt-3 mb-1">
+    <Container className="bg-white rounded-2 shadow-sm p-3 mb-2">
+      <Row className="mt-2 mb-2">
         <img
           className="rounded-circle m-1 col-1 img-fluid"
           src="https://placecats.com/200/200"
