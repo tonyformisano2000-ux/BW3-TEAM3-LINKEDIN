@@ -17,7 +17,7 @@ function App() {
       <NavBar collapsed={collapsed} setCollapsed={setCollapsed} />
 
       <Routes>
-        <Route path="/" element={<PorzioneCentrale />} />
+        <Route path="/home" element={<PorzioneCentrale />} />
         <Route path="/profile" element={<ProfilePage />} />
       </Routes>
 

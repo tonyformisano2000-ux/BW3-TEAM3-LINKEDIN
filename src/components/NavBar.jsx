@@ -16,7 +16,7 @@ function NavBar({ collapsed, setCollapsed }) {
     <Navbar bg="light" expand="lg" className="py-1 border-bottom">
       <Container fluid className="px-4">
         <div className="d-flex align-items-center">
-          <Navbar.Brand as={Link} to="/" className="me-2">
+          <Navbar.Brand as={Link} to="/home" className="me-2">
             <img src={logo} alt="linkedin-logo" style={{ width: "38px" }} />
           </Navbar.Brand>
 
