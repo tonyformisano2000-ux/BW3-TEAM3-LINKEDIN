@@ -207,7 +207,7 @@ function NavBar({ collapsed, setCollapsed, search, setSearch, clearSearch }) {
                   </NavDropdown.Item>
                   <NavDropdown.Item className="d-flex align-content-center my-5 p-0">
                     <h6 className="m-0 pt-1 me-1">Create a company page</h6>
-                    <i class="bi bi-plus-lg fs-5"></i>
+                    <i className="bi bi-plus-lg fs-5"></i>
                   </NavDropdown.Item>
                 </div>
               </div>
