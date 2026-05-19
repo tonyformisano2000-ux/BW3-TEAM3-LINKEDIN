@@ -152,21 +152,21 @@ function NavBar({ collapsed, setCollapsed, search, setSearch, clearSearch }) {
                     <p className="fw-bold small pt-1">Sell</p>
                   </NavDropdown.Item>
                   <NavDropdown.Item className="d-flex align-content-center p-0 my-2">
-                    <i class="bi bi-people-fill text-primary fs-5 mx-1"></i>
+                    <i className="bi bi-people-fill text-primary fs-5 mx-1"></i>
                     <p className="fw-bold small pt-1">Groups</p>
                   </NavDropdown.Item>
                   <p className="text-secondary">Talent</p>
                   <NavDropdown.Item className="d-flex align-content-center p-0 my-2">
-                    <i class="bi bi-card-heading text-primary fs-5 mx-1"></i>
+                    <i className="bi bi-card-heading text-primary fs-5 mx-1"></i>
                     <p className="fw-bold small pt-1">Hire with AI</p>
                   </NavDropdown.Item>
                   <NavDropdown.Item className="d-flex align-content-center p-0 my-2">
-                    <i class="bi bi-file-earmark-bar-graph text-primary fs-5 mx-1"></i>
+                    <i className="bi bi-file-earmark-bar-graph text-primary fs-5 mx-1"></i>
                     <p className="fw-bold small pt-1">Talent Insights</p>
                   </NavDropdown.Item>
                   <p className="text-secondary">Talent</p>
                   <NavDropdown.Item className="d-flex align-content-center p-0 my-2">
-                    <i class="bi bi-person-check-fill text-primary fs-5 mx-1"></i>
+                    <i className="bi bi-person-check-fill text-primary fs-5 mx-1"></i>
                     <p className="fw-bold small pt-1">Marketplace Services</p>
                   </NavDropdown.Item>
                 </div>

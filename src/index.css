@@ -4,3 +4,7 @@
 .footer-dropdown .dropdown-toggle::after {
   display: none !important;
 }
+
+.pointer {
+  cursor: pointer;
+}

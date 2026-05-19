@@ -53,7 +53,7 @@ const ProfilePage = () => {
           </div>
         </div>
         {/* Foooooter broom broom */}
-        <div className="col-lg-8">
+        <div className="col-lg-8 mt-4">
           <Footer />
         </div>
       </div>

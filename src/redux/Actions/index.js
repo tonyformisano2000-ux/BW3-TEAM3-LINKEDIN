@@ -17,7 +17,7 @@ const MOCK_PROFILE = {
   surname: "Aceto",
   email: "martina.aceto@email.it",
   username: "martina.aceto",
-  bio: 'Martina 🏰 | Front-End Developer\nOrgogliosamente lametina. Creo cose belle sul web.\nVivo secondo la regola: "Se funziona, non toccarlo. Se non funziona, dai la colpa al Back-End"\nSe non sto programmando, probabilmente sto facendo Pilates',
+  bio: 'Martina 🏰 | Front-End Developer\nOrgogliosamente lametina. Creo cose belle sul web.\nVivo secondo la regola: "Se funziona, non toccarlo. Se non funziona, dai la colpa al Back-End".\nSe non sto programmando, probabilmente sto facendo Pilates.',
   title: "Frontend Developer",
   area: "Lamezia Terme, Calabria, Italia",
   image: martinaProfile,
