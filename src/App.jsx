@@ -6,8 +6,9 @@ import "./App.css";
 
 import NavBar from "./components/NavBar";
 import ProfilePage from "./components/profile/ProfilePage";
-import PorzioneCentrale from "./components/homepage/porzioneCentrale";
+import PorzioneCentrale from "./components/homepage/HomePage";
 import { Texting } from "./components/Texting";
+import HomePage from "./components/homepage/HomePage";
 
 function App() {
   const [collapsed, setCollapsed] = useState(true);
@@ -17,7 +18,7 @@ function App() {
       <NavBar collapsed={collapsed} setCollapsed={setCollapsed} />
 
       <Routes>
-        <Route path="/" element={<PorzioneCentrale />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/profile" element={<ProfilePage />} />
       </Routes>
 

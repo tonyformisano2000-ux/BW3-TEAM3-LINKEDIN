@@ -4,7 +4,7 @@ import { BlockquoteLeft, PlayBtnFill, Image } from "react-bootstrap-icons";
 const CreaUnPost = () => {
   return (
     <>
-      <Row className="mt-3">
+      <Row className="mt-3 mb-1">
         <img
           className="rounded-circle m-1 col-1 img-fluid"
           src="https://placecats.com/200/200"
@@ -16,17 +16,17 @@ const CreaUnPost = () => {
         ></input>
       </Row>
       <Row>
-        <div className="rounded-2 col-4 bg-white d-flex justify-content-center my-2">
+        <div className="border-box rounded-2 col-4 bg-white d-flex align-items-center justify-content-center my-2 p-1">
           <PlayBtnFill className="text-success fs-4 mx-1" />
-          <p className="text-dark-subtle fw-bold fs-6">Video</p>
+          <p className="text-dark-subtle fw-bold fs-6 mb-0">Video</p>
         </div>
-        <div className="rounded-2 col-4 bg-white d-flex justify-content-center my-2">
+        <div className="border-box rounded-2 col-4 bg-white d-flex align-items-center justify-content-center my-2 p-1">
           <Image className="text-primary  fs-4 mx-1" />
-          <p className="text-dark-subtle fw-bold fs-6">Foto</p>
+          <p className="text-dark-subtle fw-bold fs-6 mb-0">Foto</p>
         </div>
-        <div className="rounded-2 col-4 bg-white d-flex justify-content-center my-2">
+        <div className=" border-box rounded-2 col-4 bg-white d-flex align-items-center justify-content-center my-2 p-1">
           <BlockquoteLeft className=" text-warning fs-4 mx-1" />
-          <p className="text-dark-subtle fw-bold fs-6">Scrivi un articolo</p>
+          <p className="text-dark-subtle fw-bold fs-6 mb-0">Scrivi articolo</p>
         </div>
       </Row>
     </>
