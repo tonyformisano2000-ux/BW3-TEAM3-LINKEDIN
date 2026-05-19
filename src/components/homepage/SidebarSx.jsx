@@ -3,18 +3,26 @@ import { useSelector } from "react-redux";
 
 const SidebarSx = () => {
   const profile = useSelector((state) => state.profile);
-  if (!profile) return null;
-  const profileImage = profile?.image || "https://via.placeholder.com/160";
+
+  if (!profile) {
+    return (
+      <div className="d-flex justify-content-center py-5">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  }
+
+  const profileImage = profile.image || "https://via.placeholder.com/160";
 
   return (
-    <Container>
+    <Container fluid className="px-0">
       <Row>
         <Col xs={12} className="mb-2">
-          {/* card principale */}
           <Card className="overflow-hidden rounded-4 shadow-sm border-0">
-            {/* banner/copertina */}
             <div
-              className="position-relative"
+              className="position-relative bg-secondary-subtle"
               style={{
                 height: "100px",
                 backgroundSize: "cover",
@@ -22,52 +30,61 @@ const SidebarSx = () => {
               }}
             ></div>
 
-            {/* corpo card */}
             <Card.Body className="position-relative pt-5 px-4 pb-4">
-              {/* immagine profilo */}
               <img
                 src={profileImage}
                 alt={`${profile.name} ${profile.surname}`}
                 className="rounded-circle border border-4 border-white position-absolute"
                 style={{
-                  width: "160px",
-                  height: "160px",
+                  width: "90px",
+                  height: "90px",
                   objectFit: "cover",
-
-                  // sovrapposta alla copertina
-                  top: "-100px",
-                  left: "32px",
+                  top: "-45px",
+                  left: "24px",
                 }}
               />
 
-              {/* spazio sopra per la foto */}
-              <div style={{ height: "30px" }}></div>
+              <div style={{ height: "20px" }}></div>
 
-              {/* nome */}
               <div className="d-flex align-items-center gap-2 flex-wrap">
-                <h2 className="mb-0 fw-bold">
+                <h5 className="mb-0 fw-bold">
                   {profile.name} {profile.surname}
-                </h2>
+                </h5>
               </div>
 
-              {/* titolo */}
-              <p className="mb-2">{profile.title || "--"}</p>
+              <p className="mb-2 small">{profile.title || "--"}</p>
 
-              {/* area + contatti */}
-              <p className="text-muted mb-4">
+              <p className="text-muted small mb-0">
                 {profile.area || "Lamezia Terme, Calabria, Italia"}
               </p>
             </Card.Body>
           </Card>
         </Col>
-        <Col xs={12}>
-          <div className="card"></div>
+
+        <Col xs={12} className="mb-2">
+          <Card className="rounded-4 shadow-sm border-0 p-3">
+            <p className="mb-0 fw-semibold small">Connections</p>
+
+            <small className="text-muted">Grow your network</small>
+          </Card>
         </Col>
-        <Col xs={12}>
-          <div className="card"></div>
+
+        <Col xs={12} className="mb-2">
+          <Card className="rounded-4 shadow-sm border-0 p-3">
+            <p className="mb-0 fw-semibold small">Premium</p>
+
+            <small className="text-muted">Try Premium for 0€</small>
+          </Card>
         </Col>
+
         <Col xs={12}>
-          <div className="card"></div>
+          <Card className="rounded-4 shadow-sm border-0 p-3">
+            <p className="mb-0 fw-semibold small">Saved Items</p>
+
+            <small className="text-muted">
+              Keep track of your jobs and posts
+            </small>
+          </Card>
         </Col>
       </Row>
     </Container>
