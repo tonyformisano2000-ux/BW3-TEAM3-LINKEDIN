@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 
 import CoverModal from "./CoverModal";
@@ -7,6 +6,7 @@ import ProfileSections from "./ProfileSections";
 import AvailableMenu from './AvailableMenu';
 import ImproveProfileModal from './ImproveProfileModel';
 import ResourcesMenu from './ResourcesMenu'
+import { useEffect, useState } from "react"
 
 
 const ProfileHero = ({ profile }) => {
@@ -19,6 +19,22 @@ const ProfileHero = ({ profile }) => {
   const [coverImage, setCoverImage] = useState(null);
   const [profileImage, setProfileImage] = useState(profile.image);
   const [showImproveModal, setShowImproveModal] = useState(false);
+
+  // recupero la cover salvata al refresh 
+  useEffect(() => {
+  const savedCover = localStorage.getItem(`cover-${profile._id}`)
+
+  if (savedCover) {
+    setCoverImage(savedCover)
+  }
+}, [profile._id])
+
+// salvo la foto anche nel local storage 
+const handleSetCoverImage = (image) => {
+  setCoverImage(image)
+  localStorage.setItem(`cover-${profile._id}`, image)
+}
+
 
   const handleProfileUpload = (e) => {
     const file = e.target.files[0];
@@ -185,7 +201,7 @@ const ProfileHero = ({ profile }) => {
         show={showCoverModal}
         onHide={() => setShowCoverModal(false)}
         coverImage={coverImage}
-        setCoverImage={setCoverImage}
+        setCoverImage={handleSetCoverImage}
       />
 
       <EditProfileModal
