@@ -1,110 +1,84 @@
-// importiamo hook React
 import { useEffect, useState } from "react";
-
-// importiamo card singolo lavoro
 import JobCard from "./JobCard";
 
-// componente pagina jobs
-const JobsPage = () => {
-
-  // stato lista lavori
+const JobsPage = ({ search }) => {
   const [jobs, setJobs] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(10);
 
-  // stato caricamento
   const [loading, setLoading] = useState(false);
-
-  // stato errore
   const [error, setError] = useState(null);
 
-  // funzione fetch lavori
   const getJobs = async () => {
-
     try {
-
-      // attiviamo loading
       setLoading(true);
-
-      // resettiamo eventuali errori
       setError(null);
 
-      // chiamata API
       const response = await fetch(
-        "https://strive-benchmark.herokuapp.com/api/jobs"
+        "https://strive-benchmark.herokuapp.com/api/jobs",
       );
 
-      // se la response fallisce
-      if (!response.ok) {
-        throw new Error(
-          "Errore nel recupero dei lavori"
-        );
-      }
+      if (!response.ok) throw new Error("Error fetching jobs");
 
-      // convertiamo risposta in json
       const data = await response.json();
-
-      // debug console
-      console.log(data);
-
-      // salviamo array lavori
-      setJobs(data.data || data || []);
-
-    } catch (error) {
-
-      // salviamo errore
-      setError(error.message);
-
+      setJobs(data.data || []);
+    } catch (err) {
+      setError(err.message);
     } finally {
-
-      // spegniamo loading
       setLoading(false);
     }
   };
 
-  // fetch al caricamento pagina
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     getJobs();
   }, []);
 
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setVisibleCount(10);
+  }, [search]);
+
+  const filteredJobs = jobs.filter((job) =>
+    job.title.toLowerCase().includes(search.toLowerCase()),
+  );
+
   return (
-
-    // pagina principale
     <main className="bg-light min-vh-100 py-4">
-
-      {/* container bootstrap */}
       <div className="container">
+        <h1 className="fw-bold mb-4">Jobs</h1>
 
-        {/* titolo pagina */}
-        <h1 className="fw-bold mb-4">
-          Jobs
-        </h1>
-
-        {/* loading */}
         {loading && (
-          <p>Caricamento lavori...</p>
+          <div className="d-flex justify-content-center align-items-center py-5">
+            <div
+              className="spinner-border text-primary"
+              role="status"
+              style={{ width: "3rem", height: "3rem" }}
+            >
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
         )}
+        {error && <p className="text-danger">{error}</p>}
 
-        {/* errore */}
-        {error && (
-          <p className="text-danger">
-            {error}
-          </p>
-        )}
-
-        {/* lista lavori */}
         {!loading &&
           !error &&
-          jobs.map((job) => (
+          filteredJobs
+            .slice(0, visibleCount)
+            .map((job) => <JobCard key={job._id} job={job} />)}
 
-            <JobCard
-              key={job._id}
-              job={job}
-            />
-
-          ))}
+        {!loading && !error && visibleCount < filteredJobs.length && (
+          <div className="text-center mt-4">
+            <button
+              className="btn btn-primary rounded-pill"
+              onClick={() => setVisibleCount((prev) => prev + 20)}
+            >
+              Load more
+            </button>
+          </div>
+        )}
       </div>
     </main>
   );
 };
 
-// esportiamo componente
 export default JobsPage;

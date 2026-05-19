@@ -11,7 +11,7 @@ import {
 import { Link } from "react-router-dom";
 import logo from "../assets/LinkedIn_icon.svg.png";
 
-function NavBar({ collapsed, setCollapsed }) {
+function NavBar({ collapsed, setCollapsed, search, setSearch, clearSearch }) {
   return (
     <Navbar bg="light" expand="lg" className="py-1 border-bottom">
       <Container fluid className="px-4">
@@ -34,8 +34,10 @@ function NavBar({ collapsed, setCollapsed }) {
 
             <Form.Control
               type="text"
-              placeholder="Search"
+              placeholder="Search jobs..."
               className="border-0 shadow-none"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
           </InputGroup>
         </div>
@@ -59,6 +61,9 @@ function NavBar({ collapsed, setCollapsed }) {
             <Link
               to="/jobs"
               className="text-decoration-none text-secondary mx-3 py-2 d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small"
+              onClick={() => {
+                clearSearch();
+              }}
             >
               <i className="bi bi-briefcase-fill fs-5"></i>
               <span>Jobs</span>
