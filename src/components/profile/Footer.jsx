@@ -5,8 +5,8 @@ export const Footer = () => {
     <div>
       <Row>
         <Col className="col-4 text-secondary">
-          <p>Informations</p>
-          <p>Community guide lines</p>
+          <p className="pointer">Informations</p>
+          <p className="pointer">Community guide lines</p>
           <Dropdown className="footer-dropdown">
             <Dropdown.Toggle
               variant="link"
@@ -31,20 +31,20 @@ export const Footer = () => {
               <Dropdown.Item className="py-2">Copyright policy</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <p>Sales Solutions</p>
-          <p>Security center</p>
+          <p className="pointer">Sales Solutions</p>
+          <p className="pointer">Security center</p>
         </Col>
         <Col className="col-4 text-secondary">
-          <p>Accesibility</p>
-          <p>Career</p>
-          <p>Advertising options</p>
-          <p>Mobile</p>
+          <p className="pointer">Accesibility</p>
+          <p className="pointer">Career</p>
+          <p className="pointer">Advertising options</p>
+          <p className="pointer">Mobile</p>
         </Col>
         <Col className="col-4 text-secondary">
-          <p>Talent Solutions</p>
-          <p>Marketing Solutions</p>
-          <p>Advertising</p>
-          <p>Small businesses</p>
+          <p className="pointer">Talent Solutions</p>
+          <p className="pointer">Marketing Solutions</p>
+          <p className="pointer">Advertising</p>
+          <p className="pointer">Small businesses</p>
         </Col>
       </Row>
       <p className="small mt-3">LinkedIn Corporation &copy; 2026 </p>
@@ -54,7 +54,7 @@ export const Footer = () => {
             <i className="bi bi-question-circle-fill fs-3 text-secondary"></i>
             <div className="ms-3 pt-1">
               <p className="m-0 text-secondary fw-bold">Questions?</p>
-              <p>Visit our Help Center.</p>
+              <p className="pointer">Visit our Help Center.</p>
             </div>
           </div>
           <div className="d-flex">
@@ -63,7 +63,7 @@ export const Footer = () => {
               <p className="m-0 text-secondary fw-bold">
                 Manage your account and your privacy
               </p>
-              <p>Go to settings.</p>
+              <p className="pointer">Go to settings.</p>
             </div>
           </div>
           <div className="d-flex">
@@ -72,7 +72,7 @@ export const Footer = () => {
               <p className="m-0 text-secondary fw-bold">
                 Transparency about recommended content
               </p>
-              <p>Learn more about recommended content.</p>
+              <p className="pointer">Learn more about recommended content.</p>
             </div>
           </div>
         </Col>
