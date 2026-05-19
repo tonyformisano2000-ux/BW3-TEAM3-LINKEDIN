@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const styles = {
-  card: "d-flex flex-column bg-white rounded-2 my-2 px-3 shadow-sm",
+  card: "d-flex flex-column bg-white rounded-2 mb-2 px-3 shadow-sm",
   story: "d-flex flex-column my-2 w-100",
   storyTitle: "my-0 fw-semibold text-truncate w-100 cursor-pointer",
 };
