@@ -1,3 +1,6 @@
 .profile-dropdown .dropdown-toggle::after {
   display: none !important;
 }
+.footer-dropdown .dropdown-toggle::after {
+  display: none !important;
+}
