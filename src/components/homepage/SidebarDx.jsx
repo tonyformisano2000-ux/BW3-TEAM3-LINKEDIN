@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const styles = {
-  card: "d-flex flex-column bg-white rounded-2 my-2 px-3",
+  card: "d-flex flex-column bg-white rounded-2 my-2 px-3 shadow-sm",
   story: "d-flex flex-column my-2 w-100",
   storyTitle: "my-0 fw-semibold text-truncate w-100 cursor-pointer",
 };
@@ -102,10 +102,42 @@ const SidebarDx = () => {
     ? stories
     : stories.slice(0, Math.ceil(stories.length / 2));
 
+  const chevronDown = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-chevron-down"
+      viewBox="0 0 16 16"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"
+      />
+    </svg>
+  );
+
+  const chevronUp = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-chevron-up"
+      viewBox="0 0 16 16"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"
+      />
+    </svg>
+  );
+
   return (
     <section className="d-flex flex-column">
       <div className={styles.card}>
-        <div className="d-flex justify-content-between p-2 mx-3">
+        <div className="d-flex justify-content-between px-2 py-3 mx-3">
           <h5>LinkedIn News</h5>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +166,8 @@ const SidebarDx = () => {
             ))}
 
             <button className="btn" onClick={() => setExpand((prev) => !prev)}>
-              {expand ? "Show less" : "Show more"}
+              {expand ? "Show less" : "Show more"}{" "}
+              {expand ? chevronUp : chevronDown}
             </button>
           </div>
         </div>
