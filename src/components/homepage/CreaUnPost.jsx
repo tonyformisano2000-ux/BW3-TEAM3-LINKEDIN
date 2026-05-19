@@ -1,9 +1,9 @@
-import { Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { BlockquoteLeft, PlayBtnFill, Image } from "react-bootstrap-icons";
 
 const CreaUnPost = () => {
   return (
-    <>
+    <Container className="bg-white rounded-2 shadow-sm p-4 mb-2">
       <Row className="mt-3 mb-1">
         <img
           className="rounded-circle m-1 col-1 img-fluid"
@@ -29,7 +29,7 @@ const CreaUnPost = () => {
           <p className="text-dark-subtle fw-bold fs-6 mb-0">Scrivi articolo</p>
         </div>
       </Row>
-    </>
+    </Container>
   );
 };
 export default CreaUnPost;

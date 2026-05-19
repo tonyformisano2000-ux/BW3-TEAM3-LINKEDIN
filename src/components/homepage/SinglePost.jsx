@@ -4,7 +4,7 @@ const SinglePost = ({ postElements }) => {
   const user = postElements?.user;
 
   return (
-    <Row className="align-items-start mb-3 p-3 bg-white rounded-4 shadow-sm">
+    <Row className="align-items-start mb-3 p-3 bg-white rounded-2 shadow-sm">
       <img
         className="col-1 rounded-circle img-fluid"
         src={user?.image || "https://placecats.com/200/200"}

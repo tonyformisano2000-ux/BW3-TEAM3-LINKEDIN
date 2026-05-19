@@ -8,7 +8,6 @@ import SidebarDx from "./SidebarDx";
 import SidebarSx from "./SidebarSx";
 import HomepagePosts from "./HomepagePosts";
 
-import { getMyProfile } from "../../redux/Actions";
 const HomePage = () => {
   const dispatch = useDispatch();
 
