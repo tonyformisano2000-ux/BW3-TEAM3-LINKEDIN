@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const styles = {
-  card: "d-flex flex-column bg-white rounded-2 my-2 px-2",
+  card: "d-flex flex-column bg-white rounded-2 my-2 px-3",
   story: "d-flex flex-column my-2 w-100",
   storyTitle: "my-0 fw-semibold text-truncate w-100 cursor-pointer",
 };
@@ -18,7 +18,7 @@ const stories = [
     readers: 61.0,
   },
   {
-    title: "Spotify ditches beyons awful annyversary logo update",
+    title: "Spotify ditches beyond awful annyversary logo update",
     posted: "9h ago",
     readers: 27.0,
   },
@@ -59,6 +59,42 @@ const stories = [
   },
 ];
 
+const gameImg =
+  "https://images.pexels.com/photos/2263815/pexels-photo-2263815.jpeg";
+
+const puzzles = [
+  {
+    image: gameImg,
+    name: "Patches",
+    number: 63,
+    description: "Put the pieces together",
+  },
+  {
+    image: gameImg,
+    name: "Zip",
+    number: 428,
+    description: "Complete the path",
+  },
+  {
+    image: gameImg,
+    name: "Mini Sudoku",
+    number: 281,
+    description: "A classic, in mini version",
+  },
+  {
+    image: gameImg,
+    name: "Tango",
+    number: 589,
+    description: "Harmonize the grid",
+  },
+  {
+    image: gameImg,
+    name: " Queens",
+    number: 749,
+    description: "Crown every region",
+  },
+];
+
 const SidebarDx = () => {
   const [expand, setExpand] = useState(false);
 
@@ -70,7 +106,7 @@ const SidebarDx = () => {
     <section className="d-flex flex-column">
       <div className={styles.card}>
         <div className="d-flex justify-content-between p-2 mx-3">
-          <h5>LinkedIn Notizie</h5>
+          <h5>LinkedIn News</h5>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -105,7 +141,46 @@ const SidebarDx = () => {
       </div>
 
       <div className={styles.card}>
-        <h4>LinkedIn Puzzles</h4>
+        <h5 className="p-2 mx-3">LinkedIn Puzzles</h5>
+        <div className="d-flex justify-content-center">
+          <div className="w-100">
+            {puzzles.map((puzzle, index) => (
+              <div className="d-flex align-items-center gap-2 py-2" key={index}>
+                <div>
+                  <img
+                    src={puzzle.image}
+                    alt={puzzle.name}
+                    style={{
+                      width: "48px",
+                      height: "48px",
+                      objectFit: "cover",
+                      borderRadius: "8px",
+                    }}
+                  />
+                </div>
+                <div className="flex-grow-1">
+                  <p className={styles.storyTitle}>{puzzle.name}</p>
+                  <small>{puzzle.description}</small>
+                </div>
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-chevron-right cursor-pointer"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+                    />
+                  </svg>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

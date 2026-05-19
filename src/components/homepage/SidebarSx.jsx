@@ -1,9 +1,10 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import Button from "react-bootstrap";
 
 const SidebarSx = () => {
   const profile = useSelector((state) => state.profile);
+  if (!profile) return null;
+  const profileImage = profile?.image || "https://via.placeholder.com/160";
 
   return (
     <Container>
@@ -19,29 +20,10 @@ const SidebarSx = () => {
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
-            >
-              {/* bottone modifica copertina */}
-              <Button
-                variant="light"
-                size="sm"
-                className="rounded-circle position-absolute top-0 end-0 m-3"
-                onClick={() => setShowCoverModal(true)}
-              >
-                <i className="bi bi-camera-fill"></i>
-              </Button>
-            </div>
+            ></div>
 
             {/* corpo card */}
             <Card.Body className="position-relative pt-5 px-4 pb-4">
-              {/* bottone modifica profilo */}
-              <Button
-                variant="light"
-                className="rounded-circle position-absolute top-0 end-0 m-3 border-0"
-                onClick={() => setShowEditModal(true)}
-              >
-                <i className="bi bi-pencil"></i>
-              </Button>
-
               {/* immagine profilo */}
               <img
                 src={profileImage}
