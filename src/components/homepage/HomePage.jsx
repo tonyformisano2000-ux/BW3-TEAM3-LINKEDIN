@@ -8,6 +8,7 @@ import SidebarDx from "./SidebarDx";
 import SidebarSx from "./SidebarSx";
 import HomepagePosts from "./HomepagePosts";
 import { TOKEN } from "../../auth/auth";
+import { Footer } from "../Footer";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -56,6 +57,9 @@ const HomePage = () => {
           <SidebarDx />
         </Col>
       </Row>
+      <div className="d-lg-none">
+        <Footer  />
+      </div>
     </Container>
   );
 };
