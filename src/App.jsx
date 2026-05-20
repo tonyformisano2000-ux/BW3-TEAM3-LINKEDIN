@@ -9,6 +9,7 @@ import ProfilePage from "./components/profile/ProfilePage";
 import { Texting } from "./components/Texting";
 import JobsPage from "./components/jobspage/JobsPage";
 import HomePage from "./components/homepage/HomePage";
+import Notifications from "./components/notifications/Notifications";
 
 function App() {
   const [collapsed, setCollapsed] = useState(true);
@@ -45,8 +46,8 @@ function App() {
       <Routes>
         <Route path="/home" element={<HomePage />} />
         <Route path="/profile" element={<ProfilePage />} />
-
         <Route path="/jobs" element={<JobsPage search={search} />} />
+        <Route path="/notifications" element={<Notifications />} />
       </Routes>
 
       <Texting collapsed={collapsed} setCollapsed={setCollapsed} />
