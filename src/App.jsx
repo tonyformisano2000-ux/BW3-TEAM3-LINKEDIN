@@ -10,6 +10,7 @@ import { Texting } from "./components/Texting";
 import JobsPage from "./components/jobspage/JobsPage";
 import HomePage from "./components/homepage/HomePage";
 import Notifications from "./components/notifications/Notifications";
+import { Verification } from "./components/Verification";
 
 function App() {
   const [collapsed, setCollapsed] = useState(true);
@@ -46,6 +47,7 @@ function App() {
       <Routes>
         <Route path="/home" element={<HomePage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/verification" element={<Verification />} />
         <Route path="/jobs" element={<JobsPage search={search} />} />
         <Route path="/notifications" element={<Notifications />} />
       </Routes>
