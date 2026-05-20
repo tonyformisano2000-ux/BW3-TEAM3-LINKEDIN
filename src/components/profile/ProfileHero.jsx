@@ -3,38 +3,30 @@ import { Button, Card } from "react-bootstrap";
 import CoverModal from "./CoverModal";
 import EditProfileModal from "./EditProfileModal";
 import ProfileSections from "./ProfileSections";
-import AvailableMenu from './AvailableMenu';
-import ImproveProfileModal from './ImproveProfileModel';
-import ResourcesMenu from './ResourcesMenu'
-import { useEffect, useState } from "react"
-
+import AvailableMenu from "./AvailableMenu";
+import ImproveProfileModal from "./ImproveProfileModel";
+import ResourcesMenu from "./ResourcesMenu";
+import { useState } from "react";
 
 const ProfileHero = ({ profile }) => {
   const [showCoverModal, setShowCoverModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showAddSectionModal, setShowAddSectionModal] = useState(false);
-  const [showAvailableMenu, setShowAvailableMenu] = useState(false)
-  const [showResourcesMenu, setShowResourcesMenu] = useState(false)
+  const [showAvailableMenu, setShowAvailableMenu] = useState(false);
+  const [showResourcesMenu, setShowResourcesMenu] = useState(false);
 
-  const [coverImage, setCoverImage] = useState(null);
+  const [coverImage, setCoverImage] = useState(() => {
+    if (typeof window === "undefined" || !profile?._id) return null;
+    return localStorage.getItem(`cover-${profile._id}`);
+  });
   const [profileImage, setProfileImage] = useState(profile.image);
   const [showImproveModal, setShowImproveModal] = useState(false);
 
-  // recupero la cover salvata al refresh 
-  useEffect(() => {
-  const savedCover = localStorage.getItem(`cover-${profile._id}`)
-
-  if (savedCover) {
-    setCoverImage(savedCover)
-  }
-}, [profile._id])
-
-// salvo la foto anche nel local storage 
-const handleSetCoverImage = (image) => {
-  setCoverImage(image)
-  localStorage.setItem(`cover-${profile._id}`, image)
-}
-
+  // salvo la foto anche nel local storage
+  const handleSetCoverImage = (image) => {
+    setCoverImage(image);
+    localStorage.setItem(`cover-${profile._id}`, image);
+  };
 
   const handleProfileUpload = (e) => {
     const file = e.target.files[0];
@@ -140,23 +132,17 @@ const handleSetCoverImage = (image) => {
 
           <div className="d-flex gap-2 flex-wrap">
             <div className="position-relative">
+              <Button
+                variant="primary"
+                className="rounded-pill fw-semibold"
+                onClick={() => setShowAvailableMenu(!showAvailableMenu)}
+              >
+                Disponibile per
+              </Button>
 
-            <Button
-             variant="primary"
-             className="rounded-pill fw-semibold"
-             onClick={() =>
-             setShowAvailableMenu(!showAvailableMenu)
-             }
-            >
-              Disponibile per
-            </Button>
-
-            {/* menu dropdown */}
-            {showAvailableMenu && (
-            <AvailableMenu />
-            )}
-
-           </div>
+              {/* menu dropdown */}
+              {showAvailableMenu && <AvailableMenu />}
+            </div>
 
             <Button
               variant="outline-primary"
@@ -166,32 +152,25 @@ const handleSetCoverImage = (image) => {
               Aggiungi sezione
             </Button>
 
-            <Button 
-            variant="outline-primary" 
-            className="rounded-pill fw-semibold"
-            onClick={()=>setShowImproveModal(true)}
+            <Button
+              variant="outline-primary"
+              className="rounded-pill fw-semibold"
+              onClick={() => setShowImproveModal(true)}
             >
-                
               Migliora profilo
             </Button>
 
             <div className="position-relative">
+              <Button
+                variant="outline-secondary"
+                className="rounded-pill fw-semibold"
+                onClick={() => setShowResourcesMenu(!showResourcesMenu)}
+              >
+                Risorse
+              </Button>
 
-            <Button
-              variant="outline-secondary"
-              className="rounded-pill fw-semibold"
-              onClick={() =>
-              setShowResourcesMenu(!showResourcesMenu)
-             }
-            >
-              Risorse
-            </Button>
-
-             {/* dropdown risorse */}
-              {showResourcesMenu && (
-              <ResourcesMenu />
-             )}
-
+              {/* dropdown risorse */}
+              {showResourcesMenu && <ResourcesMenu />}
             </div>
           </div>
         </Card.Body>
@@ -215,8 +194,8 @@ const handleSetCoverImage = (image) => {
         onHide={() => setShowAddSectionModal(false)}
       />
       <ImproveProfileModal
-      show={showImproveModal}
-      onHide={()=>setShowImproveModal(false)}
+        show={showImproveModal}
+        onHide={() => setShowImproveModal(false)}
       />
     </>
   );
