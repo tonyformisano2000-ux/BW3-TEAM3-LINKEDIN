@@ -6,7 +6,7 @@ import ProfileSections from "./ProfileSections";
 import AvailableMenu from "./AvailableMenu";
 import ImproveProfileModal from "./ImproveProfileModel";
 import ResourcesMenu from "./ResourcesMenu";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ProfileHero = ({ profile }) => {
   const [showCoverModal, setShowCoverModal] = useState(false);

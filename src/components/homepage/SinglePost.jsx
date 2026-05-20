@@ -1,13 +1,35 @@
 import { Row } from "react-bootstrap";
+import { useEffect, useState } from "react";
+
 
 const SinglePost = ({ postElements }) => {
   const user = postElements?.user;
 
+    // stato immagine profilo  - martina
+    const [profileImage, setProfileImage] = useState("");
+    
+    // recupero immagine salvata nel localStorage
+    useEffect(() => {
+    if (!user?._id) return;
+
+    const savedProfileImage = localStorage.getItem(
+      `profile-image-${user._id}`
+    );
+
+    setProfileImage(
+      savedProfileImage ||
+      user?._image ||
+      "https://placecats.com/200/200"
+    );
+  }, [user]);
+
+
   return (
     <Row className="align-items-start mb-3 p-3 bg-white rounded-2 shadow-sm">
       <img
-        className="col-1 rounded-circle img-fluid"
-        src={user?.image || "https://placecats.com/200/200"}
+        className="col-1"
+        style= {{borderRadius: "100%", height:"50px"}}
+        src={profileImage}
         alt="user"
       />
 

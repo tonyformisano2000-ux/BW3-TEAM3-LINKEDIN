@@ -44,9 +44,21 @@ export const USERS = {
       image: "https://placecats.com/300/300",
     },
   },
+
+  tony: {
+    token:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTBkODhlYzNhMDNhODAwMTUwZDkzZmEiLCJpYXQiOjE3NzkyNzE5MTYsImV4cCI6MTc4MDQ4MTUxNn0.2i98UaMB8LsHLInc7wUy-T2iLTpQtbEcBse8NcnTcyE",
+    _id: "6a0d88ec3a03a800150d93fa",
+    name: "Antonio",
+    surname: "Formisano",
+    email: "antoformi@gmail.com",
+    title: "FullStack Dev quando sono concentrato",
+    area: "Rome, Italy",
+    image: "https://placecats.com/300/300",
+  },
 };
 
-export const ACTIVE_USER = "ale";
+export const ACTIVE_USER = "martina";
 
 export const ACTIVE_ACCOUNT = USERS[ACTIVE_USER];
 

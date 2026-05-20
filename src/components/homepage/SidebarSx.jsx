@@ -1,8 +1,41 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 const SidebarSx = () => {
   const profile = useSelector((state) => state.profile);
+
+  // stato immagine profilo sidebar - martina
+  const [profileImage, setProfileImage] = useState("");
+
+  // stato immagine copertina sidebar - martina
+  const [coverImage, setCoverImage] = useState("");
+
+  // recupero foto profilo e copertina salvata dalla pagina profilo
+  useEffect(() => {
+    if (!profile?._id) return;
+
+    const savedProfileImage = localStorage.getItem(
+      `profile-image-${profile._id}`
+    );
+
+    const savedCover = localStorage.getItem(`cover-${profile._id}`);
+
+    setProfileImage(savedProfileImage || profile.image || "https://via.placeholder.com/160");
+    setCoverImage(savedCover || "");
+  }, [profile]);
+
+  if (!profile) {
+    return (
+      <div className="d-flex justify-content-center py-5">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading..</span>
+        </div>
+      </div>
+    );
+  }
+
+
 
   if (!profile) {
     return (
@@ -14,7 +47,6 @@ const SidebarSx = () => {
     );
   }
 
-  const profileImage = profile.image || "https://via.placeholder.com/160";
 
   return (
     <Container fluid className="px-0">
@@ -27,6 +59,7 @@ const SidebarSx = () => {
               className="position-relative bg-secondary-subtle"
               style={{
                 height: "100px",
+                backgroundImage: coverImage ? `url(${coverImage})` : "none",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
