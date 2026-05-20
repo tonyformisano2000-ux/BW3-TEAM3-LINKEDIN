@@ -7,6 +7,7 @@ import AvailableMenu from "./AvailableMenu";
 import ImproveProfileModal from "./ImproveProfileModel";
 import ResourcesMenu from "./ResourcesMenu";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const ProfileHero = ({ profile }) => {
   const [showCoverModal, setShowCoverModal] = useState(false);
@@ -23,60 +24,55 @@ const ProfileHero = ({ profile }) => {
   const [showImproveModal, setShowImproveModal] = useState(false);
 
   // recupero la cover salvata al refresh
-useEffect(() => {
-  const savedCover = localStorage.getItem(`cover-${profile._id}`);
+  useEffect(() => {
+    const savedCover = localStorage.getItem(`cover-${profile._id}`);
 
-  if (savedCover) {
-    setCoverImage(savedCover);
-  }
-}, [profile._id]);
+    if (savedCover) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setCoverImage(savedCover);
+    }
+  }, [profile._id]);
 
-// recupero la foto profilo salvata al refresh
-useEffect(() => {
-  const savedProfileImage = localStorage.getItem(
-    `profile-image-${profile._id}`
-  );
-
-  if (savedProfileImage) {
-    setProfileImage(savedProfileImage);
-  } else {
-    setProfileImage(profile.image);
-  }
-}, [profile._id, profile.image]);
-
-// salvo la cover nel localStorage
-const handleSetCoverImage = (image) => {
-  setCoverImage(image);
-
-  localStorage.setItem(
-    `cover-${profile._id}`,
-    image
-  );
-};
-
-// salvo la foto profilo nel localStorage
-const handleProfileUpload = (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-
-  reader.onloadend = () => {
-    const imageBase64 = reader.result;
-
-    setProfileImage(imageBase64);
-
-    localStorage.setItem(
+  // recupero la foto profilo salvata al refresh
+  useEffect(() => {
+    const savedProfileImage = localStorage.getItem(
       `profile-image-${profile._id}`,
-      imageBase64
     );
+
+    if (savedProfileImage) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setProfileImage(savedProfileImage);
+    } else {
+      setProfileImage(profile.image);
+    }
+  }, [profile._id, profile.image]);
+
+  // salvo la cover nel localStorage
+  const handleSetCoverImage = (image) => {
+    setCoverImage(image);
+
+    localStorage.setItem(`cover-${profile._id}`, image);
   };
 
-  reader.readAsDataURL(file);
-};
+  // salvo la foto profilo nel localStorage
+  const handleProfileUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
+    const reader = new FileReader();
 
- return (
+    reader.onloadend = () => {
+      const imageBase64 = reader.result;
+
+      setProfileImage(imageBase64);
+
+      localStorage.setItem(`profile-image-${profile._id}`, imageBase64);
+    };
+
+    reader.readAsDataURL(file);
+  };
+
+  return (
     <>
       <Card className="rounded-4 shadow-sm border-0">
         <div
@@ -149,15 +145,16 @@ const handleProfileUpload = (e) => {
             <h2 className="mb-0 fw-bold">
               {profile.name} {profile.surname}
             </h2>
-
-            <Button
-              variant="outline-primary"
-              size="sm"
-              className="rounded-pill border-dashed fw-semibold"
-            >
-              <i className="bi bi-shield-check me-1"></i>
-              Aggiungi badge di verifica
-            </Button>
+            <Link to="/verification">
+              <Button
+                variant="outline-primary"
+                size="sm"
+                className="rounded-pill border-dashed fw-semibold"
+              >
+                <i className="bi bi-shield-check me-1"></i>
+                Aggiungi badge di verifica
+              </Button>
+            </Link>
           </div>
 
           <p className="mb-2">{profile.title || "--"}</p>
@@ -239,6 +236,5 @@ const handleProfileUpload = (e) => {
       />
     </>
   );
-
 };
 export default ProfileHero;
