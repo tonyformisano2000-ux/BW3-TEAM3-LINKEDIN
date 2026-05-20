@@ -26,13 +26,27 @@ export const USERS = {
       email: "amirka@gmail.com",
       username: "Amir Ka",
       title: "FullStack Dev on the making",
-      area: "Italy",
+      area: "Sicily, Italy",
+      image: "https://placecats.com/300/300",
+    },
+  },
+  ale: {
+    token:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTBkN2Y3YjNhMDNhODAwMTUwZDkzZDgiLCJpYXQiOjE3NzkyNjk1MDAsImV4cCI6MTc4MDQ3OTEwMH0.cnpQ4eVvowZig2urCVzQO6HJltEskBFzLhVVcxgaV9o",
+    mockProfile: {
+      _id: "69e1f2fc739f8700157ab09f",
+      name: "Alessandro",
+      surname: "Nappa",
+      email: "alenappa@gmail.com",
+      username: "Ale Nappa",
+      title: "FullStack Dev on the making",
+      area: "Milan, Italy",
       image: "https://placecats.com/300/300",
     },
   },
 };
 
-export const ACTIVE_USER = "martina";
+export const ACTIVE_USER = "ale";
 
 export const ACTIVE_ACCOUNT = USERS[ACTIVE_USER];
 
