@@ -10,8 +10,19 @@ import {
 
 import { Link } from "react-router-dom";
 import logo from "../assets/LinkedIn_icon.svg.png";
+import { useSelector } from "react-redux";
 
-function NavBar({ collapsed, setCollapsed, search, setSearch, clearSearch }) {
+import { USERS } from "../auth/auth";
+
+function NavBar({
+  collapsed,
+  setCollapsed,
+  search,
+  setSearch,
+  clearSearch,
+  activeUser,
+  setActiveUser,
+}) {
   return (
     <Navbar bg="light" expand="lg" className="py-1 border-bottom">
       <Container fluid className="px-4">
@@ -110,6 +121,17 @@ function NavBar({ collapsed, setCollapsed, search, setSearch, clearSearch }) {
                     View Profile
                   </Button>
                 </Link>
+                <NavDropdown.Divider /> <h6>Available Accounts</h6>
+                {Object.entries(USERS).map(([key, user]) => (
+                  <NavDropdown.Item
+                    key={user.mockProfile._id}
+                    onClick={() => {
+                      setActiveUser(key);
+                    }}
+                  >
+                    {user.mockProfile.name} {user.mockProfile.surname}
+                  </NavDropdown.Item>
+                ))}
                 <NavDropdown.Divider /> <h6>Account</h6>
                 <NavDropdown.Item>Settings & Privacy</NavDropdown.Item>
                 <NavDropdown.Item>Help</NavDropdown.Item>

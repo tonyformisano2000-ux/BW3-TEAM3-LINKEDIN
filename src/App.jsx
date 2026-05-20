@@ -34,6 +34,8 @@ function App() {
   return (
     <div className="d-flex flex-column min-vh-100">
       <NavBar
+        activeUser={ACTIVE_USER}
+        setActiveUser={SET_ACTIVE_USER}
         collapsed={collapsed}
         setCollapsed={setCollapsed}
         search={search}
