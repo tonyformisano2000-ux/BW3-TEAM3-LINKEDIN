@@ -34,6 +34,7 @@ const SinglePost = ({ postElements }) => {
               src={postElements.image}
               alt="post"
               className="img-fluid rounded-3"
+              style={{ height: "70%", width: "70%" }}
             />
           </Row>
         )}
