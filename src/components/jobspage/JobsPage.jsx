@@ -30,10 +30,12 @@ const JobsPage = ({ search }) => {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     getJobs();
   }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setVisibleCount(10);
   }, [search]);
 
@@ -48,6 +50,24 @@ const JobsPage = ({ search }) => {
           {/*sidebar sinistra anche nella pagina jobs */}
           <div className="col-12 col-md-3 mb-3">
             <SidebarSx />
+         <div className="px-2 d-none d-lg-block">
+        <div className="d-flex flex-wrap gap-2" style={{ fontSize: "0.72rem" }}>
+          {[
+            "Informazioni",
+            "Accessibilità",
+            "Centro assistenza",
+            "Privacy",
+            "Termini",
+          ].map((link) => (
+            <a key={link} href="#" className="text-muted text-decoration-none">
+              {link}
+            </a>
+          ))}
+        </div>
+        <p className="text-muted mt-1" style={{ fontSize: "0.70rem" }}>
+          LinkedIn &copy; {new Date().getFullYear()}
+        </p>
+      </div>
           </div>
 
           {/*contenuto principale jobs */}
