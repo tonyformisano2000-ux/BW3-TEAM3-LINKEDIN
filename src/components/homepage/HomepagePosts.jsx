@@ -8,7 +8,7 @@ const HomepagePosts = () => {
     fetch(`https://striveschool-api.herokuapp.com/api/posts/`, {
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTBhZTNjNTA2YmJlOTAwMTVkZWU1ODUiLCJpYXQiOjE3NzkwOTg1NjUsImV4cCI6MTc4MDMwODE2NX0.O0KuxUKN3vNzyOPjo-ajKPphxUhWPm22PXZ0IRPzgZc",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTBiNTYzOTA2YmJlOTAwMTVkZWU1OGIiLCJpYXQiOjE3NzkxMjc4NjYsImV4cCI6MTc4MDMzNzQ2Nn0.JZjN2osgizy9f_4tzKIJOa3qHhRyBgZO9IpElXOHt8Q",
       },
     })
       .then((response) => {

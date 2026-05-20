@@ -8,3 +8,14 @@
 .pointer {
   cursor: pointer;
 }
+
+.post-action {
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 10px;
+  transition: 0.2s;
+}
+
+.post-action:hover {
+  background-color: #f3f2ef;
+}

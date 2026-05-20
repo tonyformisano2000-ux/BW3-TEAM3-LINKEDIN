@@ -1,27 +1,10 @@
 // PAGINA PROFILO - MARTINA
-import martinaProfile from "../../assets/martina-profile.jpg";
+import { TOKEN, MOCK_PROFILE } from "../../auth/auth";
 
 // tipi di azioni Redux
 export const SET_PROFILE = "SET_PROFILE";
 export const SET_PROFILE_LOADING = "SET_PROFILE_LOADING";
 export const SET_PROFILE_ERROR = "SET_PROFILE_ERROR";
-
-// mio token
-const TOKEN_MARTINA =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTBiNTYzOTA2YmJlOTAwMTVkZWU1OGIiLCJpYXQiOjE3NzkxMjc4NjYsImV4cCI6MTc4MDMzNzQ2Nn0.JZjN2osgizy9f_4tzKIJOa3qHhRyBgZO9IpElXOHt8Q";
-
-// profilo mock — usato come fallback quando l'API non è raggiungibile
-const MOCK_PROFILE = {
-  _id: "6a0ae6f306bbe90015dee586",
-  name: "Martina",
-  surname: "Aceto",
-  email: "martina.aceto@email.it",
-  username: "martina.aceto",
-  bio: 'Martina 🏰 | Front-End Developer\nOrgogliosamente lametina. Creo cose belle sul web.\nVivo secondo la regola: "Se funziona, non toccarlo. Se non funziona, dai la colpa al Back-End".\nSe non sto programmando, probabilmente sto facendo Pilates.',
-  title: "Frontend Developer",
-  area: "Lamezia Terme, Calabria, Italia",
-  image: martinaProfile,
-};
 
 // funzione asincrona per recuperare il profilo
 export const getMyProfile = () => {
@@ -38,7 +21,7 @@ export const getMyProfile = () => {
         "https://striveschool-api.herokuapp.com/api/profile/me",
         {
           headers: {
-            Authorization: `Bearer ${TOKEN_MARTINA}`,
+            Authorization: `Bearer ${TOKEN}`,
           },
         },
       );
