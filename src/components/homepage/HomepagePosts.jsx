@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import SinglePost from "./SinglePost";
+import { TOKEN } from "../../auth/auth";
 
 const HomepagePosts = () => {
   const [datas, setDatas] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(10);
 
   useEffect(() => {
     fetch(`https://striveschool-api.herokuapp.com/api/posts/`, {
       headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTBiNTYzOTA2YmJlOTAwMTVkZWU1OGIiLCJpYXQiOjE3NzkxMjc4NjYsImV4cCI6MTc4MDMzNzQ2Nn0.JZjN2osgizy9f_4tzKIJOa3qHhRyBgZO9IpElXOHt8Q",
+        Authorization: `Bearer ${TOKEN}`,
       },
     })
       .then((response) => {
@@ -28,24 +29,33 @@ const HomepagePosts = () => {
           new Map(
             sortedPosts.map((post) => {
               const cleanImage = post.image?.split("?")[0];
-
               const key = `${post.text?.trim()}-${cleanImage}-${post.user?._id}`;
-
               return [key, post];
             }),
           ).values(),
         );
 
-        setDatas(sortedPosts, uniquePosts);
+        setDatas(uniquePosts);
       })
       .catch((err) => console.log(err));
   }, []);
 
   return (
     <>
-      {datas.slice(0, 10).map((post) => (
+      {datas.slice(0, visibleCount).map((post) => (
         <SinglePost key={post._id} postElements={post} />
       ))}
+
+      {visibleCount < datas.length && (
+        <div className="text-center mt-3">
+          <button
+            className="btn btn-primary rounded-pill"
+            onClick={() => setVisibleCount((prev) => prev + 10)}
+          >
+            Load more
+          </button>
+        </div>
+      )}
     </>
   );
 };

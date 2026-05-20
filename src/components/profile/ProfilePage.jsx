@@ -10,7 +10,7 @@ import ProfileExperience from "./ProfileExperience";
 import ProfileEducation from "./ProfileEducation";
 import ProfileSkills from "./ProfileSkills";
 import ProfileSidebar from "./ProfileSidebar";
-import { Footer } from "./Footer";
+import { Footer } from "../Footer";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
