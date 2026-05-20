@@ -1,23 +1,23 @@
-// importiamo componenti bootstrap
+
 import { Modal, Button } from 'react-bootstrap'
 
-// componente modale modifica profilo
+
 const EditProfileModal = ({
 
-  // stato apertura modale
+  
   show,
 
-  // funzione chiusura
+
   onHide,
 
-  // dati profilo
+  
   profile,
 
 }) => {
 
   return (
 
-    // modale bootstrap
+    
     <Modal
       show={show}
       onHide={onHide}
