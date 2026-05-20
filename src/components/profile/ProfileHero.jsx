@@ -20,31 +20,61 @@ const ProfileHero = ({ profile }) => {
   const [profileImage, setProfileImage] = useState(profile.image);
   const [showImproveModal, setShowImproveModal] = useState(false);
 
-  // recupero la cover salvata al refresh 
-  useEffect(() => {
-  const savedCover = localStorage.getItem(`cover-${profile._id}`)
+  // recupero la cover salvata al refresh
+useEffect(() => {
+  const savedCover = localStorage.getItem(`cover-${profile._id}`);
 
   if (savedCover) {
-    setCoverImage(savedCover)
+    setCoverImage(savedCover);
   }
-}, [profile._id])
+}, [profile._id]);
 
-// salvo la foto anche nel local storage 
+// recupero la foto profilo salvata al refresh
+useEffect(() => {
+  const savedProfileImage = localStorage.getItem(
+    `profile-image-${profile._id}`
+  );
+
+  if (savedProfileImage) {
+    setProfileImage(savedProfileImage);
+  } else {
+    setProfileImage(profile.image);
+  }
+}, [profile._id, profile.image]);
+
+// salvo la cover nel localStorage
 const handleSetCoverImage = (image) => {
-  setCoverImage(image)
-  localStorage.setItem(`cover-${profile._id}`, image)
-}
+  setCoverImage(image);
 
+  localStorage.setItem(
+    `cover-${profile._id}`,
+    image
+  );
+};
 
-  const handleProfileUpload = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+// salvo la foto profilo nel localStorage
+const handleProfileUpload = (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
-    const imageUrl = URL.createObjectURL(file);
-    setProfileImage(imageUrl);
+  const reader = new FileReader();
+
+  reader.onloadend = () => {
+    const imageBase64 = reader.result;
+
+    setProfileImage(imageBase64);
+
+    localStorage.setItem(
+      `profile-image-${profile._id}`,
+      imageBase64
+    );
   };
 
-  return (
+  reader.readAsDataURL(file);
+};
+
+
+ return (
     <>
       <Card className="rounded-4 shadow-sm border-0">
         <div
@@ -220,6 +250,6 @@ const handleSetCoverImage = (image) => {
       />
     </>
   );
-};
 
+};
 export default ProfileHero;
