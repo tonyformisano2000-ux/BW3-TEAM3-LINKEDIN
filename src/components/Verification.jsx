@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 export const Verification = () => {
   return (
     <div className="d-flex justify-content-center">
-      <div className="w-md-50 bg-light rounded-2 shadow-sm d-flex flex-column p-4 mt-5 mx-3 mx-md-0 ">
+      <div
+        className="w-md-50 rounded-2 shadow-sm d-flex flex-column p-4 mt-5 mx-3 mx-md-0"
+        style={{ backgroundColor: "white" }}
+      >
         <Link to="/home" className="text-decoration-none">
           <i class="bi bi-arrow-left text-secondary">Go back</i>
         </Link>
@@ -25,9 +28,13 @@ export const Verification = () => {
               src="src\assets\qrcode.png"
               alt="qrcode"
               style={{ width: "200px" }}
+              className="rounded-3 shadow-sm"
             />
           </div>
-          <div className="ms-3">
+          <div
+            className="ms-2 rounded-2 shadow-sm ps-2 w-100"
+            style={{ backgroundColor: "#F8FAFD" }}
+          >
             <p className="fw-bold">
               Instructions: <br />
               <span className="fw-normal">
