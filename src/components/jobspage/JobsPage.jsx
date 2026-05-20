@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import JobCard from "./JobCard";
 import SidebarSx from "../homepage/SidebarSx";
-import { Footer } from "../Footer";
 
 const JobsPage = ({ search }) => {
   const [jobs, setJobs] = useState([]);
