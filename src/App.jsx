@@ -14,6 +14,7 @@ import { Verification } from "./components/Verification";
 
 function App() {
   const [collapsed, setCollapsed] = useState(true);
+  const [activeUser, setActiveUser] = useState("ale");
 
   const [search, setSearch] = useState("");
 
@@ -36,8 +37,8 @@ function App() {
   return (
     <div className="d-flex flex-column min-vh-100">
       <NavBar
-        activeUser={ACTIVE_USER}
-        setActiveUser={SET_ACTIVE_USER}
+        activeUser={activeUser}
+        setActiveUser={setActiveUser}
         collapsed={collapsed}
         setCollapsed={setCollapsed}
         search={search}

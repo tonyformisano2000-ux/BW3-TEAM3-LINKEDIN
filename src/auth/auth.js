@@ -1,6 +1,4 @@
-import { useState } from "react";
 import martinaProfile from "../assets/martina-profile.jpg";
-import { useSelector } from "react-redux";
 
 
 export const USERS = {
@@ -81,7 +79,7 @@ export const USERS = {
   },
 };
 
-const ACTIVE_USER = useSelector(state => state.activeUser)
+const ACTIVE_USER = Object.keys(USERS)[0];
 
 export const ACTIVE_ACCOUNT = USERS[ACTIVE_USER];
 
