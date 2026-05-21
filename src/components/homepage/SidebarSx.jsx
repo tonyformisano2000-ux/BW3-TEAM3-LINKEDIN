@@ -16,13 +16,15 @@ const SidebarSx = () => {
     if (!profile?._id) return;
 
     const savedProfileImage = localStorage.getItem(
-      `profile-image-${profile._id}`
+      `profile-image-${profile._id}`,
     );
 
     const savedCover = localStorage.getItem(`cover-${profile._id}`);
 
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setProfileImage(savedProfileImage || profile.image || "https://via.placeholder.com/160");
+    setProfileImage(
+      savedProfileImage || profile.image || "https://via.placeholder.com/160",
+    );
     setCoverImage(savedCover || "");
   }, [profile]);
 
@@ -36,8 +38,6 @@ const SidebarSx = () => {
     );
   }
 
-
-
   if (!profile) {
     return (
       <div className="d-flex justify-content-center py-5">
@@ -47,7 +47,6 @@ const SidebarSx = () => {
       </div>
     );
   }
-
 
   return (
     <Container fluid className="px-0">
@@ -70,7 +69,7 @@ const SidebarSx = () => {
             <Card.Body className="position-relative pt-5 px-2 pb-2">
               {/* immagine profilo */}
               <img
-                src={profileImage}
+                src={profileImage || null}
                 alt={`${profile.name} ${profile.surname}`}
                 className="rounded-circle border border-4 border-white position-absolute"
                 style={{
