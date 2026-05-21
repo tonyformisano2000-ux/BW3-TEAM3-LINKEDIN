@@ -1,4 +1,11 @@
-import { Modal, Button, Form, Spinner } from "react-bootstrap";
+import {
+  Modal,
+  Button,
+  Form,
+  Spinner,
+  Tooltip,
+  OverlayTrigger,
+} from "react-bootstrap";
 
 import {
   Image,
@@ -85,6 +92,12 @@ const CreatePostModal = ({ show, handleClose, onPostCreated }) => {
       setLoading(false);
     }
   };
+  const badges = ["add reaction", "post an image", "set event", "more"];
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      {badges[props]}
+    </Tooltip>
+  );
 
   return (
     <Modal show={show} onHide={handleClose} centered size="lg">
@@ -141,25 +154,55 @@ const CreatePostModal = ({ show, handleClose, onPostCreated }) => {
 
       <Modal.Footer className="justify-content-between">
         <div className="d-flex align-items-center">
-          <Button variant="light" className="border-0">
-            <EmojiSmile size={22} />
-          </Button>
-
-          <Button
-            variant="light"
-            className="border-0"
-            onClick={() => fileInputRef.current.click()}
+          <OverlayTrigger
+            placement="top"
+            delay={{ show: 50, hide: 50 }}
+            overlay={renderTooltip(0)}
           >
-            <Image size={22} />
-          </Button>
-
-          <Button variant="light" className="border-0">
-            <CalendarEvent size={22} />
-          </Button>
-
-          <Button variant="light" className="border-0">
-            <Plus size={22} />
-          </Button>
+            <Button
+              variant="light"
+              className="mx-1 border-0 d-flex align-content-center"
+            >
+              <EmojiSmile size={22} />
+            </Button>
+          </OverlayTrigger>
+          <OverlayTrigger
+            placement="top"
+            delay={{ show: 50, hide: 50 }}
+            overlay={renderTooltip(1)}
+          >
+            <Button
+              variant="light"
+              className="mx-1 border-0 d-flex align-content-center"
+              onClick={() => fileInputRef.current.click()}
+            >
+              <Image size={22} />
+            </Button>
+          </OverlayTrigger>
+          <OverlayTrigger
+            placement="top"
+            delay={{ show: 50, hide: 50 }}
+            overlay={renderTooltip(2)}
+          >
+            <Button
+              variant="light"
+              className="mx-1 border-0 d-flex align-content-center"
+            >
+              <CalendarEvent size={22} />
+            </Button>
+          </OverlayTrigger>
+          <OverlayTrigger
+            placement="top"
+            delay={{ show: 50, hide: 50 }}
+            overlay={renderTooltip(3)}
+          >
+            <Button
+              variant="light"
+              className="mx-1 border-0 d-flex align-content-center"
+            >
+              <Plus size={22} />
+            </Button>
+          </OverlayTrigger>
         </div>
 
         <Button
