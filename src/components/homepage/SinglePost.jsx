@@ -1,4 +1,5 @@
 import { Row } from "react-bootstrap";
+import CommentsSection from "./CommentsSection";
 import { useEffect, useState } from "react";
 
 const SinglePost = ({ postElements }) => {
@@ -55,6 +56,7 @@ const SinglePost = ({ postElements }) => {
             />
           </Row>
         )}
+        <CommentsSection postId={postElements._id} />
       </div>
     </Row>
   );
