@@ -21,6 +21,7 @@ const SidebarSx = () => {
 
     const savedCover = localStorage.getItem(`cover-${profile._id}`);
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setProfileImage(savedProfileImage || profile.image || "https://via.placeholder.com/160");
     setCoverImage(savedCover || "");
   }, [profile]);

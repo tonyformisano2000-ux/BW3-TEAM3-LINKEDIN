@@ -1,8 +1,6 @@
 import martinaProfile from "../assets/martina-profile.jpg";
 
-
 export const USERS = {
-
   martina: {
     token:
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTBiNTYzOTA2YmJlOTAwMTVkZWU1OGIiLCJpYXQiOjE3NzkxMjc4NjYsImV4cCI6MTc4MDMzNzQ2Nn0.JZjN2osgizy9f_4tzKIJOa3qHhRyBgZO9IpElXOHt8Q",
@@ -59,8 +57,7 @@ export const USERS = {
       title: "FullStack Dev quando sono concentrato",
       area: "Rome, Italy",
       image: "https://placecats.com/300/300",
-    }
-    
+    },
   },
   tancredi: {
     token:
@@ -74,12 +71,11 @@ export const USERS = {
       title: "Nullafacente",
       area: "Palermo, Italy",
       image: "https://placecats.com/300/300",
-    }
-
+    },
   },
 };
 
-const ACTIVE_USER = Object.keys(USERS)[0];
+export const ACTIVE_USER = "ale";
 
 export const ACTIVE_ACCOUNT = USERS[ACTIVE_USER];
 

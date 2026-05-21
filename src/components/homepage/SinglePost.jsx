@@ -16,6 +16,7 @@ const SinglePost = ({ postElements }) => {
       `profile-image-${user._id}`
     );
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setProfileImage(
       savedProfileImage ||
       user?._image ||
