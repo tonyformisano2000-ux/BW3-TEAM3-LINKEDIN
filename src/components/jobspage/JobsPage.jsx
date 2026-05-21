@@ -1,25 +1,37 @@
 import { useEffect, useState } from "react";
-import JobCard from "./JobCard";
-import SidebarSx from "../homepage/SidebarSx";
+import { useDispatch } from "react-redux";
+import { getMyProfile } from "../../redux/Actions/index";
+import JobsSidebar from "./JobsSidebar";
+import PremiumBanner from "./PremiumBanner";
+import PremiumModal from "./PremiumModal";
+import CategorySection from "./CategorySection";
+import SearchView from "./SearchView";
+
+// COMPONENTE PRINCIPALE 
 
 const JobsPage = ({ search }) => {
+  const dispatch = useDispatch();
+
+  // stati jobs
   const [jobs, setJobs] = useState([]);
   const [visibleCount, setVisibleCount] = useState(10);
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // stati UI
+  const [selectedJob, setSelectedJob] = useState(null);
+  const [activeFilter, setActiveFilter] = useState("Candidatura semplice");
+  const [activeCategory, setActiveCategory] = useState("Candidatura semplice");
+  const [dismissedIds, setDismissedIds] = useState(new Set());
+  const [showPremiumModal, setShowPremiumModal] = useState(false);
+
+  // fetch jobs 
   const getJobs = async () => {
     try {
       setLoading(true);
       setError(null);
-
-      const response = await fetch(
-        "https://strive-benchmark.herokuapp.com/api/jobs"
-      );
-
+      const response = await fetch("https://strive-benchmark.herokuapp.com/api/jobs");
       if (!response.ok) throw new Error("Error fetching jobs");
-
       const data = await response.json();
       setJobs(data.data || []);
     } catch (err) {
@@ -29,84 +41,93 @@ const JobsPage = ({ search }) => {
     }
   };
 
+  // fetch jobs 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     getJobs();
+    dispatch(getMyProfile());
   }, []);
 
+  // reset al cambio ricerca
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setVisibleCount(10);
+    setSelectedJob(null);
   }, [search]);
 
-  const filteredJobs = jobs.filter((job) =>
-    job.title.toLowerCase().includes(search.toLowerCase())
-  );
+  // rimuove una job dalla lista
+  const handleDismiss = (id) => {
+    setDismissedIds((prev) => new Set([...prev, id]));
+    if (selectedJob?._id === id) setSelectedJob(null);
+  };
+
+  // jobs filtrati per ricerca e dismissed
+  const filteredJobs = jobs
+    .filter((job) => !dismissedIds.has(job._id))
+    .filter((job) => job.title.toLowerCase().includes(search.toLowerCase()));
+
+  const isSearching = search.trim() !== "";
+
+  // ------- RENDER -------
 
   return (
     <main className="bg-light min-vh-100 py-4">
       <div className="container">
         <div className="row">
-          {/*sidebar sinistra anche nella pagina jobs */}
-          <div className="col-12 col-md-3 mb-3">
-            <SidebarSx />
-         <div className="px-2 d-none d-lg-block">
-        <div className="d-flex flex-wrap gap-2" style={{ fontSize: "0.72rem" }}>
-          {[
-            "Informazioni",
-            "Accessibilità",
-            "Centro assistenza",
-            "Privacy",
-            "Termini",
-          ].map((link) => (
-            <a key={link} href="#" className="text-muted text-decoration-none">
-              {link}
-            </a>
-          ))}
-        </div>
-        <p className="text-muted mt-1" style={{ fontSize: "0.70rem" }}>
-          LinkedIn &copy; {new Date().getFullYear()}
-        </p>
-      </div>
-          </div>
 
-          {/*contenuto principale jobs */}
+          {/* sidebar sinistra */}
+          <JobsSidebar />
+
+          {/* contenuto principale */}
           <div className="col-12 col-md-9">
-            <h1 className="fw-bold mb-4">Jobs</h1>
 
+            {/* spinner caricamento */}
             {loading && (
               <div className="d-flex justify-content-center align-items-center py-5">
-                <div
-                  className="spinner-border text-primary"
-                  role="status"
-                  style={{ width: "3rem", height: "3rem" }}
-                >
+                <div className="spinner-border text-primary" role="status" style={{ width: "3rem", height: "3rem" }}>
                   <span className="visually-hidden">Loading...</span>
                 </div>
               </div>
             )}
 
+            {/* errore fetch */}
             {error && <p className="text-danger">{error}</p>}
 
-            {!loading &&
-              !error &&
-              filteredJobs
-                .slice(0, visibleCount)
-                .map((job) => <JobCard key={job._id} job={job} />)}
-
-            {!loading && !error && visibleCount < filteredJobs.length && (
-              <div className="text-center mt-4">
-                <button
-                  className="btn btn-primary rounded-pill"
-                  onClick={() => setVisibleCount((prev) => prev + 20)}
-                >
-                  Load more
-                </button>
-              </div>
+            {/* vista default — nessuna ricerca */}
+            {!loading && !error && !isSearching && (
+              <>
+                <PremiumBanner onPremiumClick={() => setShowPremiumModal(true)} />
+                <CategorySection
+                  filteredJobs={filteredJobs}
+                  visibleCount={visibleCount}
+                  activeCategory={activeCategory}
+                  onCategoryChange={setActiveCategory}
+                  onSelect={setSelectedJob}
+                  onDismiss={handleDismiss}
+                  onLoadMore={() => setVisibleCount((p) => p + 20)}
+                />
+              </>
             )}
+
+            {/* vista ricerca — split panel */}
+            {!loading && !error && isSearching && (
+              <SearchView
+                filteredJobs={filteredJobs}
+                visibleCount={visibleCount}
+                selectedJob={selectedJob}
+                activeFilter={activeFilter}
+                onFilterChange={setActiveFilter}
+                onSelect={setSelectedJob}
+                onDismiss={handleDismiss}
+                onLoadMore={() => setVisibleCount((p) => p + 20)}
+              />
+            )}
+
           </div>
         </div>
       </div>
+
+      {/* modal premium */}
+      {showPremiumModal && <PremiumModal onClose={() => setShowPremiumModal(false)} />}
+
     </main>
   );
 };
