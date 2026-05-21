@@ -81,7 +81,7 @@ export const USERS = {
   },
 };
 
-const ACTIVE_USER = useSelector(state => state.activeUser)
+export const ACTIVE_USER = "amir"
 
 export const ACTIVE_ACCOUNT = USERS[ACTIVE_USER];
 
