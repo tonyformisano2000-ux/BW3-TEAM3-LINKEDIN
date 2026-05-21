@@ -8,6 +8,27 @@ const SidebarSx = () => {
   // stato immagine profilo sidebar - martina
   const [profileImage, setProfileImage] = useState("");
 
+  // easter egg — popup cliccando i link della sidebar
+  const [activeEgg, setActiveEgg] = useState(null);
+  const EGGS = {
+    salvati: {
+      title: "Elementi salvati",
+      text: "Hai 47 offerte salvate.\nTutte \"da rivedere con calma\".\nSono li da 8 mesi.\nCon calma, eh.",
+    },
+    gruppi: {
+      title: "Gruppi",
+      text: "Sei in 4 gruppi professionali.\nIn uno qualcuno ha scritto nel 2021.\nNessuno ha risposto.\nNemmeno tu.",
+    },
+    newsletter: {
+      title: "Newsletter",
+      text: "Iscritto a 11 newsletter.\nLe leggi? No.\nLe cancelli? Neanche.\nVivono nella tua inbox come fantasmi.",
+    },
+    eventi: {
+      title: "Eventi",
+      text: "Hai cliccato Partecipero a 6 eventi.\nSei andato a 0.\nHai detto \"troppo lontano\" per tutti.\nUno era sotto casa tua.",
+    },
+  };
+
   // stato immagine copertina sidebar - martina
   const [coverImage, setCoverImage] = useState("");
 
@@ -49,6 +70,7 @@ const SidebarSx = () => {
   }
 
   return (
+    <>
     <Container fluid className="px-0">
       <Row>
         <Col xs={12} className="mb-2">
@@ -144,7 +166,7 @@ const SidebarSx = () => {
               >
                 <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2" />
               </svg>
-              <small className="text-black fw-semibold cursor-pointer">
+              <small className="text-black fw-semibold cursor-pointer" onClick={() => setActiveEgg("salvati")}>
                 Elementi salvati
               </small>
             </div>
@@ -159,7 +181,7 @@ const SidebarSx = () => {
               >
                 <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
               </svg>
-              <small className="text-black fw-semibold cursor-pointer">
+              <small className="text-black fw-semibold cursor-pointer" onClick={() => setActiveEgg("gruppi")}>
                 Gruppi
               </small>
             </div>
@@ -175,7 +197,7 @@ const SidebarSx = () => {
                 <path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5z" />
                 <path d="M2 3h10v2H2zm0 3h4v3H2zm0 4h4v1H2zm0 2h4v1H2zm5-6h2v1H7zm3 0h2v1h-2zM7 8h2v1H7zm3 0h2v1h-2zm-3 2h2v1H7zm3 0h2v1h-2zm-3 2h2v1H7zm3 0h2v1h-2z" />
               </svg>
-              <small className="text-black fw-semibold cursor-pointer">
+              <small className="text-black fw-semibold cursor-pointer" onClick={() => setActiveEgg("newsletter")}>
                 Newsletter
               </small>
             </div>
@@ -190,7 +212,7 @@ const SidebarSx = () => {
               >
                 <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5" />
               </svg>
-              <small className="text-black fw-semibold cursor-pointer">
+              <small className="text-black fw-semibold cursor-pointer" onClick={() => setActiveEgg("eventi")}>
                 Eventi
               </small>
             </div>
@@ -198,6 +220,33 @@ const SidebarSx = () => {
         </Col>
       </Row>
     </Container>
+
+    {/* easter egg — modal popup cliccando i link */}
+    {activeEgg && (
+      <div
+        className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
+        style={{ backgroundColor: "rgba(0,0,0,0.45)", zIndex: 1050 }}
+        onClick={() => setActiveEgg(null)}
+      >
+        <div
+          className="bg-white rounded-4 p-4 shadow-lg text-center"
+          style={{ maxWidth: 340 }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <h6 className="fw-bold mb-3">{EGGS[activeEgg].title}</h6>
+          <p className="text-muted mb-4" style={{ fontSize: 14, whiteSpace: "pre-line" }}>
+            {EGGS[activeEgg].text}
+          </p>
+          <button
+            className="btn btn-secondary btn-sm rounded-pill px-4"
+            onClick={() => setActiveEgg(null)}
+          >
+            Lo so, lo so
+          </button>
+        </div>
+      </div>
+    )}
+    </>
   );
 };
 
