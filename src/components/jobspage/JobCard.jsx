@@ -1,8 +1,24 @@
-const COLORS = ["#0a66c2", "#057642", "#b24020", "#7a3e98", "#c37d16", "#1d4477"];
-const LOCATIONS = ["Milano", "Roma", "Torino", "Bologna", "Firenze", "Napoli", "Genova"];
-const WORK_TYPES = ["Da remoto", "In sede", "Ibrido"];
+const COLORS = [
+  "#0a66c2",
+  "#057642",
+  "#b24020",
+  "#7a3e98",
+  "#c37d16",
+  "#1d4477",
+];
+const LOCATIONS = [
+  "Milano",
+  "Roma",
+  "Torino",
+  "Bologna",
+  "Firenze",
+  "Napoli",
+  "Genova",
+];
+const WORK_TYPES = ["Remotely", "On site", "Hybrid"];
 
-const hashStr = (str) => (str || "").split("").reduce((a, c) => a + c.charCodeAt(0), 0);
+const hashStr = (str) =>
+  (str || "").split("").reduce((a, c) => a + c.charCodeAt(0), 0);
 
 const JobCard = ({ job, isSelected, onSelect, onDismiss, compact }) => {
   const hash = hashStr(job._id || job.company_name);
@@ -24,13 +40,21 @@ const JobCard = ({ job, isSelected, onSelect, onDismiss, compact }) => {
       {/* Logo azienda */}
       <div
         className="rounded d-flex justify-content-center align-items-center text-white fw-bold flex-shrink-0"
-        style={{ width: 48, height: 48, backgroundColor: color, fontSize: "1.2rem" }}
+        style={{
+          width: 48,
+          height: 48,
+          backgroundColor: color,
+          fontSize: "1.2rem",
+        }}
       >
         {job.company_name?.charAt(0).toUpperCase()}
       </div>
 
       <div className="flex-grow-1 overflow-hidden">
-        <p className="mb-0 fw-semibold text-primary text-truncate" style={{ fontSize: "0.9rem" }}>
+        <p
+          className="mb-0 fw-semibold text-primary text-truncate"
+          style={{ fontSize: "0.9rem" }}
+        >
           {job.title}
         </p>
         <p className="mb-0 text-dark" style={{ fontSize: "0.82rem" }}>
@@ -41,16 +65,22 @@ const JobCard = ({ job, isSelected, onSelect, onDismiss, compact }) => {
         </p>
         <div className="d-flex flex-wrap align-items-center gap-1">
           {isEarly && (
-            <span className="text-success fw-semibold" style={{ fontSize: "0.73rem" }}>
-              Invia una delle prime candidature ·{" "}
+            <span
+              className="text-success fw-semibold"
+              style={{ fontSize: "0.73rem" }}
+            >
+              Submit one of the first applications ·{" "}
             </span>
           )}
           <span className="text-muted" style={{ fontSize: "0.73rem" }}>
             {hoursAgo}h fa ·
           </span>
-          <i className="bi bi-linkedin text-primary" style={{ fontSize: "0.73rem" }}></i>
+          <i
+            className="bi bi-linkedin text-primary"
+            style={{ fontSize: "0.73rem" }}
+          ></i>
           <span className="text-muted" style={{ fontSize: "0.73rem" }}>
-            Candidatura semplice
+            Simple application
           </span>
         </div>
       </div>

@@ -22,7 +22,7 @@ export const USERS = {
     mockProfile: {
       _id: "6a0d6e153a03a800150d93b9",
       name: "Amir",
-      surname: "Ka",
+      surname: "Kahna",
       email: "amirka@gmail.com",
       username: "Amir Ka",
       title: "FullStack Dev on the making",
