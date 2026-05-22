@@ -1,6 +1,11 @@
-import { Row } from "react-bootstrap";
+// import { Row } from "react-bootstrap";
 
-const commentSection = ({ visualizza, posta, modifica, elimina }) => {
+const commentSection = ({ visualizza, posta, modifica, elimina, postId }) => {
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [showComments, setShowComments] = useState(false);
+
   if (visualizza || (!visualizza && !posta && !modifica && !elimina)) {
     (fetch("https://striveschool-api.herokuapp.com/api/comments/"),
       {
@@ -17,8 +22,11 @@ const commentSection = ({ visualizza, posta, modifica, elimina }) => {
           }
         })
         .then((data) => {
-          console.log(data);
-          return <Row></Row>;
+          setComments(
+            data.filter((commento) => {
+              commento.elementId;
+            }),
+          );
         })
         .catch((err) => {
           console.log(err);
