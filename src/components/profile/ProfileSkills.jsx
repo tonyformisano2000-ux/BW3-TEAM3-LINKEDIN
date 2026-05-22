@@ -6,14 +6,14 @@ import { Card, Button, Modal, Badge } from 'react-bootstrap'
 
 // dati mock competenze
 const MOCK_SKILLS = [
-  { id: 1, name: 'React', endorsements: 18, category: 'Sviluppo web' },
-  { id: 2, name: 'JavaScript', endorsements: 24, category: 'Sviluppo web' },
-  { id: 3, name: 'Bootstrap', endorsements: 12, category: 'Sviluppo web' },
-  { id: 4, name: 'HTML / CSS', endorsements: 21, category: 'Sviluppo web' },
-  { id: 5, name: 'Node.js', endorsements: 9, category: 'Sviluppo web' },
-  { id: 6, name: 'GitHub', endorsements: 15, category: 'Strumenti' },
-  { id: 7, name: 'Redux', endorsements: 7, category: 'Strumenti' },
-  { id: 8, name: 'Comunicazione', endorsements: 11, category: 'Soft skill' },
+  { id: 1, name: 'React', endorsements: 18, category: 'Web development' },
+  { id: 2, name: 'JavaScript', endorsements: 24, category: 'Web development' },
+  { id: 3, name: 'Bootstrap', endorsements: 12, category: 'Web development' },
+  { id: 4, name: 'HTML / CSS', endorsements: 21, category: 'Web development' },
+  { id: 5, name: 'Node.js', endorsements: 9, category: 'Web development' },
+  { id: 6, name: 'GitHub', endorsements: 15, category: 'Tools' },
+  { id: 7, name: 'Redux', endorsements: 7, category: 'Tools' },
+  { id: 8, name: 'Communication', endorsements: 11, category: 'Soft skill' },
 ]
 
 // numero di competenze visibili di default
@@ -42,7 +42,7 @@ const ProfileSkills = () => {
 
           {/* intestazione */}
           <div className="d-flex justify-content-between align-items-center mb-4">
-            <h5 className="fw-bold mb-0">Competenze</h5>
+            <h5 className="fw-bold mb-0">Skills</h5>
 
             {/* bottone aggiungi */}
             <Button
@@ -71,7 +71,7 @@ const ProfileSkills = () => {
 
                     {/* numero conferme */}
                     <span className="text-muted small">
-                      {skill.endorsements} conferme
+                      {skill.endorsements} endorsements
                     </span>
 
                     {/* categoria */}
@@ -87,7 +87,7 @@ const ProfileSkills = () => {
                   size="sm"
                   className="rounded-pill"
                 >
-                  Conferma
+                  Endorse
                 </Button>
               </div>
             ))}
@@ -100,8 +100,8 @@ const ProfileSkills = () => {
             onClick={() => setShowAll(!showAll)}
           >
             {showAll
-              ? 'Mostra meno'
-              : `Visualizza tutte le ${MOCK_SKILLS.length} competenze`}
+              ? 'Show less'
+              : `Show all ${MOCK_SKILLS.length} skills`}
             <i className={`bi ms-1 ${showAll ? 'bi-chevron-up' : 'bi-chevron-down'}`}></i>
           </Button>
 
@@ -113,17 +113,17 @@ const ProfileSkills = () => {
 
         {/* header */}
         <Modal.Header closeButton>
-          <Modal.Title className="fw-bold">Aggiungi competenza</Modal.Title>
+          <Modal.Title className="fw-bold">Add skill</Modal.Title>
         </Modal.Header>
 
         {/* messaggio funzione non disponibile */}
         <Modal.Body>
-          <p className="text-muted">Funzione attualmente non disponibile.</p>
+          <p className="text-muted">Feature currently unavailable.</p>
         </Modal.Body>
 
         {/* footer */}
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>Chiudi</Button>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>Close</Button>
         </Modal.Footer>
       </Modal>
     </>
