@@ -1,4 +1,3 @@
-
 import { Modal, Button } from 'react-bootstrap'
 
 
@@ -30,7 +29,7 @@ const EditProfileModal = ({
 
         {/* titolo */}
         <Modal.Title>
-          Modifica presentazione
+          Edit introduction
         </Modal.Title>
 
       </Modal.Header>
@@ -52,17 +51,16 @@ const EditProfileModal = ({
                   ◆
                 </span>
 
-                Migliora il tuo profilo con Premium
+                Enhance your profile with Premium
 
               </p>
 
               {/* descrizione premium */}
               <p className="small mb-2">
-                Sposta in alto le sezioni del profilo
-                che vuoi mettere in evidenza,
-                aggiungi un pulsante personalizzato,
-                sfrutta l’assistente di scrittura con IA
-                e tanto altro.
+                Move the profile sections you want to highlight
+                to the top, add a custom button,
+                use the AI writing assistant
+                and much more.
               </p>
 
               {/* bottone premium */}
@@ -71,7 +69,7 @@ const EditProfileModal = ({
                 size="sm"
                 className="rounded-pill fw-semibold"
               >
-                Prova Premium per 0 €
+                Try Premium for €0
               </Button>
 
             </div>
@@ -84,19 +82,19 @@ const EditProfileModal = ({
 
         {/* testo campi obbligatori */}
         <p className="small text-muted">
-          * Indica che è obbligatorio
+          * Indicates required
         </p>
 
         {/* titolo sezione */}
         <h5 className="fw-bold mt-4">
-          Informazioni di base
+          Basic information
         </h5>
 
         {/* nome */}
         <div className="mb-3">
 
           <label className="form-label">
-            Nome*
+            First name*
           </label>
 
           <input
@@ -113,7 +111,7 @@ const EditProfileModal = ({
         <div className="mb-3">
 
           <label className="form-label">
-            Cognome*
+            Last name*
           </label>
 
           <input
@@ -128,7 +126,7 @@ const EditProfileModal = ({
         <div className="mb-3">
 
           <label className="form-label">
-            Sommario*
+            Summary*
           </label>
 
           <textarea
@@ -141,14 +139,14 @@ const EditProfileModal = ({
 
         {/* posizione */}
         <h5 className="fw-bold mt-4">
-          Posizione attuale
+          Current position
         </h5>
 
         {/* titolo */}
         <div className="mb-3">
 
           <label className="form-label">
-            Titolo*
+            Headline*
           </label>
 
           <input
@@ -161,14 +159,14 @@ const EditProfileModal = ({
 
         {/* località */}
         <h5 className="fw-bold mt-4">
-          Località
+          Location
         </h5>
 
         {/* città */}
         <div className="mb-3">
 
           <label className="form-label">
-            Città*
+            City*
           </label>
 
           <input
@@ -189,7 +187,7 @@ const EditProfileModal = ({
           variant="secondary"
           onClick={onHide}
         >
-          Annulla
+          Cancel
         </Button>
 
         {/* salva */}
@@ -197,7 +195,7 @@ const EditProfileModal = ({
           variant="primary"
           onClick={onHide}
         >
-          Salva
+          Save
         </Button>
 
       </Modal.Footer>

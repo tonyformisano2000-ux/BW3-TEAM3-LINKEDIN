@@ -30,7 +30,7 @@ const ResourcesMenu = () => {
 
         {/* testo */}
         <span className="fw-semibold">
-          Invia il profilo in un messaggio
+          Send profile in a message
         </span>
 
       </div>
@@ -44,7 +44,7 @@ const ResourcesMenu = () => {
         <i className="bi bi-download fs-4"></i>
 
         <span className="fw-semibold">
-          Salva come PDF
+          Save as PDF
         </span>
 
       </div>
@@ -58,7 +58,7 @@ const ResourcesMenu = () => {
         <i className="bi bi-bookmark-fill fs-4"></i>
 
         <span className="fw-semibold">
-          Elementi salvati
+          Saved items
         </span>
 
       </div>
@@ -72,7 +72,7 @@ const ResourcesMenu = () => {
         <i className="bi bi-bar-chart fs-4"></i>
 
         <span className="fw-semibold">
-          Attività
+          Activity
         </span>
 
       </div>
@@ -86,7 +86,7 @@ const ResourcesMenu = () => {
         <i className="bi bi-info-square-fill fs-4"></i>
 
         <span className="fw-semibold">
-          Informazioni sull’utente
+          About this profile
         </span>
 
       </div>

@@ -11,10 +11,10 @@ const ProfileAnalytics = () => {
         {/* intestazione */}
         <div className="d-flex justify-content-between align-items-start mb-3">
           <div>
-            <h5 className="fw-bold mb-0">Analisi del profilo</h5>
+            <h5 className="fw-bold mb-0">Analytics</h5>
             <span className="text-muted small">
               <i className="bi bi-eye me-1"></i>
-              Visibile solo a te
+              Private to you
             </span>
           </div>
         </div>
@@ -26,9 +26,9 @@ const ProfileAnalytics = () => {
           <div className="d-flex align-items-start gap-3" style={{ cursor: 'pointer' }}>
             <i className="bi bi-person-lines-fill fs-4 text-muted"></i>
             <div>
-              <p className="mb-0 fw-semibold">47 visualizzazioni del profilo</p>
+              <p className="mb-0 fw-semibold">47 profile views</p>
               <p className="mb-0 text-muted small">
-                Scopri chi ha visitato il tuo profilo.
+                Discover who viewed your profile.
               </p>
             </div>
           </div>
@@ -37,9 +37,9 @@ const ProfileAnalytics = () => {
           <div className="d-flex align-items-start gap-3" style={{ cursor: 'pointer' }}>
             <i className="bi bi-bar-chart-fill fs-4 text-muted"></i>
             <div>
-              <p className="mb-0 fw-semibold">128 impressioni dei post</p>
+              <p className="mb-0 fw-semibold">128 post impressions</p>
               <p className="mb-0 text-muted small">
-                Inizia un post per aumentare le tue impressioni.
+                Start a post to increase your impressions.
               </p>
             </div>
           </div>
@@ -48,9 +48,9 @@ const ProfileAnalytics = () => {
           <div className="d-flex align-items-start gap-3" style={{ cursor: 'pointer' }}>
             <i className="bi bi-search fs-4 text-muted"></i>
             <div>
-              <p className="mb-0 fw-semibold">12 apparizioni nei risultati di ricerca</p>
+              <p className="mb-0 fw-semibold">12 search appearances</p>
               <p className="mb-0 text-muted small">
-                Vedi le parole chiave usate per trovarti.
+                See the keywords used to find you.
               </p>
             </div>
           </div>
@@ -60,9 +60,9 @@ const ProfileAnalytics = () => {
             <div className="d-flex align-items-start gap-3" style={{ cursor: 'pointer' }}>
               <i className="bi bi-people-fill fs-4 text-muted"></i>
               <div>
-                <p className="mb-0 fw-semibold">23 nuovi follower</p>
+                <p className="mb-0 fw-semibold">23 new followers</p>
                 <p className="mb-0 text-muted small">
-                  Scopri chi ti segue.
+                  Discover who follows you.
                 </p>
               </div>
             </div>
@@ -75,7 +75,7 @@ const ProfileAnalytics = () => {
           className="p-0 mt-3 text-decoration-none fw-semibold"
           onClick={() => setExpanded(!expanded)}
         >
-          {expanded ? 'Mostra meno' : 'Visualizza tutte le analisi'}
+          {expanded ? 'Show less' : 'Show all analytics'}
           <i className={`bi ms-1 ${expanded ? 'bi-chevron-up' : 'bi-chevron-right'}`}></i>
         </Button>
 

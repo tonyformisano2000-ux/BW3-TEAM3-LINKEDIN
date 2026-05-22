@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 // token autenticazione API
 const TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTBiNTYzOTA2YmJlOTAwMTVkZWU1OGIiLCJpYXQiOjE3NzkxMjc4NjYsImV4cCI6MTc4MDMzNzQ2Nn0.JZjN2osgizy9f_4tzKIJOa3qHhRyBgZO9IpElXOHt8Q";
+  "YOUR_TOKEN_HERE";
 
 // url base delle chiamate API
 const API_BASE = "https://striveschool-api.herokuapp.com/api/profile";
@@ -31,11 +31,11 @@ const getInitials = (company) =>
     .toUpperCase()
     .slice(0, 2);
 
-// formatta data ISO in formato italiano
+// formatta data ISO in formato inglese
 const formatDate = (dateStr) => {
-  if (!dateStr) return "Presente";
+  if (!dateStr) return "Present";
   const d = new Date(dateStr);
-  return d.toLocaleDateString("it-IT", { year: "numeric", month: "short" });
+  return d.toLocaleDateString("en-US", { year: "numeric", month: "short" });
 };
 
 // logo azienda con iniziali colorate
@@ -57,7 +57,7 @@ const CompanyLogo = ({ company }) => (
 const EMPTY_FORM = {
   role: "",
   company: "",
-  type: "A tempo pieno",
+  type: "Full-time",
   area: "",
   startDate: "",
   endDate: "",
@@ -113,7 +113,7 @@ const ExperienceItem = ({ exp, onEdit }) => {
             className="p-0 small text-decoration-none fw-semibold"
             onClick={() => setExpanded(!expanded)}
           >
-            {expanded ? "Mostra meno" : "Visualizza altro"}
+            {expanded ? "Show less" : "Show more"}
           </Button>
         )}
       </div>
@@ -134,15 +134,15 @@ const ExperienceItem = ({ exp, onEdit }) => {
 const ExperienceForm = ({ form, onChange }) => (
   <>
     {/* nota campi obbligatori */}
-    <p className="small text-muted">* Indica che è obbligatorio</p>
+    <p className="small text-muted">* Indicates required</p>
 
     {/* campo titolo */}
     <div className="mb-3">
-      <label className="form-label">Titolo*</label>
+      <label className="form-label">Title*</label>
       <input
         type="text"
         className="form-control"
-        placeholder="Es. Frontend Developer"
+        placeholder="E.g. Frontend Developer"
         value={form.role}
         onChange={(e) => onChange("role", e.target.value)}
       />
@@ -150,29 +150,29 @@ const ExperienceForm = ({ form, onChange }) => (
 
     {/* campo tipo impiego */}
     <div className="mb-3">
-      <label className="form-label">Tipo di impiego</label>
+      <label className="form-label">Employment type</label>
       <select
         className="form-select"
         value={form.type}
         onChange={(e) => onChange("type", e.target.value)}
       >
-        <option>A tempo pieno</option>
+        <option>Full-time</option>
         <option>Part-time</option>
-        <option>Autonomo</option>
-        <option>Libero professionista</option>
-        <option>Stage</option>
-        <option>Apprendistato</option>
-        <option>Stagionale</option>
+        <option>Self-employed</option>
+        <option>Freelance</option>
+        <option>Internship</option>
+        <option>Apprenticeship</option>
+        <option>Seasonal</option>
       </select>
     </div>
 
     {/* campo azienda */}
     <div className="mb-3">
-      <label className="form-label">Azienda*</label>
+      <label className="form-label">Company*</label>
       <input
         type="text"
         className="form-control"
-        placeholder="Es. Google"
+        placeholder="E.g. Google"
         value={form.company}
         onChange={(e) => onChange("company", e.target.value)}
       />
@@ -180,11 +180,11 @@ const ExperienceForm = ({ form, onChange }) => (
 
     {/* campo sede */}
     <div className="mb-3">
-      <label className="form-label">Sede</label>
+      <label className="form-label">Location</label>
       <input
         type="text"
         className="form-control"
-        placeholder="Es. Milano, Italia"
+        placeholder="E.g. Milan, Italy"
         value={form.area}
         onChange={(e) => onChange("area", e.target.value)}
       />
@@ -195,7 +195,7 @@ const ExperienceForm = ({ form, onChange }) => (
 
       {/* data inizio */}
       <div className="col">
-        <label className="form-label">Data inizio*</label>
+        <label className="form-label">Start date*</label>
         <input
           type="date"
           className="form-control"
@@ -206,7 +206,7 @@ const ExperienceForm = ({ form, onChange }) => (
 
       {/* data fine */}
       <div className="col">
-        <label className="form-label">Data fine</label>
+        <label className="form-label">End date</label>
         <input
           type="date"
           className="form-control"
@@ -230,17 +230,17 @@ const ExperienceForm = ({ form, onChange }) => (
         }}
       />
       <label className="form-check-label small" htmlFor="ongoing-check">
-        Attualmente lavoro qui
+        I currently work here
       </label>
     </div>
 
     {/* campo descrizione */}
     <div className="mb-3">
-      <label className="form-label">Descrizione</label>
+      <label className="form-label">Description</label>
       <textarea
         className="form-control"
         rows={4}
-        placeholder="Descrivi il tuo ruolo..."
+        placeholder="Describe your role..."
         value={form.description}
         onChange={(e) => onChange("description", e.target.value)}
       />
@@ -306,7 +306,7 @@ const ProfileExperience = () => {
     setForm({
       role: exp.role || "",
       company: exp.company || "",
-      type: exp.type || "A tempo pieno",
+      type: exp.type || "Full-time",
       area: exp.area || "",
       startDate: exp.startDate ? exp.startDate.slice(0, 10) : "",
       endDate: exp.endDate ? exp.endDate.slice(0, 10) : "",
@@ -372,7 +372,7 @@ const ProfileExperience = () => {
 
           {/* intestazione */}
           <div className="d-flex justify-content-between align-items-center mb-4">
-            <h5 className="fw-bold mb-0">Esperienza</h5>
+            <h5 className="fw-bold mb-0">Experience</h5>
 
             {/* bottone aggiungi */}
             <Button variant="light" className="rounded-circle border-0 p-2" onClick={openAdd}>
@@ -388,7 +388,7 @@ const ProfileExperience = () => {
           ) : experiences.length === 0 ? (
 
             // messaggio lista vuota
-            <p className="text-muted small mb-0">Nessuna esperienza aggiunta.</p>
+            <p className="text-muted small mb-0">No experience added yet.</p>
           ) : (
 
             // lista esperienze
@@ -407,7 +407,7 @@ const ProfileExperience = () => {
 
         {/* header */}
         <Modal.Header closeButton>
-          <Modal.Title className="fw-bold">Aggiungi esperienza</Modal.Title>
+          <Modal.Title className="fw-bold">Add experience</Modal.Title>
         </Modal.Header>
 
         {/* form */}
@@ -418,10 +418,10 @@ const ProfileExperience = () => {
         {/* footer */}
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowAdd(false)} disabled={saving}>
-            Annulla
+            Cancel
           </Button>
           <Button variant="primary" onClick={saveAdd} disabled={saving || !form.role || !form.company}>
-            {saving ? <Spinner size="sm" /> : "Salva"}
+            {saving ? <Spinner size="sm" /> : "Save"}
           </Button>
         </Modal.Footer>
       </Modal>
@@ -431,7 +431,7 @@ const ProfileExperience = () => {
 
         {/* header */}
         <Modal.Header closeButton>
-          <Modal.Title className="fw-bold">Modifica esperienza</Modal.Title>
+          <Modal.Title className="fw-bold">Edit experience</Modal.Title>
         </Modal.Header>
 
         {/* form precompilato */}
@@ -442,10 +442,10 @@ const ProfileExperience = () => {
         {/* footer */}
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowEdit(false)} disabled={saving}>
-            Annulla
+            Cancel
           </Button>
           <Button variant="primary" onClick={saveEdit} disabled={saving || !form.role || !form.company}>
-            {saving ? <Spinner size="sm" /> : "Salva modifiche"}
+            {saving ? <Spinner size="sm" /> : "Save changes"}
           </Button>
         </Modal.Footer>
       </Modal>

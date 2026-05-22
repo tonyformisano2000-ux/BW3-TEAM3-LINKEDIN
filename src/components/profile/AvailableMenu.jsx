@@ -3,34 +3,27 @@ const AvailableMenu = () => {
 
   return (
 
-    // container menu dropdown
     <div
       className="position-absolute bg-white shadow rounded-4 p-3 mt-2"
 
-      // stile custom
       style={{
         width: '290px',
 
-        // resta sopra gli altri elementi
         zIndex: 9999,
       }}
     >
 
-      {/* ====================== */}
-      {/* NUOVO LAVORO */}
-      {/* ====================== */}
 
       <div className="mb-4">
 
         {/* titolo */}
         <h5 className="fw-bold mb-1">
-          Trovare un nuovo lavoro
+          Find a new job
         </h5>
 
         {/* descrizione */}
         <p className="text-muted mb-0">
-          Mostra ai recruiter e ad altri
-          che sei disponibile a lavorare
+          Show recruiters and others that you are available for work
         </p>
 
       </div>
@@ -43,13 +36,13 @@ const AvailableMenu = () => {
 
         {/* titolo */}
         <h5 className="fw-bold mb-1">
-          Assunzioni
+          Hiring
         </h5>
 
         {/* descrizione */}
         <p className="text-muted mb-0">
-          Fai sapere che stai assumendo
-          e attrai candidati qualificati
+          let them know you're hiring 
+          and attract qualified candidates
         </p>
 
       </div>
@@ -62,13 +55,13 @@ const AvailableMenu = () => {
 
         {/* titolo */}
         <h5 className="fw-bold mb-1">
-          Fornire servizi
+          Provide services
         </h5>
 
         {/* descrizione */}
         <p className="text-muted mb-0">
-          Metti in risalto i servizi che offri,
-          così i nuovi clienti potranno trovarti
+          Highlight the services you offer, 
+          so new customers can find you
         </p>
 
       </div>
@@ -81,14 +74,15 @@ const AvailableMenu = () => {
 
         {/* titolo */}
         <h5 className="fw-bold mb-1">
-          Trovare opportunità di volontariato
+          Find volunteer opportunities
         </h5>
 
         {/* descrizione */}
         <p className="text-muted mb-0">
-          Mostra che sei disponibile
-          per volontariato relativo
-          alle tue competenze
+          Show that you are available 
+          for related volunteering 
+          to your skills
+          
         </p>
 
       </div>

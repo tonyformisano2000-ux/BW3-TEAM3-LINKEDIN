@@ -5,27 +5,27 @@ import { Card, Button } from "react-bootstrap";
 const MOCK_POSTS = [
   {
     id: 1,
-    text: "Oggi ho completato il mio primo progetto full-stack con React 🚀 #WebDevelopment #React",
+    text: "Today I completed my first full-stack project with React 🚀 #WebDevelopment #React",
     likes: 42,
     comments: 8,
-    time: "2 giorni fa",
+    time: "2 days ago",
     image: null,
   },
   {
     id: 2,
-    text: "Interessante articolo sulla gestione dello stato in React con Redux Toolkit. Consiglio a tutti di leggerlo!",
+    text: "Interesting article about state management in React with Redux Toolkit. I recommend everyone to read it!",
     likes: 19,
     comments: 3,
-    time: "1 settimana fa",
+    time: "1 week ago",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaXI76_figZeYaHsj96o3xin0FJtQPU3cROQ&s",
   },
 ];
 
-const TABS = ["Post", "Documenti", "Immagini", "Like", "Commenti", "Articoli"];
+const TABS = ["Posts", "Documents", "Images", "Likes", "Comments", "Articles"];
 
 const ProfileActivity = ({ profile }) => {
-  const [activeTab, setActiveTab] = useState("Post");
+  const [activeTab, setActiveTab] = useState("Posts");
   const [followers] = useState(() => Math.floor(Math.random() * 500) + 100);
 
   return (
@@ -34,16 +34,16 @@ const ProfileActivity = ({ profile }) => {
         {/* intestazione */}
         <div className="d-flex justify-content-between align-items-center mb-1">
           <div>
-            <h5 className="fw-bold mb-0">Attività</h5>
+            <h5 className="fw-bold mb-0">Activity</h5>
             <p className="text-muted small mb-0">
-              {profile?.name} {profile?.surname} · {followers} follower
+              {profile?.name} {profile?.surname} · {followers} followers
             </p>
           </div>
           <Button
             variant="outline-primary"
             className="rounded-pill fw-semibold"
           >
-            Crea un post
+            Create a post
           </Button>
         </div>
 
@@ -65,7 +65,7 @@ const ProfileActivity = ({ profile }) => {
         </div>
 
         {/* lista post */}
-        {activeTab === "Post" ? (
+        {activeTab === "Posts" ? (
           <div className="d-flex flex-column gap-4">
             {MOCK_POSTS.map((post) => (
               <div key={post.id} className="border-bottom pb-4">
@@ -119,7 +119,7 @@ const ProfileActivity = ({ profile }) => {
                   </span>
                   <span>
                     <i className="bi bi-chat me-1"></i>
-                    {post.comments} commenti
+                    {post.comments} comments
                   </span>
                 </div>
               </div>
@@ -127,7 +127,7 @@ const ProfileActivity = ({ profile }) => {
           </div>
         ) : (
           <p className="text-muted text-center py-3">
-            Nessun contenuto da mostrare.
+            No content to show.
           </p>
         )}
 
@@ -136,7 +136,7 @@ const ProfileActivity = ({ profile }) => {
           variant="link"
           className="p-0 mt-2 text-decoration-none fw-semibold w-100 text-center"
         >
-          Visualizza tutte le attività
+          Show all activity
           <i className="bi bi-arrow-right ms-1"></i>
         </Button>
       </Card.Body>

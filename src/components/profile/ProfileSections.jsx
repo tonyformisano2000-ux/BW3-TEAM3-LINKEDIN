@@ -9,7 +9,7 @@ const ProfileSections = ({ show, onHide }) => {
   return (
     <Modal show={show} onHide={onHide} centered size="lg">
       <Modal.Header closeButton>
-        <Modal.Title className="fw-bold">Aggiungi al profilo</Modal.Title>
+        <Modal.Title className="fw-bold">Add to profile</Modal.Title>
       </Modal.Header>
 
       <Modal.Body className="p-0">
@@ -20,7 +20,7 @@ const ProfileSections = ({ show, onHide }) => {
             style={{ cursor: "pointer" }}
             onClick={() => setShowMainSections(!showMainSections)}
           >
-            <h4 className="fw-bold mb-0">Sezioni principali</h4>
+            <h4 className="fw-bold mb-0">Core sections</h4>
 
             <i
               className={`bi ${
@@ -32,28 +32,28 @@ const ProfileSections = ({ show, onHide }) => {
           {showMainSections && (
             <>
               <p className="text-muted fs-4">
-                Completa queste sezioni principali per migliorare la visibilità
-                del tuo profilo fra recruiter e collegamenti.
+                Complete these core sections to improve your profile visibility
+                among recruiters and connections.
               </p>
 
               <div className="d-flex flex-column">
                 <button className="btn text-start py-3 border-top">
-                  Aggiungi informazioni
+                  Add about section
                 </button>
                 <button className="btn text-start py-3 border-top">
-                  Aggiungi formazione
+                  Add education
                 </button>
                 <button className="btn text-start py-3 border-top">
-                  Aggiungi posizione lavorativa
+                  Add work position
                 </button>
                 <button className="btn text-start py-3 border-top">
-                  Aggiungi servizi
+                  Add services
                 </button>
                 <button className="btn text-start py-3 border-top">
-                  Aggiungi pausa lavorativa
+                  Add career break
                 </button>
                 <button className="btn text-start py-3 border-top border-bottom">
-                  Aggiungi competenze
+                  Add skills
                 </button>
               </div>
             </>
@@ -67,7 +67,7 @@ const ProfileSections = ({ show, onHide }) => {
             style={{ cursor: "pointer" }}
             onClick={() => setShowSuggestedSections(!showSuggestedSections)}
           >
-            <h4 className="fw-bold mb-0">Sezioni consigliate</h4>
+            <h4 className="fw-bold mb-0">Recommended sections</h4>
 
             <i
               className={`bi ${
@@ -79,25 +79,25 @@ const ProfileSections = ({ show, onHide }) => {
           {showSuggestedSections && (
             <>
               <p className="text-muted fs-4">
-                Completando queste sezioni aumenterai la tua credibilità e
-                potrai accedere a più opportunità.
+                Completing these sections will increase your credibility and
+                help you access more opportunities.
               </p>
 
               <div className="d-flex flex-column">
                 <button className="btn text-start py-3 border-top">
-                  Aggiungi elementi in primo piano
+                  Add featured content
                 </button>
                 <button className="btn text-start py-3 border-top">
-                  Aggiungi licenze e certificazioni
+                  Add licenses and certifications
                 </button>
                 <button className="btn text-start py-3 border-top">
-                  Aggiungi progetti
+                  Add projects
                 </button>
                 <button className="btn text-start py-3 border-top">
-                  Aggiungi corsi
+                  Add courses
                 </button>
                 <button className="btn text-start py-3 border-top border-bottom">
-                  Aggiungi referenze
+                  Add recommendations
                 </button>
               </div>
             </>
@@ -111,7 +111,7 @@ const ProfileSections = ({ show, onHide }) => {
             style={{ cursor: "pointer" }}
             onClick={() => setShowOtherSections(!showOtherSections)}
           >
-            <h4 className="fw-bold mb-0">Altro</h4>
+            <h4 className="fw-bold mb-0">Additional sections</h4>
 
             <i
               className={`bi ${
@@ -123,35 +123,35 @@ const ProfileSections = ({ show, onHide }) => {
           {showOtherSections && (
             <>
               <p className="text-muted fs-4">
-                Conferisci ancora più personalità al tuo profilo. Queste
-                sezioni ti aiuteranno a espandere la tua rete e a instaurare
-                più relazioni lavorative.
+                Give your profile even more personality. These sections will
+                help you expand your network and build more professional
+                relationships.
               </p>
 
               <div className="d-flex flex-column">
                 <button className="btn text-start py-3 border-top">
-                  Aggiungi esperienze di volontariato
+                  Add volunteer experience
                 </button>
                 <button className="btn text-start py-3 border-top">
-                  Aggiungi pubblicazioni
+                  Add publications
                 </button>
                 <button className="btn text-start py-3 border-top">
-                  Aggiungi brevetti
+                  Add patents
                 </button>
                 <button className="btn text-start py-3 border-top">
-                  Aggiungi riconoscimenti e premi
+                  Add honors and awards
                 </button>
                 <button className="btn text-start py-3 border-top">
-                  Aggiungi votazioni esame
+                  Add test scores
                 </button>
                 <button className="btn text-start py-3 border-top">
-                  Aggiungi lingue
+                  Add languages
                 </button>
                 <button className="btn text-start py-3 border-top">
-                  Aggiungi organizzazioni
+                  Add organizations
                 </button>
                 <button className="btn text-start py-3 border-top border-bottom">
-                  Aggiungi cause
+                  Add causes
                 </button>
               </div>
             </>
