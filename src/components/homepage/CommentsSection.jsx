@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Row, Col, Spinner } from "react-bootstrap";
 import { MessageCircle } from "lucide-react";
+import { TOKEN } from "../../auth/auth";
 
 const COMMENTS_TOKEN =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OWY5ZmQ2NDU0YTMxNTAwMTU1OGIxYzUiLCJpYXQiOjE3NzkzNjk3NTIsImV4cCI6MTc4MDU3OTM1Mn0.8_efv-11_AJ1LCoQ2hn0pgXncAzXsjk8SRBLpfAc-yg";
@@ -68,7 +69,7 @@ const CommentsSection = ({
         {
           method: "POST",
           headers: {
-            Authorization: `Bearer ${COMMENTS_TOKEN}`,
+            Authorization: `Bearer ${TOKEN}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify({

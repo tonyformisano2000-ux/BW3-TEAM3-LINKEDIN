@@ -75,7 +75,7 @@ export const USERS = {
   },
 };
 
-export const ACTIVE_USER = "ale";
+export const ACTIVE_USER = "amir";
 
 export const ACTIVE_ACCOUNT = USERS[ACTIVE_USER];
 
