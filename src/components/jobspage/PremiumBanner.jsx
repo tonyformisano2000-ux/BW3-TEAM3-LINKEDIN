@@ -2,7 +2,6 @@
 const PremiumBanner = ({ onPremiumClick }) => (
   <div className="bg-white rounded-3 border p-4 mb-3">
     <div className="d-flex align-items-start gap-3">
-
       {/* avatar sovrapposti */}
       <div className="d-flex flex-shrink-0 mt-1">
         {[1, 2, 3].map((n) => (
@@ -19,19 +18,20 @@ const PremiumBanner = ({ onPremiumClick }) => (
       {/* testo e bottone */}
       <div>
         <p className="fw-semibold mb-1" style={{ fontSize: "0.95rem" }}>
-          Vedi l&apos;elenco completo delle offerte di lavoro per cui saresti fra i migliori candidati
+          See the complete list of job offers for which you would be a top
+          candidate.
         </p>
         <small className="text-muted d-block mb-2">
-          Antonio e milioni di altri utenti usano Premium
+          Antonio and millions of other users use Premium
         </small>
         <button
           className="btn btn-warning rounded-pill btn-sm fw-semibold px-4"
           onClick={onPremiumClick}
         >
-          Riattiva Premium con il 50% di sconto
+          Reactivate Premium with a 50% discount
         </button>
         <small className="text-muted d-block mt-1">
-          Puoi annullare in qualsiasi momento. Nessuna spesa nascosta.
+          You can cancel at any time. There are no hidden fees.
         </small>
       </div>
     </div>

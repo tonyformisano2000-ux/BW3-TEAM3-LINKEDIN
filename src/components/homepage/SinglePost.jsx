@@ -1,13 +1,20 @@
-import { Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
+import { ThumbsUp, Share2, Send } from "lucide-react";
 
-const SinglePost = ({ postElements }) => {
+import CommentsSection from "./CommentsSection";
+
+const CURRENT_USER_ID = "me";
+
+const SinglePost = ({ postElements, onLike }) => {
   const user = postElements?.user;
+  const [showComments, setShowComments] = useState(false);
+  const [profileImage, setProfileImage] = useState(
+    "https://placecats.com/200/200",
+  );
 
-  // stato immagine profilo  - martina
-  const [profileImage, setProfileImage] = useState("");
+  const isLiked = postElements.likes?.includes(CURRENT_USER_ID);
 
-  // recupero immagine salvata nel localStorage
   useEffect(() => {
     if (!user?._id) return;
 
@@ -20,41 +27,98 @@ const SinglePost = ({ postElements }) => {
   }, [user]);
 
   return (
-    <Row className="align-items-start mb-3 p-3 bg-white rounded-2 shadow-sm">
-      <img
-        className="col-1"
-        style={{ borderRadius: "100%", height: "50px" }}
-        src={profileImage || null}
-        alt="user"
-      />
+    <Row className="mb-4">
+      <div className="bg-white rounded-2 shadow-sm p-3">
+        <Row className="align-items-center mb-3">
+          <Col xs="auto">
+            <img
+              src={profileImage}
+              alt="user"
+              style={{
+                borderRadius: "50%",
+                height: "50px",
+                width: "50px",
+                objectFit: "cover",
+              }}
+            />
+          </Col>
 
-      <div className="col-11">
-        <Row>
-          <h6 className="mb-0 fw-bold">
-            {user?.name} {user?.surname}
-          </h6>
+          <Col className="d-flex flex-column">
+            <h6 className="mb-0 fw-bold">
+              {user?.name} {user?.surname}
+            </h6>
+
+            <small className="text-muted">
+              {user?.title} • {user?.area}
+            </small>
+          </Col>
         </Row>
 
         <Row>
-          <small className="text-muted">
-            {user?.title} • {user?.area}
-          </small>
-        </Row>
-
-        <Row className="mt-2">
-          <p className="mb-2">{postElements?.text}</p>
+          <Col>
+            <p className="mb-2">{postElements?.text}</p>
+          </Col>
         </Row>
 
         {postElements?.image && (
-          <Row>
-            <img
-              src={postElements.image}
-              alt="post"
-              className="img-fluid rounded-3"
-              style={{ height: "70%", width: "70%" }}
-            />
+          <Row className="mt-2 mb-4">
+            <Col>
+              <img
+                src={postElements.image}
+                alt="post"
+                className="img-fluid rounded-3 w-100"
+                style={{
+                  maxHeight: "500px",
+                  objectFit: "cover",
+                }}
+              />
+            </Col>
           </Row>
         )}
+
+        <Row className="my-3 text-center align-items-center">
+          <Col
+            className="cursor-pointer d-flex flex-column align-items-center"
+            onClick={onLike}
+          >
+            <ThumbsUp size={22} color={isLiked ? "#0d6efd" : "black"} />
+
+            <p
+              className="fw-semibold m-0"
+              style={{
+                color: isLiked ? "#0d6efd" : "black",
+              }}
+            >
+              Like
+            </p>
+          </Col>
+
+          <CommentsSection
+            postId={postElements._id}
+            insideRow={true}
+            showComments={showComments}
+            setShowComments={setShowComments}
+          />
+
+          <Col className="cursor-pointer d-flex flex-column align-items-center">
+            <Share2 size={22} />
+
+            <p className="fw-semibold m-0">Share</p>
+          </Col>
+
+          <Col className="cursor-pointer d-flex flex-column align-items-center">
+            <Send size={22} />
+
+            <p className="fw-semibold m-0">Send</p>
+          </Col>
+        </Row>
+
+        <CommentsSection
+          postId={postElements._id}
+          insideRow={false}
+          showComments={showComments}
+          setShowComments={setShowComments}
+        />
       </div>
     </Row>
   );

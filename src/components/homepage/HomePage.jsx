@@ -41,7 +41,7 @@ const HomePage = () => {
   }, [dispatch]);
 
   return (
-    <Container fluid className="my-3">
+    <Container fluid className="my-4" style={{ width: "80%" }}>
       <Row>
         <Col xs={12} lg={3}>
           <SidebarSx />
@@ -58,7 +58,7 @@ const HomePage = () => {
         </Col>
       </Row>
       <div className="d-lg-none">
-        <Footer  />
+        <Footer />
       </div>
     </Container>
   );

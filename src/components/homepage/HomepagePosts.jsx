@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import SinglePost from "./SinglePost";
 import { TOKEN } from "../../auth/auth";
 
+const CURRENT_USER_ID = "me";
+
 const HomepagePosts = () => {
   const [datas, setDatas] = useState([]);
   const [visibleCount, setVisibleCount] = useState(10);
@@ -35,15 +37,53 @@ const HomepagePosts = () => {
           ).values(),
         );
 
-        setDatas(uniquePosts);
+        setDatas(
+          uniquePosts.map((post) => ({ ...post, likes: [], comments: [] })),
+        );
       })
       .catch((err) => console.log(err));
   }, []);
 
+  const handleLike = (postId) => {
+    setDatas((prev) =>
+      prev.map((post) => {
+        if (post._id !== postId) return post;
+        const liked = post.likes.includes(CURRENT_USER_ID);
+        return {
+          ...post,
+          likes: liked
+            ? post.likes.filter((id) => id !== CURRENT_USER_ID)
+            : [...post.likes, CURRENT_USER_ID],
+        };
+      }),
+    );
+  };
+
+  const handleComment = (postId, text, author) => {
+    setDatas((prev) =>
+      prev.map((post) =>
+        post._id !== postId
+          ? post
+          : {
+              ...post,
+              comments: [
+                ...post.comments,
+                { author, text, createdAt: new Date() },
+              ],
+            },
+      ),
+    );
+  };
+
   return (
     <>
       {datas.slice(0, visibleCount).map((post) => (
-        <SinglePost key={post._id} postElements={post} />
+        <SinglePost
+          key={post._id}
+          postElements={post}
+          onLike={() => handleLike(post._id)}
+          onComment={(text, author) => handleComment(post._id, text, author)}
+        />
       ))}
 
       {visibleCount < datas.length && (
