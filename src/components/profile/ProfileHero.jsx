@@ -28,6 +28,7 @@ const ProfileHero = ({ profile }) => {
     const savedCover = localStorage.getItem(`cover-${profile._id}`);
 
     if (savedCover) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setCoverImage(savedCover);
     }
   }, [profile._id]);
@@ -39,6 +40,7 @@ const ProfileHero = ({ profile }) => {
     );
 
     if (savedProfileImage) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setProfileImage(savedProfileImage);
     } else {
       setProfileImage(profile.image);
