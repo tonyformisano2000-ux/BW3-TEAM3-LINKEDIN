@@ -74,7 +74,7 @@ const CommentsSection = ({
           body: JSON.stringify({
             comment: comment,
             elementId: postId,
-            author: "Anonymous",
+            rate: "5",
           }),
         },
       );
