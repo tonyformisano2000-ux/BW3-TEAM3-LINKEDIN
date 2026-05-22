@@ -134,7 +134,7 @@ const SinglePost = ({ postElements }) => {
             <Col xs={12} className="text-center">
               <form onSubmit={handleCommentSubmit}>
                 <textarea
-                  className="border-0 shadow rounded-2 p-2"
+                  className="border-0 shadow-sm rounded-2 p-2"
                   style={{ width: "100%" }}
                   name="comment"
                   id={postElements._id}
