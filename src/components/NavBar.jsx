@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Button,
   Form,
@@ -13,6 +14,7 @@ import logo from "../assets/LinkedIn_icon.svg.png";
 import { useSelector } from "react-redux";
 
 import { USERS } from "../auth/auth";
+import PremiumModal from "./jobspage/PremiumModal";
 
 function NavBar({
   collapsed,
@@ -23,6 +25,8 @@ function NavBar({
   activeUser,
   setActiveUser,
 }) {
+  const [showPremium, setShowPremium] = useState(false);
+
   return (
     <Navbar bg="light" expand="lg" className="py-1 border-bottom">
       <Container fluid className="px-4">
@@ -234,9 +238,11 @@ function NavBar({
                 </div>
               </div>
             </NavDropdown>
-            <Link
-              to="/premium"
-              className="mx-3 py-2 d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small w-25 text-decoration-none"
+            {/* easter egg — apre modal invece di navigare */}
+            <span
+              role="button"
+              className="mx-3 py-2 d-flex flex-row flex-lg-column align-items-center gap-2 gap-lg-0 small w-25"
+              onClick={() => setShowPremium(true)}
             >
               <span
                 className="text-wrap"
@@ -248,7 +254,8 @@ function NavBar({
               >
                 Try Premium for 0€
               </span>
-            </Link>
+            </span>
+            {showPremium && <PremiumModal onClose={() => setShowPremium(false)} />}
           </Nav>
         </Navbar.Collapse>
       </Container>

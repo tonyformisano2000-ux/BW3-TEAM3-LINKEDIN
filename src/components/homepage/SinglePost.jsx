@@ -1,35 +1,19 @@
 import { Col, Row, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { ThumbsUp, MessageCircle, Share2, Send } from "lucide-react";
 
 const SinglePost = ({ postElements }) => {
   const user = postElements?.user;
 
-  const [commentModal, setCommentModal] = useState(false);
+  // stato immagine profilo  - martina
   const [profileImage, setProfileImage] = useState("");
-  const [isLiked, setIsLiked] = useState(false);
-  const [comment, setComment] = useState("");
 
-  const handleCommentSubmit = (e) => {
-    e.preventDefault();
-
-    // handle empty comment
-    if (!comment.trim()) return;
-
-    // hide modal
-    setCommentModal(false);
-
-    console.log("Submitting comment:", comment);
-
-    // reset input
-    setComment("");
-  };
-
+  // recupero immagine salvata nel localStorage
   useEffect(() => {
     if (!user?._id) return;
 
     const savedProfileImage = localStorage.getItem(`profile-image-${user._id}`);
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setProfileImage(
       savedProfileImage || user?._image || "https://placecats.com/200/200",
     );
