@@ -11,7 +11,6 @@ import {
 
 import { Link } from "react-router-dom";
 import logo from "../assets/LinkedIn_icon.svg.png";
-import { useSelector } from "react-redux";
 
 import { USERS } from "../auth/auth";
 import PremiumModal from "./jobspage/PremiumModal";
@@ -22,7 +21,6 @@ function NavBar({
   search,
   setSearch,
   clearSearch,
-  activeUser,
   setActiveUser,
 }) {
   const [showPremium, setShowPremium] = useState(false);

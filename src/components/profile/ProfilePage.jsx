@@ -23,11 +23,13 @@ const ProfilePage = () => {
   }, [dispatch]);
 
   if (loading)
-    return <p className="text-center py-5">Caricamento profilo...</p>;
+    return <p className="text-center py-5">Loading profile...</p>;
+
   if (error)
-    return <p className="text-center py-5 text-danger">Errore: {error}</p>;
+    return <p className="text-center py-5 text-danger">Error: {error}</p>;
+
   if (!profile)
-    return <p className="text-center py-5">Nessun profilo trovato</p>;
+    return <p className="text-center py-5">No profile found</p>;
 
   return (
     <main
@@ -52,6 +54,7 @@ const ProfilePage = () => {
             <ProfileSidebar profile={profile} />
           </div>
         </div>
+
         {/* Foooooter broom broom */}
         <div className="col-lg-8 mt-4">
           <Footer />

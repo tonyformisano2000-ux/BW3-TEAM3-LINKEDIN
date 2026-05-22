@@ -44,14 +44,14 @@ const RECENT_PROFILES = [
 const ProfileSidebar = ({ profile }) => {
   const [showLangModal, setShowLangModal] = useState(false);
   const [showUrlModal, setShowUrlModal] = useState(false);
-  const [language, setLanguage] = useState("Italiano");
+  const [language, setLanguage] = useState("Italian");
 
   // slug URL dal nome profilo
   const profileSlug = profile
     ? `${profile.name}-${profile.surname}-${profile._id?.slice(-9) || "000000000"}`
         .toLowerCase()
         .replace(/\s+/g, "-")
-    : "il-tuo-profilo";
+    : "your-profile";
 
   const [customUrl, setCustomUrl] = useState(profileSlug);
 
@@ -61,7 +61,7 @@ const ProfileSidebar = ({ profile }) => {
       <Card className="rounded-4 shadow-sm border-0">
         <Card.Body className="p-4">
           <div className="d-flex justify-content-between align-items-center mb-2">
-            <h6 className="fw-bold mb-0">Lingua del profilo</h6>
+            <h6 className="fw-bold mb-0">Profile language</h6>
             <Button
               variant="light"
               className="rounded-circle border-0 p-1"
@@ -77,7 +77,7 @@ const ProfileSidebar = ({ profile }) => {
 
           {/* PROFILO PUBBLICO E URL */}
           <div className="d-flex justify-content-between align-items-center mb-2">
-            <h6 className="fw-bold mb-0">Profilo pubblico e URL</h6>
+            <h6 className="fw-bold mb-0">Public profile & URL</h6>
             <Button
               variant="light"
               className="rounded-circle border-0 p-1"
@@ -102,17 +102,17 @@ const ProfileSidebar = ({ profile }) => {
           <div className="d-flex gap-2 align-items-start">
             <i className="bi bi-patch-check-fill text-warning fs-4"></i>
             <div>
-              <p className="fw-bold mb-1">Prova Premium gratuitamente</p>
+              <p className="fw-bold mb-1">Try Premium for free</p>
               <p className="small text-muted mb-3">
-                Scopri chi ha visualizzato il tuo profilo, invia messaggi
-                diretti e molto altro.
+                Discover who viewed your profile, send direct messages
+                and much more.
               </p>
               <Button
                 variant="warning"
                 size="sm"
                 className="rounded-pill fw-semibold"
               >
-                Prova per 0 €
+                Try for €0
               </Button>
             </div>
           </div>
@@ -122,8 +122,8 @@ const ProfileSidebar = ({ profile }) => {
       {/* ALTRI PROFILI CONSULTATI */}
       <Card className="rounded-4 shadow-sm border-0">
         <Card.Body className="p-4">
-          <h6 className="fw-bold mb-1">Altri profili consultati</h6>
-          <p className="text-muted small mb-3">Visibile solo a te</p>
+          <h6 className="fw-bold mb-1">People also viewed</h6>
+          <p className="text-muted small mb-3">Visible only to you</p>
 
           <div className="d-flex flex-column gap-3">
             {RECENT_PROFILES.map((person) => (
@@ -149,11 +149,11 @@ const ProfileSidebar = ({ profile }) => {
       <div className="px-2 d-none d-lg-block">
         <div className="d-flex flex-wrap gap-2" style={{ fontSize: "0.72rem" }}>
           {[
-            "Informazioni",
-            "Accessibilità",
-            "Centro assistenza",
+            "About",
+            "Accessibility",
+            "Help Center",
             "Privacy",
-            "Termini",
+            "Terms",
           ].map((link) => (
             <a key={link} href="#" className="text-muted text-decoration-none">
               {link}
@@ -171,39 +171,39 @@ const ProfileSidebar = ({ profile }) => {
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title>Lingua del profilo</Modal.Title>
+          <Modal.Title>Profile language</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="mb-3">
-            <label className="form-label">Lingua</label>
+            <label className="form-label">Language</label>
             <select
               className="form-select"
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
             >
-              <option value="Italiano">Italiano</option>
-              <option value="Inglese">Inglese</option>
-              <option value="Spagnolo">Spagnolo</option>
+              <option value="Italian">Italian</option>
+              <option value="English">English</option>
+              <option value="Spanish">Spanish</option>
             </select>
           </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowLangModal(false)}>
-            Chiudi
+            Close
           </Button>
           <Button variant="primary" onClick={() => setShowLangModal(false)}>
-            Salva
+            Save
           </Button>
         </Modal.Footer>
       </Modal>
 
       <Modal show={showUrlModal} onHide={() => setShowUrlModal(false)} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Modifica URL pubblico</Modal.Title>
+          <Modal.Title>Edit public URL</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="mb-3">
-            <label className="form-label">URL personalizzato</label>
+            <label className="form-label">Custom URL</label>
             <input
               type="text"
               className="form-control"
@@ -214,10 +214,10 @@ const ProfileSidebar = ({ profile }) => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowUrlModal(false)}>
-            Chiudi
+            Close
           </Button>
           <Button variant="primary" onClick={() => setShowUrlModal(false)}>
-            Salva
+            Save
           </Button>
         </Modal.Footer>
       </Modal>

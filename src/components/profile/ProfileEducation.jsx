@@ -15,8 +15,8 @@ const SchoolLogo = ({ initials, bg }) => (
 const MOCK_EDUCATION = [
   {
     id: 1,
-    school: 'Università degli Studi di Messina',
-    degree: 'Laurea Triennale · Informatica',
+    school: 'University of Messina',
+    degree: "Bachelor's Degree · Computer Science",
     start: '2019',
     end: '2022',
     grade: '108/110',
@@ -25,8 +25,8 @@ const MOCK_EDUCATION = [
   },
   {
     id: 2,
-    school: 'Liceo Scientifico A. Volta',
-    degree: 'Diploma · Scientifico',
+    school: 'A. Volta Scientific High School',
+    degree: 'High School Diploma · Science',
     start: '2014',
     end: '2019',
     grade: '95/100',
@@ -49,7 +49,7 @@ const ProfileEducation = () => {
 
           {/* intestazione */}
           <div className="d-flex justify-content-between align-items-center mb-4">
-            <h5 className="fw-bold mb-0">Formazione</h5>
+            <h5 className="fw-bold mb-0">Education</h5>
 
             {/* bottone aggiungi */}
             <Button
@@ -86,7 +86,7 @@ const ProfileEducation = () => {
                   {/* voto se presente */}
                   {edu.grade && (
                     <p className="text-muted small mb-0">
-                      Voto: {edu.grade}
+                      Grade: {edu.grade}
                     </p>
                   )}
                 </div>
@@ -110,31 +110,31 @@ const ProfileEducation = () => {
 
         {/* header */}
         <Modal.Header closeButton>
-          <Modal.Title className="fw-bold">Aggiungi formazione</Modal.Title>
+          <Modal.Title className="fw-bold">Add education</Modal.Title>
         </Modal.Header>
 
         {/* campi form */}
         <Modal.Body>
 
           {/* nota obbligatori */}
-          <p className="small text-muted">* Indica che è obbligatorio</p>
+          <p className="small text-muted">* Indicates required</p>
 
           {/* campo scuola */}
           <div className="mb-3">
-            <label className="form-label">Scuola*</label>
-            <input type="text" className="form-control" placeholder="Es. Università di Bologna" />
+            <label className="form-label">School*</label>
+            <input type="text" className="form-control" placeholder="E.g. University of Bologna" />
           </div>
 
           {/* campo titolo */}
           <div className="mb-3">
-            <label className="form-label">Titolo di studio</label>
-            <input type="text" className="form-control" placeholder="Es. Laurea Magistrale" />
+            <label className="form-label">Degree</label>
+            <input type="text" className="form-control" placeholder="E.g. Master's Degree" />
           </div>
 
           {/* campo indirizzo */}
           <div className="mb-3">
-            <label className="form-label">Indirizzo / Campo di studi</label>
-            <input type="text" className="form-control" placeholder="Es. Informatica" />
+            <label className="form-label">Field of study</label>
+            <input type="text" className="form-control" placeholder="E.g. Computer Science" />
           </div>
 
           {/* campi anni */}
@@ -142,40 +142,40 @@ const ProfileEducation = () => {
 
             {/* anno inizio */}
             <div className="col">
-              <label className="form-label">Anno inizio</label>
-              <input type="number" className="form-control" placeholder="Es. 2019" min="1950" max="2030" />
+              <label className="form-label">Start year</label>
+              <input type="number" className="form-control" placeholder="E.g. 2019" min="1950" max="2030" />
             </div>
 
             {/* anno fine */}
             <div className="col">
-              <label className="form-label">Anno fine</label>
-              <input type="number" className="form-control" placeholder="Es. 2022" min="1950" max="2030" />
+              <label className="form-label">End year</label>
+              <input type="number" className="form-control" placeholder="E.g. 2022" min="1950" max="2030" />
             </div>
           </div>
 
           {/* campo voto */}
           <div className="mb-3">
-            <label className="form-label">Voto</label>
-            <input type="text" className="form-control" placeholder="Es. 110/110" />
+            <label className="form-label">Grade</label>
+            <input type="text" className="form-control" placeholder="E.g. 110/110" />
           </div>
 
           {/* campo attività */}
           <div className="mb-3">
-            <label className="form-label">Attività e società</label>
-            <textarea className="form-control" rows={3} placeholder="Attività svolte, associazioni..." />
+            <label className="form-label">Activities and societies</label>
+            <textarea className="form-control" rows={3} placeholder="Activities, associations..." />
           </div>
 
           {/* campo descrizione */}
           <div className="mb-3">
-            <label className="form-label">Descrizione</label>
-            <textarea className="form-control" rows={3} placeholder="Descrivi il tuo percorso..." />
+            <label className="form-label">Description</label>
+            <textarea className="form-control" rows={3} placeholder="Describe your educational journey..." />
           </div>
         </Modal.Body>
 
         {/* footer */}
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>Annulla</Button>
-          <Button variant="primary" onClick={() => setShowModal(false)}>Salva</Button>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>Cancel</Button>
+          <Button variant="primary" onClick={() => setShowModal(false)}>Save</Button>
         </Modal.Footer>
       </Modal>
     </>

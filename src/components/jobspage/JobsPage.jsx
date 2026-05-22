@@ -7,7 +7,7 @@ import PremiumModal from "./PremiumModal";
 import CategorySection from "./CategorySection";
 import SearchView from "./SearchView";
 
-// COMPONENTE PRINCIPALE 
+// COMPONENTE PRINCIPALE
 
 const JobsPage = ({ search }) => {
   const dispatch = useDispatch();
@@ -20,17 +20,19 @@ const JobsPage = ({ search }) => {
 
   // stati UI
   const [selectedJob, setSelectedJob] = useState(null);
-  const [activeFilter, setActiveFilter] = useState("Candidatura semplice");
-  const [activeCategory, setActiveCategory] = useState("Candidatura semplice");
+  const [activeFilter, setActiveFilter] = useState("Simple application");
+  const [activeCategory, setActiveCategory] = useState("Simple application");
   const [dismissedIds, setDismissedIds] = useState(new Set());
   const [showPremiumModal, setShowPremiumModal] = useState(false);
 
-  // fetch jobs 
+  // fetch jobs
   const getJobs = async () => {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch("https://strive-benchmark.herokuapp.com/api/jobs");
+      const response = await fetch(
+        "https://strive-benchmark.herokuapp.com/api/jobs",
+      );
       if (!response.ok) throw new Error("Error fetching jobs");
       const data = await response.json();
       setJobs(data.data || []);
@@ -41,7 +43,7 @@ const JobsPage = ({ search }) => {
     }
   };
 
-  // fetch jobs 
+  // fetch jobs
   useEffect(() => {
     getJobs();
     dispatch(getMyProfile());
@@ -72,17 +74,19 @@ const JobsPage = ({ search }) => {
     <main className="bg-light min-vh-100 py-4">
       <div className="container">
         <div className="row">
-
           {/* sidebar sinistra */}
           <JobsSidebar />
 
           {/* contenuto principale */}
           <div className="col-12 col-md-9">
-
             {/* spinner caricamento */}
             {loading && (
               <div className="d-flex justify-content-center align-items-center py-5">
-                <div className="spinner-border text-primary" role="status" style={{ width: "3rem", height: "3rem" }}>
+                <div
+                  className="spinner-border text-primary"
+                  role="status"
+                  style={{ width: "3rem", height: "3rem" }}
+                >
                   <span className="visually-hidden">Loading...</span>
                 </div>
               </div>
@@ -94,7 +98,9 @@ const JobsPage = ({ search }) => {
             {/* vista default — nessuna ricerca */}
             {!loading && !error && !isSearching && (
               <>
-                <PremiumBanner onPremiumClick={() => setShowPremiumModal(true)} />
+                <PremiumBanner
+                  onPremiumClick={() => setShowPremiumModal(true)}
+                />
                 <CategorySection
                   filteredJobs={filteredJobs}
                   visibleCount={visibleCount}
@@ -120,14 +126,14 @@ const JobsPage = ({ search }) => {
                 onLoadMore={() => setVisibleCount((p) => p + 20)}
               />
             )}
-
           </div>
         </div>
       </div>
 
       {/* modal premium */}
-      {showPremiumModal && <PremiumModal onClose={() => setShowPremiumModal(false)} />}
-
+      {showPremiumModal && (
+        <PremiumModal onClose={() => setShowPremiumModal(false)} />
+      )}
     </main>
   );
 };

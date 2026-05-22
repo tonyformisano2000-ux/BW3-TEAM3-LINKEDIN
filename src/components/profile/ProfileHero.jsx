@@ -152,7 +152,7 @@ const ProfileHero = ({ profile }) => {
                 className="rounded-pill border-dashed fw-semibold"
               >
                 <i className="bi bi-shield-check me-1"></i>
-                Aggiungi badge di verifica
+                Add verification badge
               </Button>
             </Link>
           </div>
@@ -163,7 +163,7 @@ const ProfileHero = ({ profile }) => {
             {profile.area || "Lamezia Terme, Calabria, Italia"}
             <span className="mx-1">·</span>
             <a href="#" className="fw-semibold text-decoration-none">
-              Informazioni di contatto
+              Contact information
             </a>
           </p>
 
@@ -174,7 +174,7 @@ const ProfileHero = ({ profile }) => {
                 className="rounded-pill fw-semibold"
                 onClick={() => setShowAvailableMenu(!showAvailableMenu)}
               >
-                Disponibile per
+                Available for
               </Button>
 
               {/* menu dropdown */}
@@ -186,7 +186,7 @@ const ProfileHero = ({ profile }) => {
               className="rounded-pill fw-semibold"
               onClick={() => setShowAddSectionModal(true)}
             >
-              Aggiungi sezione
+              Add section
             </Button>
 
             <Button
@@ -194,7 +194,7 @@ const ProfileHero = ({ profile }) => {
               className="rounded-pill fw-semibold"
               onClick={() => setShowImproveModal(true)}
             >
-              Migliora profilo
+              Improve profile
             </Button>
 
             <div className="position-relative">
@@ -203,7 +203,7 @@ const ProfileHero = ({ profile }) => {
                 className="rounded-pill fw-semibold"
                 onClick={() => setShowResourcesMenu(!showResourcesMenu)}
               >
-                Risorse
+                Resources
               </Button>
 
               {/* dropdown risorse */}

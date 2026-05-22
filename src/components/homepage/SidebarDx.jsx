@@ -153,7 +153,7 @@ const SidebarDx = () => {
 
         <div className="d-flex justify-content-center">
           <div className="w-100">
-            <h6 className="text-secondary">Storie Principali</h6>
+            <h6 className="text-secondary">Top Stories</h6>
 
             {visibleStories.map((story, index) => (
               <div className={styles.story} key={index}>
@@ -218,11 +218,11 @@ const SidebarDx = () => {
       <div className="px-2 d-none d-lg-block">
         <div className="d-flex flex-wrap gap-2" style={{ fontSize: "0.72rem" }}>
           {[
-            "Informazioni",
-            "Accessibilità",
-            "Centro assistenza",
+            "Information",
+            "Accessibility",
+            "Help Center",
             "Privacy",
-            "Termini",
+            "Terms",
           ].map((link) => (
             <a key={link} href="#" className="text-muted text-decoration-none">
               {link}
