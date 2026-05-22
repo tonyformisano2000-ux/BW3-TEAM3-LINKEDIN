@@ -69,7 +69,7 @@ const SinglePost = ({ postElements, onLike }) => {
                 className="img-fluid rounded-3 w-100"
                 style={{
                   maxHeight: "500px",
-                  objectFit: "cover",
+                  objectFit: "contain",
                 }}
               />
             </Col>
