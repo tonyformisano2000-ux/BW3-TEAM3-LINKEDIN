@@ -18,6 +18,7 @@ const SinglePost = ({ postElements, onLike, onComment }) => {
   useEffect(() => {
     if (!user?._id) return;
     const savedProfileImage = localStorage.getItem(`profile-image-${user._id}`);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setProfileImage(
       savedProfileImage || user?._image || "https://placecats.com/200/200",
     );
