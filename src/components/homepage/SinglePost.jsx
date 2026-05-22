@@ -1,6 +1,6 @@
 import { Col, Row, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
-// these were removed
+
 import { ThumbsUp, MessageCircle, Share2, Send } from "lucide-react";
 
 const SinglePost = ({ postElements }) => {
