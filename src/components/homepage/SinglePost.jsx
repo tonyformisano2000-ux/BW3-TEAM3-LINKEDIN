@@ -1,30 +1,34 @@
-import { Col, Row, Button } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
-
 import { ThumbsUp, MessageCircle, Share2, Send } from "lucide-react";
 
-const SinglePost = ({ postElements }) => {
+const CURRENT_USER_ID = "me";
+
+const SinglePost = ({ postElements, onLike, onComment }) => {
   const user = postElements?.user;
 
-  // stato immagine profilo  - martina
-  const [profileImage, setProfileImage] = useState("");
-  const [isLiked, setIsLiked] = useState(false);
-  const [comment, setComment] = useState("");
+  const [profileImage, setProfileImage] = useState(
+    "https://placecats.com/200/200",
+  );
   const [commentModal, setCommentModal] = useState(false);
+  const [comment, setComment] = useState("");
 
-  const comments = [];
+  const isLiked = postElements.likes?.includes(CURRENT_USER_ID);
 
-  // recupero immagine salvata nel localStorage
   useEffect(() => {
     if (!user?._id) return;
-
     const savedProfileImage = localStorage.getItem(`profile-image-${user._id}`);
-
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setProfileImage(
       savedProfileImage || user?._image || "https://placecats.com/200/200",
     );
   }, [user]);
+
+  const handleCommentSubmit = () => {
+    if (!comment.trim()) return;
+    onComment(comment, user?.name ?? "Anonymous");
+    setComment("");
+    setCommentModal(false);
+  };
 
   return (
     <Row className="mb-4">
@@ -43,7 +47,6 @@ const SinglePost = ({ postElements }) => {
               }}
             />
           </Col>
-
           <Col className="d-flex flex-column">
             <h6 className="mb-0 fw-bold">
               {user?.name} {user?.surname}
@@ -69,10 +72,7 @@ const SinglePost = ({ postElements }) => {
                 src={postElements.image}
                 alt="post"
                 className="img-fluid rounded-3 w-100"
-                style={{
-                  maxHeight: "500px",
-                  objectFit: "cover",
-                }}
+                style={{ maxHeight: "500px", objectFit: "cover" }}
               />
             </Col>
           </Row>
@@ -83,12 +83,9 @@ const SinglePost = ({ postElements }) => {
           {/* LIKE */}
           <Col
             className="cursor-pointer d-flex flex-column align-items-center"
-            onClick={() => setIsLiked((prev) => !prev)}
+            onClick={onLike}
           >
-            <ThumbsUp
-              size={22}
-              color={isLiked ? "#0d6efd" : "black"} // Bootstrap primary blue
-            />
+            <ThumbsUp size={22} color={isLiked ? "#0d6efd" : "black"} />
             <p
               className="fw-semibold m-0"
               style={{ color: isLiked ? "#0d6efd" : "black" }}
@@ -119,37 +116,35 @@ const SinglePost = ({ postElements }) => {
           </Col>
         </Row>
 
-        {/* COMMENT BOX */}
-        {commentModal && (
-          <Row>
-            <Col xs={12} className="text-center">
-              <form>
-                <textarea
-                  className="border-0 shadow-sm rounded-2 p-2"
-                  style={{ width: "100%" }}
-                  name="comment"
-                  id={postElements._id}
-                  placeholder="Type a comment..."
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                />
-
-                <button type="submit" className="btn btn-primary mt-2">
-                  Post
-                </button>
-              </form>
+        {/* EXISTING COMMENTS */}
+        {postElements.comments?.length > 0 && (
+          <Row className="mb-2">
+            <Col>
+              {postElements.comments.map((c, i) => (
+                <div key={i} className="bg-light rounded-2 px-3 py-2 mb-1">
+                  <strong>Default_User</strong>
+                  <span className="ms-2">{c.text}</span>
+                </div>
+              ))}
             </Col>
           </Row>
         )}
 
-        {comments.length > 0 && (
+        {/* COMMENT INPUT */}
+        {commentModal && (
           <Row>
-            <Col xs={12} className="text-center">
-              {comments.map((comment) => {
-                <div>
-                  <p>{comment}</p>
-                </div>;
-              })}
+            <Col className="d-flex gap-2 align-items-center">
+              <textarea
+                className="border-0 shadow-sm rounded-2 p-2 flex-grow-1"
+                style={{ resize: "none", height: "42px" }}
+                id={postElements._id}
+                placeholder="Type a comment..."
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+              />
+              <button className="btn btn-primary" onClick={handleCommentSubmit}>
+                Post
+              </button>
             </Col>
           </Row>
         )}
