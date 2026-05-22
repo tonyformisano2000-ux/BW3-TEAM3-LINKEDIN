@@ -1,11 +1,18 @@
 import { Col, Row, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
+// these were removed
+import { ThumbsUp, MessageCircle, Share2, Send } from "lucide-react";
 
 const SinglePost = ({ postElements }) => {
   const user = postElements?.user;
 
   // stato immagine profilo  - martina
   const [profileImage, setProfileImage] = useState("");
+  const [isLiked, setIsLiked] = useState(false);
+  const [comment, setComment] = useState("");
+  const [commentModal, setCommentModal] = useState(false);
+
+  const comments = [];
 
   // recupero immagine salvata nel localStorage
   useEffect(() => {
@@ -116,7 +123,7 @@ const SinglePost = ({ postElements }) => {
         {commentModal && (
           <Row>
             <Col xs={12} className="text-center">
-              <form onSubmit={handleCommentSubmit}>
+              <form>
                 <textarea
                   className="border-0 shadow-sm rounded-2 p-2"
                   style={{ width: "100%" }}
@@ -131,6 +138,18 @@ const SinglePost = ({ postElements }) => {
                   Post
                 </button>
               </form>
+            </Col>
+          </Row>
+        )}
+
+        {comments.length > 0 && (
+          <Row>
+            <Col xs={12} className="text-center">
+              {comments.map((comment) => {
+                <div>
+                  <p>{comment}</p>
+                </div>;
+              })}
             </Col>
           </Row>
         )}
