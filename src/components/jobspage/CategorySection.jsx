@@ -48,9 +48,9 @@ const CategorySection = ({
     </div>
 
     <div className="p-4">
-      {activeCategory === "Da remoto" ? (
+      {activeCategory === "Remotely" ? (
         <EasterEggDaRemoto />
-      ) : activeCategory === "Altro" ? (
+      ) : activeCategory === "Other" ? (
         <EasterEggAltro />
       ) : (
         <>
